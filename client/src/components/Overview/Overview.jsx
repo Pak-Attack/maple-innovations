@@ -10,7 +10,7 @@ class Overview extends React.Component{
     render() {
       return(
         <div>
-          Overview
+          <h1>Overview</h1>
         </div>
       )
     }
