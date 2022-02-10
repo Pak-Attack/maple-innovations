@@ -1,4 +1,7 @@
 import React from 'react';
+import ProductDescription from './productDesc.jsx';
+import StylesAndCart from './stylesAndCart.jsx';
+import Gallery from './gallery.jsx';
 
 class Overview extends React.Component{
   constructor(props) {
@@ -10,7 +13,13 @@ class Overview extends React.Component{
     render() {
       return(
         <div>
-          <h1>Overview</h1>
+          <div className="pic-style-container">
+            <div className="gallery-container"><Gallery /></div>
+            <div className="styles-container"><StylesAndCart /></div>
+          </div>
+          <div className="product-info-container">
+           <ProductDescription />
+          </div>
         </div>
       )
     }
