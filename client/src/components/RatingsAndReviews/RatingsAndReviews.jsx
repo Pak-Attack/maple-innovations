@@ -19,4 +19,6 @@ class RatingsAndReviews extends React.Component {
   }
 }
 
+//
+
 export default RatingsAndReviews;
