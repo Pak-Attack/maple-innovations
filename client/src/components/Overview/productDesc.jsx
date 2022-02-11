@@ -11,10 +11,10 @@ const ProductDescription = function (props) {
         </div>
       </div>
       <div className="product-details-container">
-        <div><span className="product-detail-item">✅</span>Product detail 1</div>
-        <div><span className="product-detail-item">✅</span>Product detail 2</div>
-        <div><span className="product-detail-item">✅</span>Product detail 3</div>
-        <div><span className="product-detail-item">✅</span>Product detail 4</div>
+        <div className="detail-item-container"><span className="product-detail-item">✅</span>Product detail 1</div>
+        <div className="detail-item-container"><span className="product-detail-item">✅</span>Product detail 2</div>
+        <div className="detail-item-container"><span className="product-detail-item">✅</span>Product detail 3</div>
+        <div className="detail-item-container"><span className="product-detail-item">✅</span>Product detail 4</div>
       </div>
 
     </div>
