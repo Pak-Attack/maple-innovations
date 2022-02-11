@@ -1,0 +1,63 @@
+.product-data {
+  font-weight: bold
+}
+
+.ratings-and-reviews-container {
+  display: flex;
+  flex-direction: row;
+  margin-left: 10%;
+}
+
+.ratings-and-reviews-component-containers {
+  margin-right: 5%;
+}
+
+.big-star-rating-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.big-star-rating {
+  font-size: x-large;
+}
+
+.ratings-and-reviews-entry-boxes {
+  border: 2px solid black;
+  margin: 10px auto;
+  margin-right: 20%;
+}
+
+.ratings-and-reviews-comments-stars-and-username-line {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.ratings-and-reviews-entry-box-stars {
+
+}
+
+.ratings-and-reviews-entry-box-user-and-date {
+
+}
+
+.ratings-and-reviews-entry-box-title {
+  font-weight: bold;
+  font-size: large;
+}
+
+.ratings-and-reviews-entry-box-content-body {
+
+}
+
+.ratings-and-reviews-entry-box-recommend {
+
+}
+
+.ratings-and-reviews-entry-box-response {
+
+}
+
+.ratings-and-reviews-entry-box-helpful {
+
+}
