@@ -1,0 +1,103 @@
+
+/* default styling resets */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* Default font-size is 16px. 1Rem=default font-size.
+Reset font-size to make calculations easier. Setting font-size to 62.5% makes 1Rem=10px. Using rems also allows the app to be responsive to screen size changes  */
+html {
+  font-size: 62.5%;
+}
+
+/* Begin Overview specific styling */
+
+.pic-style-container {
+  display: flex;
+  flex-direction: row;
+  width: 800px;
+  background-color: gray;
+
+}
+
+.gallery-container {
+  height: 500px;
+  width: 65%;
+  background-color: lime;
+}
+
+.styles-container {
+  height: 500px;
+  width: 35%;
+  background-color: orangered;
+  margin: 1rem;
+}
+
+.product-info-container {
+  height: 250px;
+  width: 650px;
+  background-color: darkolivegreen;
+}
+
+.prod-desc-component {
+  display: flex;
+  flex-direction: row;
+  padding: 5px;
+  background-color: violet;
+}
+
+.slogan-description-container {
+  display: flex;
+  flex-direction: column;
+  background-color: yellow;
+  margin: 5px;
+  width: 75%;
+  padding: 5px;
+  border-right: 4px solid black;
+}
+
+.product-details-container {
+  display: flex;
+  flex-direction: column;
+  background-color: aqua;
+  margin: 5px;
+  width: 25%;
+}
+
+.product-detail-item {
+  margin-right: 10px;
+}
+
+.detail-item-container {
+  padding: 5px;
+}
+
+.main-image-container {
+  background-color: goldenrod;
+  height: 480px;
+  margin: 1rem;
+  position: relative;
+}
+
+.thumbnail-main-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  height: 50%;
+  width: 50px;
+  top: 0;
+  background-color: aquamarine;
+  overflow-y: scroll;
+}
+
+.one-thumbnail-container {
+  height: 50px;
+  width: 50px;
+  margin-bottom: 2px;
+  background-color: brown;
+  overflow-y: scroll;
+}
+
+/* End overview specific styling */
