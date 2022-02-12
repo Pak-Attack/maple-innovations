@@ -9,7 +9,7 @@ import ReviewListEntry from './ReviewListEntry.jsx';
       }
       this.reviews = this.props.product.results.slice(0, this.state.reviewCount)
 
-    console.log('ReviewList Props: ', this.props);
+    // console.log('ReviewList Props: ', this.props);
     this.addMoreReviews = this.addMoreReviews.bind(this);
   }
 

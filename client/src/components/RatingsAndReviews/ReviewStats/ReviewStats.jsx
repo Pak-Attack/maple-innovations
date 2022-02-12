@@ -3,7 +3,7 @@ import StarRatings from './StarRatings.jsx';
 import ProductFeedbackScales from './ProductFeedbackScales.jsx';
 
 const ReviewStats = ({ratings}) => {
-  console.log('ReviewStats Props: ', ratings);
+  // console.log('ReviewStats Props: ', ratings);
   return (
     <div>
       <div className="product-data"></div>

@@ -23,6 +23,7 @@ const StylesAndCart = function (props) {
       <div className="styles-bag-container">
         <div className="bag-top-container">
           <select>
+            <option defaultValue>Select Size</option>
             <option>XS</option>
             <option>S</option>
             <option>M</option>
@@ -30,6 +31,7 @@ const StylesAndCart = function (props) {
             <option>XL</option>
           </select>
           <select>
+            <option defaultValue>Quantity</option>
             <option>1</option>
             <option>2</option>
             <option>3</option>
