@@ -13,10 +13,19 @@ const Gallery = function (props) {
     }
   });
 
-  console.log(currentStyleImages);
-  let currentStyleThumbnails = currentStyleImages.map((oneThumbnail, index)=> {
+  let currentStyleThumbnails = currentStyleImages.map((oneThumbnail, index) => {
+    var thumbnailID;
+    if (index === 0) {
+      thumbnailID = "previous-pics"
+    } else if (index === 7) {
+      thumbnailID = "remaining-pics";
+    } else {
+      thumbnailID = "";
+    }
     return (
-      <div className="one-thumbnail-container" key={index}><img className="one-thumbnail" src={oneThumbnail.thumbnail_url}></img></div>
+      <div className="one-thumbnail-container" key={index} id={thumbnailID}>
+        <img className="one-thumbnail" src={oneThumbnail.thumbnail_url}></img>
+      </div>
     )
   })
 
@@ -25,7 +34,11 @@ const Gallery = function (props) {
       <div className="main-image-container">
         <img className="main-image" src={mainImage}></img>
         <div className="thumbnail-main-container">
-         {currentStyleThumbnails}
+        <a className="thumbnail-button previous-pics" href="#previous-pics">Previous</a>
+          <div className="thumbnail-main-carousel">
+            {currentStyleThumbnails}
+          </div>
+          <a className="thumbnail-button remaining-pics-button" href="#remaining-pics">More</a>
         </div>
       </div>
     </div>
