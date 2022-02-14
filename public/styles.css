@@ -100,7 +100,6 @@ html {
   min-height: 0; */
   width: 5rem;
   top: 1rem;
-  background-color: aquamarine;
   display: flex;
   flex-direction: column;
 }
@@ -121,8 +120,8 @@ display: none;
   height: 5rem;
   width: auto;
   margin: 1.2rem 0;
-  background-color: brown;
   overflow: hidden;
+  box-shadow: 0 1px 5px rgb(31, 30, 30);
 }
 
 .one-thumbnail {
@@ -133,13 +132,36 @@ display: none;
   object-position: center top;
 }
 
+.selected-thumbnail {
+  padding-bottom: 0.3rem;
+  border-bottom: solid black 2px;
+}
+
 .thumbnail-button{
   display: block;
 }
 
-/* .remaining-pics-button {
+.left-button {
+  height: 6%;
+  width: 5%;
+  position: absolute;
+  left: 6rem;
+}
 
-} */
+.right-button {
+  height: 6%;
+  width: 5%;
+  position: absolute;
+  left: 94%;
+}
+
+.zoom-button {
+  height: 6%;
+  width: 5%;
+  position: absolute;
+  left: 94%;
+  top: 2%;
+}
 
 .styles-main-container {
   padding: 1rem;

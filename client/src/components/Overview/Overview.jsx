@@ -11,13 +11,17 @@ class Overview extends React.Component {
       currentStyles: props.currentStyles,
       currentProductRating: props.currentProductRating,
       currentStyleId: 221015,
-      scrolledDownValue: false
+      scrolledDownValue: false,
+      currentMainImage: '',
+      currentMainImageIndex: 0
     }
     this.carouselScrolledDown = this.carouselScrolledDown.bind(this);
+    this.handleThumbnailClick = this.handleThumbnailClick.bind(this);
+    this.handleLeftRightMainImage = this.handleLeftRightMainImage.bind(this);
   }
 
-  carouselScrolledDown(distFromTop, direction) {
-    if (direction === 'down' || distFromTop > 0) {
+  carouselScrolledDown(distFromTop) {
+    if (distFromTop > 0) {
       this.setState({
         scrolledDownValue: true
       });
@@ -28,8 +32,46 @@ class Overview extends React.Component {
     }
   }
 
+  handleThumbnailClick(imageURL) {
+    this.setState({
+      currentMainImage: imageURL
+    })
+  }
+
+  handleLeftRightMainImage(direction, allThumbnails) {
+    let newMainImage;
+    let newIndex;
+    if (direction === 'left') {
+      if (this.state.currentMainImageIndex > 0) {
+        newMainImage = allThumbnails[this.state.currentMainImageIndex - 1].thumbnail_url;
+        newIndex = this.state.currentMainImageIndex - 1;
+        this.setState({
+          currentMainImage: newMainImage,
+          currentMainImageIndex: newIndex
+        })
+      }
+    } else {
+      if (this.state.currentMainImageIndex < allThumbnails.length - 1) {
+        newMainImage = allThumbnails[this.state.currentMainImageIndex + 1].thumbnail_url;
+        newIndex = this.state.currentMainImageIndex + 1;
+        this.setState({
+          currentMainImage:newMainImage,
+          currentMainImageIndex: newIndex
+        })
+      }
+    }
+  }
+
   render() {
-    const { currentProduct, currentStyles, currentProductRating, currentStyleId, scrolledDownValue } = this.state;
+    const {
+      currentProduct,
+      currentStyles,
+      currentProductRating,
+      currentStyleId,
+      scrolledDownValue,
+      currentMainImage,
+      currentMainImageIndex
+    } = this.state;
     return (
       <div>
         <div className="pic-style-container">
@@ -39,6 +81,10 @@ class Overview extends React.Component {
               currentStyleId={currentStyleId}
               carouselScrolledDown={this.carouselScrolledDown}
               scrolledDownValue={scrolledDownValue}
+              currentMainImage={currentMainImage}
+              handleThumbnailClick={this.handleThumbnailClick}
+              handleLeftRightMainImage={this.handleLeftRightMainImage}
+              currentMainImageIndex={currentMainImageIndex}
             />
           </div>
           <div className="styles-container"><StylesAndCart /></div>
@@ -52,5 +98,3 @@ class Overview extends React.Component {
 }
 
 export default Overview;
-
-  //Overview should be passed the current selected product object

@@ -11,7 +11,11 @@ const Gallery = function (props) {
   styleOptions.forEach((oneStyle, index) => {
     if (oneStyle.style_id === currentStyleId) {
       currentStyleImages = oneStyle.photos;
-      mainImage = currentStyleImages[0].thumbnail_url;
+      if (props.currentMainImage === '') {
+        mainImage = currentStyleImages[0].thumbnail_url;
+      } else {
+        mainImage = props.currentMainImage;
+      }
     }
   });
 
@@ -30,7 +34,38 @@ const Gallery = function (props) {
     upButton = <div></div>;
   }
 
-  //make these dynamics by getting the height of each individual thumbnail.
+  let currentStyleThumbnails = currentStyleImages.map((oneThumbnail, index) => {
+    if (mainImage === oneThumbnail.thumbnail_url) {
+      return (
+        <div className="one-thumbnail-container selected-thumbnail" key={index} onClick={() => props.handleThumbnailClick(oneThumbnail.thumbnail_url)}>
+          <img className="one-thumbnail" src={oneThumbnail.thumbnail_url}></img>
+        </div>
+      )
+    } else {
+      return (
+        <div className="one-thumbnail-container" key={index} onClick={() => props.handleThumbnailClick(oneThumbnail.thumbnail_url)}>
+          <img className="one-thumbnail" src={oneThumbnail.thumbnail_url}></img>
+        </div>
+      )
+    }
+  })
+
+  const scrollOnMainImageChange = function(index) {
+    let targetThumbnail = document.querySelector('.thumbnail-main-carousel');
+    let topSpacing;
+    if (props.currentMainImageIndex > 0) {
+      topSpacing = props.currentMainImageIndex * 62;
+    } else {
+      topSpacing = 0;
+    }
+    if (targetThumbnail) {
+      targetThumbnail.scroll({
+        top: topSpacing,
+        behavior: 'smooth'
+      })
+    }
+  }()
+
   const scrollToThumbnail = function (direction) {
     let targetThumbnail = document.querySelector('.thumbnail-main-carousel');
     let topSpacing;
@@ -45,17 +80,9 @@ const Gallery = function (props) {
         top: topSpacing,
         behavior: 'smooth'
       })
-      props.carouselScrolledDown(targetThumbnail.scrollTop, direction)
+      props.carouselScrolledDown(topSpacing)
     }
   }
-
-  let currentStyleThumbnails = currentStyleImages.map((oneThumbnail, index) => {
-    return (
-      <div className="one-thumbnail-container" key={index}>
-        <img className="one-thumbnail" src={oneThumbnail.thumbnail_url}></img>
-      </div>
-    )
-  })
 
   return (
     <div>
@@ -68,6 +95,9 @@ const Gallery = function (props) {
           </div>
           {downButton}
         </div>
+        <button className="left-button" onClick={()=>props.handleLeftRightMainImage('left', currentStyleImages)}>⇦</button>
+        <button className="right-button" onClick={()=>props.handleLeftRightMainImage('right', currentStyleImages)}>⇨</button>
+        <button className="zoom-button">🔍</button>
       </div>
     </div>
   )
