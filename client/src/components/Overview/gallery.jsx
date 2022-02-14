@@ -8,6 +8,7 @@ const Gallery = function (props) {
   let upButton;
   let downButton;
 
+  //creates array of current images for the selected style and sets the main photo on initial page load
   styleOptions.forEach((oneStyle, index) => {
     if (oneStyle.style_id === currentStyleId) {
       currentStyleImages = oneStyle.photos;
@@ -19,23 +20,32 @@ const Gallery = function (props) {
     }
   });
 
+  //Determines if a down button is necessary in the thumbnail carousel
   if (currentStyleImages.length <= 7) {
-    downButton = <div></div>;
+    downButton = <div className="thumbnail-button"></div>;
   } else {
     downButton =
       <div >
-        <button className="thumbnail-button previous-pics" onClick={() => scrollToThumbnail('down')}>Down</button>
+        <button className="thumbnail-button" onClick={() => scrollToThumbnail('down')}>Down</button>
       </div >;
   }
 
+  //creates an up button if the list is scrolled
   if (props.scrolledDownValue === true) {
-    upButton = <button className="thumbnail-button previous-pics" onClick={() => scrollToThumbnail('up')}>Up</button>
+    upButton =
+      <div>
+        <button className="thumbnail-button" onClick={() => scrollToThumbnail('up')}>Up</button>
+      </div>
   } else {
-    upButton = <div></div>;
+    upButton =
+      <div>
+        <button className="thumbnail-button" style={{ visibility: "hidden" }}>
+        </button>
+      </div>
   }
 
   let currentStyleThumbnails = currentStyleImages.map((oneThumbnail, index) => {
-    if (mainImage === oneThumbnail.thumbnail_url) {
+    if (index === props.currentMainImageIndex) {
       return (
         <div className="one-thumbnail-container selected-thumbnail" key={index} onClick={() => props.handleThumbnailClick(oneThumbnail.thumbnail_url)}>
           <img className="one-thumbnail" src={oneThumbnail.thumbnail_url}></img>
@@ -43,28 +53,16 @@ const Gallery = function (props) {
       )
     } else {
       return (
-        <div className="one-thumbnail-container" key={index} onClick={() => props.handleThumbnailClick(oneThumbnail.thumbnail_url)}>
+        <div className="one-thumbnail-container" data-index={index} key={index} onClick={() => props.handleThumbnailClick(oneThumbnail.thumbnail_url, index)}>
           <img className="one-thumbnail" src={oneThumbnail.thumbnail_url}></img>
         </div>
       )
     }
   })
 
-  const scrollOnMainImageChange = function(index) {
-    let targetThumbnail = document.querySelector('.thumbnail-main-carousel');
-    let topSpacing;
-    if (props.currentMainImageIndex > 0) {
-      topSpacing = props.currentMainImageIndex * 62;
-    } else {
-      topSpacing = 0;
-    }
-    if (targetThumbnail) {
-      targetThumbnail.scroll({
-        top: topSpacing,
-        behavior: 'smooth'
-      })
-    }
-  }()
+  const onClickHandler = function (xChange, currentStyleImages) {
+    props.handleLeftRightMainImage(xChange, currentStyleImages);
+  }
 
   const scrollToThumbnail = function (direction) {
     let targetThumbnail = document.querySelector('.thumbnail-main-carousel');
@@ -95,8 +93,8 @@ const Gallery = function (props) {
           </div>
           {downButton}
         </div>
-        <button className="left-button" onClick={()=>props.handleLeftRightMainImage('left', currentStyleImages)}>⇦</button>
-        <button className="right-button" onClick={()=>props.handleLeftRightMainImage('right', currentStyleImages)}>⇨</button>
+        <button className="left-button" onClick={() => onClickHandler('left', currentStyleImages)}>⇦</button>
+        <button className="right-button" onClick={() => onClickHandler('right', currentStyleImages)}>⇨</button>
         <button className="zoom-button">🔍</button>
       </div>
     </div>

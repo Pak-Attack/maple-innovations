@@ -18,6 +18,7 @@ class Overview extends React.Component {
     this.carouselScrolledDown = this.carouselScrolledDown.bind(this);
     this.handleThumbnailClick = this.handleThumbnailClick.bind(this);
     this.handleLeftRightMainImage = this.handleLeftRightMainImage.bind(this);
+    this.scrollOnMainImageChange = this.scrollOnMainImageChange.bind(this);
   }
 
   carouselScrolledDown(distFromTop) {
@@ -32,10 +33,19 @@ class Overview extends React.Component {
     }
   }
 
-  handleThumbnailClick(imageURL) {
+  handleThumbnailClick(imageURL, index) {
+    let scrolled;
+    if (index !== 0) {
+      scrolled = true;
+    } else {
+      scrolled = false;
+    }
     this.setState({
-      currentMainImage: imageURL
+      currentMainImage: imageURL,
+      currentMainImageIndex: index,
+      scrolledDownValue: scrolled
     })
+    this.scrollOnMainImageChange(index)
   }
 
   handleLeftRightMainImage(direction, allThumbnails) {
@@ -47,7 +57,8 @@ class Overview extends React.Component {
         newIndex = this.state.currentMainImageIndex - 1;
         this.setState({
           currentMainImage: newMainImage,
-          currentMainImageIndex: newIndex
+          currentMainImageIndex: newIndex,
+          scrolledDownValue: true
         })
       }
     } else {
@@ -59,6 +70,23 @@ class Overview extends React.Component {
           currentMainImageIndex: newIndex
         })
       }
+    }
+    this.scrollOnMainImageChange(newIndex)
+  }
+
+  scrollOnMainImageChange (newIndex) {
+    let targetThumbnail = document.querySelector('.thumbnail-main-carousel');
+    let topSpacing;
+    if (newIndex > 0) {
+      topSpacing = newIndex * 62;
+    } else {
+      topSpacing = 0;
+    }
+    if (targetThumbnail) {
+      targetThumbnail.scroll({
+        top: topSpacing,
+        behavior: 'smooth'
+      })
     }
   }
 
@@ -73,7 +101,7 @@ class Overview extends React.Component {
       currentMainImageIndex
     } = this.state;
     return (
-      <div>
+      <div className="overview-main-container">
         <div className="pic-style-container">
           <div className="gallery-container">
             <Gallery
