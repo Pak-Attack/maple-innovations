@@ -10,12 +10,26 @@ class Overview extends React.Component {
       currentProduct: props.currentProduct,
       currentStyles: props.currentStyles,
       currentProductRating: props.currentProductRating,
-      currentStyleId: 221015
+      currentStyleId: 221015,
+      scrolledDownValue: false
+    }
+    this.carouselScrolledDown = this.carouselScrolledDown.bind(this);
+  }
+
+  carouselScrolledDown(distFromTop, direction) {
+    if (direction === 'down' || distFromTop > 0) {
+      this.setState({
+        scrolledDownValue: true
+      });
+    } else {
+      this.setState({
+        scrolledDownValue: false
+      });
     }
   }
 
   render() {
-    const { currentProduct, currentStyles, currentProductRating, currentStyleId } = this.state;
+    const { currentProduct, currentStyles, currentProductRating, currentStyleId, scrolledDownValue } = this.state;
     return (
       <div>
         <div className="pic-style-container">
@@ -23,6 +37,8 @@ class Overview extends React.Component {
             <Gallery
               currentStyles={currentStyles}
               currentStyleId={currentStyleId}
+              carouselScrolledDown={this.carouselScrolledDown}
+              scrolledDownValue={scrolledDownValue}
             />
           </div>
           <div className="styles-container"><StylesAndCart /></div>
