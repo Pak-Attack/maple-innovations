@@ -1,4 +1,5 @@
 import React from 'react';
+import { Check } from 'phosphor-react';
 
 const ProductDescription = function (props) {
   const description = props.currentProduct.description;
@@ -11,7 +12,7 @@ const ProductDescription = function (props) {
     return (
       <div className="detail-item-container" key={index}>
         <div>
-          <p className="product-detail-item-feature"><span>✅</span>{currentFeature}</p>
+          <p className="product-detail-item-feature"><span className="checkmark"><Check size={12} weight={'bold'} /></span>{currentFeature}</p>
           <p className="product-detail-item-feature">{currentValue}</p>
         </div>
       </div>

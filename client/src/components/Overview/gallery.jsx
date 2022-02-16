@@ -1,12 +1,16 @@
 import React from 'react';
+import { CaretDown, CaretUp, ArrowLeft, ArrowRight, CornersOut } from 'phosphor-react';
 
 const Gallery = function (props) {
   const styleOptions = props.currentStyles.results;
   const currentStyleId = props.currentStyleId;
+  const expandedView = props.expandedView;
   let currentStyleImages;
   let mainImage;
   let upButton;
   let downButton;
+  let leftButton;
+  let rightButton;
 
   //creates array of current images for the selected style and sets the main photo on initial page load
   styleOptions.forEach((oneStyle, index) => {
@@ -22,11 +26,11 @@ const Gallery = function (props) {
 
   //Determines if a down button is necessary in the thumbnail carousel
   if (currentStyleImages.length <= 7) {
-    downButton = <div className="thumbnail-button"></div>;
+    downButton = <div className="thumbnail-button"><CaretDown size={18} /></div>;
   } else {
     downButton =
       <div >
-        <button className="thumbnail-button" onClick={() => scrollToThumbnail('down')}>Down</button>
+        <div className="thumbnail-button" onClick={() => scrollToThumbnail('down')}><CaretDown size={18} /></div>
       </div >;
   }
 
@@ -34,14 +38,28 @@ const Gallery = function (props) {
   if (props.scrolledDownValue === true) {
     upButton =
       <div>
-        <button className="thumbnail-button" onClick={() => scrollToThumbnail('up')}>Up</button>
+        <div className="thumbnail-button" onClick={() => scrollToThumbnail('up')}><CaretUp size={18} /></div>
       </div>
   } else {
     upButton =
       <div>
-        <button className="thumbnail-button" style={{ visibility: "hidden" }}>
-        </button>
+        <div className="thumbnail-button" style={{ visibility: "hidden" }}><CaretUp size={18} />
+        </div>
       </div>
+  }
+
+  //determines if left button should be visibile
+  if (props.currentMainImageIndex > 0) {
+    leftButton = <div className="left-button" onClick={() => onClickHandler('left', currentStyleImages)}><ArrowLeft size={24} /></div>
+  } else {
+    <div className="left-button" style={{ visibility: "hidden" }}><ArrowLeft size={24} /></div>
+  }
+
+  //determines if right button should be visibile
+  if (props.currentMainImageIndex < currentStyleImages.length - 1) {
+    rightButton = <div className="right-button" onClick={() => onClickHandler('right', currentStyleImages)}><ArrowRight size={24} /></div>
+  } else {
+    <div className="right-button" style={{ visibility: "hidden" }}><ArrowRight size={24} /></div>
   }
 
   let currentStyleThumbnails = currentStyleImages.map((oneThumbnail, index) => {
@@ -85,7 +103,7 @@ const Gallery = function (props) {
   return (
     <div>
       <div className="main-image-container">
-        <img className="main-image" src={mainImage}></img>
+        <img className="main-image" src={mainImage} onClick={props.handleExpandedViewClick}></img>
         <div className="thumbnail-main-container">
           {upButton}
           <div className="thumbnail-main-carousel">
@@ -93,9 +111,9 @@ const Gallery = function (props) {
           </div>
           {downButton}
         </div>
-        <button className="left-button" onClick={() => onClickHandler('left', currentStyleImages)}>⇦</button>
-        <button className="right-button" onClick={() => onClickHandler('right', currentStyleImages)}>⇨</button>
-        <button className="zoom-button">🔍</button>
+        {leftButton}
+        {rightButton}
+        <div className="zoom-button" onClick={props.handleExpandedViewClick}><CornersOut size={18} /></div>
       </div>
     </div>
   )
