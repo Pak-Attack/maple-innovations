@@ -1,9 +1,28 @@
 import React from 'react';
 
 const StylesAndCart = function (props) {
+  const{
+    currentStyles,
+    currentProduct,
+    currentProductRating
+  } = props;
+
+  const fillRating = currentProductRating * 20;
+  const unfillRating = currentProductRating - fillRating;
+
   return (
     <div className="styles-main-container">
-      <div className="styles-review-container">⭐️⭐️⭐️⭐️⭐️ Read all reviews</div>
+      <div className="styles-review-container">
+        <div className="stars" style={{backgroundImage: `linear-gradient(90deg, black ${fillRating}%, white ${unfillRating}%)`}}>
+          {/* ☆☆☆☆☆ */}
+          ★★★★★
+        </div>
+        <div className="stars-overlay">
+          ☆☆☆☆☆
+          {/* ★★★★★ */}
+        </div>
+        <a className="reviews-link" href="">Read All Reviews</a>
+      </div>
       <div className="styles-title-container">
         <h4>Category: Shirts</h4>
         <h2>Yellow shirt</h2>
@@ -40,8 +59,8 @@ const StylesAndCart = function (props) {
           </select>
         </div>
         <div className="bag-bottom-container">
-         <button>Add to Bag +</button>
-         <button>Add to favorite</button>
+          <button>Add to Bag +</button>
+          <button>Add to favorite</button>
         </div>
       </div>
     </div>

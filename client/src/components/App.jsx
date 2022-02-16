@@ -601,7 +601,11 @@ class App extends React.Component {
 
 
   render() {
-    const { currentProduct, currentStyles, currentProductRating } = this.state;
+    const {
+      currentProduct,
+      currentStyles,
+      currentProductRating
+    } = this.state;
     return (
       <div>
         <h1>Maple Innovations</h1>

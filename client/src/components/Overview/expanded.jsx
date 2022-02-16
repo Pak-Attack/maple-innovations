@@ -116,8 +116,8 @@ const Expanded = function (props) {
     <div></div>
 
   return (
-    <div>
-      <div className="main-image-container">
+
+      <div className="main-image-container main-image-container-expanded">
         {imageMagnifier}
         <div className="thumbnail-main-container-expanded">
           {upButton}
@@ -131,7 +131,7 @@ const Expanded = function (props) {
         {rightButton}
         <div className="zoom-button" onClick={handleExpandedViewClick}><CornersOut size={18} /></div>
       </div>
-    </div>
+
   )
 };
 

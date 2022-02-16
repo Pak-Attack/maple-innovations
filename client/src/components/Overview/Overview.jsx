@@ -153,22 +153,22 @@ class Overview extends React.Component {
 
   changeMagnifyingPosition(x, y) {
     const magnifyingGlassElement = document.querySelector('.image-magnifier');
-
     const {
       mainImageHeight,
       mainImageWidth,
-      currentMainImage
-    } = this.state;
-    const backGroundNewXPosition = `${(-x * 2.5)}px`;
-    const backGroundNewYPosition = `${-y * 2.5}px`;
-    const bigImageHeight = `${mainImageHeight * 2.5}px`;
-    const bigImageWidth = `${mainImageWidth * 2.5}px`;
-    magnifyingGlassElement.style.backgroundSize = `${bigImageHeight} ${bigImageWidth}`;
+      currentMainImage} = this.state;
+
+    let backGroundNewXPosition = `${(-x * 2.5)}px`;
+    let backGroundNewYPosition = `${-y * 2.5}px`;
+    let bigImageHeight = mainImageHeight * 2.5;
+    let bigImageWidth = mainImageWidth * 2.5;
+    magnifyingGlassElement.style.backgroundSize = `${bigImageHeight}px ${bigImageWidth}px`;
     magnifyingGlassElement.style.top = `${y}px`;
     magnifyingGlassElement.style.left = `${x}px`;
     magnifyingGlassElement.style.pointerEvents = 'none';
     magnifyingGlassElement.style.backgroundPosition = `${backGroundNewXPosition} ${backGroundNewYPosition}`;
     magnifyingGlassElement.style.backgroundRepeat = 'no-repeat';
+
   }
 
   render() {
@@ -232,8 +232,12 @@ class Overview extends React.Component {
     if (!this.state.expandedView) {
       styleView =
         <div className="styles-container">
-          <StylesAndCart />
+          <StylesAndCart
+            currentProduct={currentProduct}
+            currentProductRating={currentProductRating}
+            currentStyles={currentStyles}/>
         </div>
+
     } else {
       styleView = <div></div>
     }
@@ -245,7 +249,8 @@ class Overview extends React.Component {
           {styleView}
         </div>
         <div className="product-info-container">
-          <ProductDescription currentProduct={currentProduct} />
+          <ProductDescription
+          currentProduct={currentProduct} currentProductRating={currentProductRating} currentStyles={currentStyles}/>
         </div>
       </div>
     )
