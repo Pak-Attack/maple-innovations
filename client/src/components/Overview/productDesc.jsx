@@ -11,9 +11,9 @@ const ProductDescription = function (props) {
     let currentValue = oneFeature.value;
     return (
       <div className="detail-item-container" key={index}>
-        <div>
-          <p className="product-detail-item-feature"><span className="checkmark"><Check size={12} weight={'bold'} /></span>{currentFeature}</p>
-          <p className="product-detail-item-feature">{currentValue}</p>
+        <div className="one-product-detail-item-feature-container">
+          <p className="product-detail-item-feature">{currentFeature}</p>
+          <p className="product-detail-item-feature"><span className="checkmark"><Check size={12} weight={'bold'} /></span>{currentValue}</p>
         </div>
       </div>
     )

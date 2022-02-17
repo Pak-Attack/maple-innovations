@@ -18,10 +18,10 @@ class Overview extends React.Component {
       currentMainImageIndex: 0,
       expandedView: false,
       magnified: false,
-      // xCoordinate: 0,
-      // yCoordinate: 0,
       mainImageHeight: 0,
-      mainImageWidth: 0
+      mainImageWidth: 0,
+      selectedSize: '',
+      selectedQuantity: 0
     }
     this.carouselScrolledDown = this.carouselScrolledDown.bind(this);
     this.handleThumbnailClick = this.handleThumbnailClick.bind(this);
@@ -31,6 +31,8 @@ class Overview extends React.Component {
     this.handleMagnifyingClick = this.handleMagnifyingClick.bind(this);
     this.handleMagnifyingMovement = this.handleMagnifyingMovement.bind(this);
     this.changeMagnifyingPosition = this.changeMagnifyingPosition.bind(this);
+    this.handleStyleChangeClick = this.handleStyleChangeClick.bind(this);
+    this.handleSelect = this.handleSelect.bind(this);
   }
 
   carouselScrolledDown(distFromTop) {
@@ -78,17 +80,17 @@ class Overview extends React.Component {
     let newScrollValue;
     if (direction === 'left') {
       if (this.state.currentMainImageIndex === 1) {
-        newMainImage = allThumbnails[this.state.currentMainImageIndex - 1].thumbnail_url;
+        newMainImage = allThumbnails[this.state.currentMainImageIndex - 1].url;
         newIndex = this.state.currentMainImageIndex - 1;
         newScrollValue = false;
       } else {
-        newMainImage = allThumbnails[this.state.currentMainImageIndex - 1].thumbnail_url;
+        newMainImage = allThumbnails[this.state.currentMainImageIndex - 1].url;
         newIndex = this.state.currentMainImageIndex - 1;
         newScrollValue = true;
       }
     } else {
       if (this.state.currentMainImageIndex < allThumbnails.length - 1) {
-        newMainImage = allThumbnails[this.state.currentMainImageIndex + 1].thumbnail_url;
+        newMainImage = allThumbnails[this.state.currentMainImageIndex + 1].url;
         newIndex = this.state.currentMainImageIndex + 1;
         newScrollValue = true;
       }
@@ -147,11 +149,12 @@ class Overview extends React.Component {
       left,
     } = targetElement.getBoundingClientRect();
     const y = event.pageY - top - window.pageYOffset;
-    const x = event.pageX - left - window.pageXOffset;
+    const x = event.pageX - left - window.pageXOffset - 200;
     this.changeMagnifyingPosition(x, y)
   }
 
   changeMagnifyingPosition(x, y) {
+    //use a ref instead of queryselector. image-magnifier should be an id
     const magnifyingGlassElement = document.querySelector('.image-magnifier');
     const {
       mainImageHeight,
@@ -162,6 +165,7 @@ class Overview extends React.Component {
     let backGroundNewYPosition = `${-y * 2.5}px`;
     let bigImageHeight = mainImageHeight * 2.5;
     let bigImageWidth = mainImageWidth * 2.5;
+    //changes position of the magnifying glass and its background image
     magnifyingGlassElement.style.backgroundSize = `${bigImageHeight}px ${bigImageWidth}px`;
     magnifyingGlassElement.style.top = `${y}px`;
     magnifyingGlassElement.style.left = `${x}px`;
@@ -169,6 +173,23 @@ class Overview extends React.Component {
     magnifyingGlassElement.style.backgroundPosition = `${backGroundNewXPosition} ${backGroundNewYPosition}`;
     magnifyingGlassElement.style.backgroundRepeat = 'no-repeat';
 
+  }
+
+  handleStyleChangeClick(productId) {
+    //need to make this move arrow to selected element, change thumbnails, and style details
+    console.log('changed style')
+  }
+
+  handleSelect(event) {
+    let targetStateElement = event.target.name;
+    let newStateValue =
+    targetStateElement === 'selectedQuantity'
+    ? Number(event.target.value)
+    : event.target.value;
+
+    this.setState({
+      [targetStateElement]: newStateValue
+    })
   }
 
   render() {
@@ -182,8 +203,6 @@ class Overview extends React.Component {
       currentMainImageIndex,
       expandedView,
       magnified,
-      // xCoordinate,
-      // yCoordinate,
       mainImageHeight,
       mainImageWidth
     } = this.state;
@@ -235,7 +254,10 @@ class Overview extends React.Component {
           <StylesAndCart
             currentProduct={currentProduct}
             currentProductRating={currentProductRating}
-            currentStyles={currentStyles}/>
+            currentStyles={currentStyles}
+            handleStyleChangeClick={this.handleStyleChangeClick}
+            currentStyleId={currentStyleId}
+            handleSelect={this.handleSelect}/>
         </div>
 
     } else {

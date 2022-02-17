@@ -17,7 +17,7 @@ const Gallery = function (props) {
     if (oneStyle.style_id === currentStyleId) {
       currentStyleImages = oneStyle.photos;
       if (props.currentMainImage === '') {
-        mainImage = currentStyleImages[0].thumbnail_url;
+        mainImage = currentStyleImages[0].url;
       } else {
         mainImage = props.currentMainImage;
       }
@@ -65,13 +65,13 @@ const Gallery = function (props) {
   let currentStyleThumbnails = currentStyleImages.map((oneThumbnail, index) => {
     if (index === props.currentMainImageIndex) {
       return (
-        <div className="one-thumbnail-container selected-thumbnail" key={index} onClick={() => props.handleThumbnailClick(oneThumbnail.thumbnail_url)}>
+        <div className="one-thumbnail-container selected-thumbnail" key={index} onClick={() => props.handleThumbnailClick(oneThumbnail.url)}>
           <img className="one-thumbnail" src={oneThumbnail.thumbnail_url}></img>
         </div>
       )
     } else {
       return (
-        <div className="one-thumbnail-container" data-index={index} key={index} onClick={() => props.handleThumbnailClick(oneThumbnail.thumbnail_url, index)}>
+        <div className="one-thumbnail-container" data-index={index} key={index} onClick={() => props.handleThumbnailClick(oneThumbnail.url, index)}>
           <img className="one-thumbnail" src={oneThumbnail.thumbnail_url}></img>
         </div>
       )
