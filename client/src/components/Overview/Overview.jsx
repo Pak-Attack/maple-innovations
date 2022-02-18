@@ -148,8 +148,8 @@ class Overview extends React.Component {
       top,
       left,
     } = targetElement.getBoundingClientRect();
-    const y = event.pageY - top - window.pageYOffset;
-    const x = event.pageX - left - window.pageXOffset - 200;
+    const y = event.pageY - top - window.pageYOffset - 100;
+    const x = event.pageX - left - window.pageXOffset - 150;
     this.changeMagnifyingPosition(x, y)
   }
 
@@ -184,8 +184,8 @@ class Overview extends React.Component {
     let targetStateElement = event.target.name;
     let newStateValue =
     targetStateElement === 'selectedQuantity'
-    ? Number(event.target.value)
-    : event.target.value;
+      ? Number(event.target.value)
+      : event.target.value;
 
     this.setState({
       [targetStateElement]: newStateValue
@@ -204,7 +204,9 @@ class Overview extends React.Component {
       expandedView,
       magnified,
       mainImageHeight,
-      mainImageWidth
+      mainImageWidth,
+      selectedSizeSKU,
+      selectedQuantity
     } = this.state;
 
     let galleryView;
@@ -257,7 +259,9 @@ class Overview extends React.Component {
             currentStyles={currentStyles}
             handleStyleChangeClick={this.handleStyleChangeClick}
             currentStyleId={currentStyleId}
-            handleSelect={this.handleSelect}/>
+            handleSelect={this.handleSelect}
+            selectedSizeSKU={selectedSizeSKU}
+            selectedQuantity={selectedQuantity}/>
         </div>
 
     } else {

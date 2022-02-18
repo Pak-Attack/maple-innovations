@@ -8,7 +8,9 @@ const StylesAndCart = function (props) {
     currentProductRating,
     handleStyleChangeClick,
     currentStyleId,
-    handleSelect
+    handleSelect,
+    selectedSizeSKU,
+    selectedQuantity
   } = props;
 
   const fillRating = currentProductRating * 20;
@@ -18,13 +20,13 @@ const StylesAndCart = function (props) {
 
   //makes sure the provided style color is a valid CSS background color
   const colorChecker = function(colorString) {
-    var s = new Option().style;
-    s.color = colorString;
-    return s.color == colorString;
+    var testElement = new Option().style;
+    testElement.color = colorString;
+    return testElement.color == colorString;
   }
 
   //creates the color swatches, if color is invalid blue is inserted
-  let colorSwatches = currentStyles.results.map((oneStyle, index) => {
+  const colorSwatches = currentStyles.results.map((oneStyle, index) => {
     let currentColor = colorChecker(oneStyle.name.toLowerCase());
     currentColor ? currentColor = oneStyle.name : currentColor = 'blue';
     return (
@@ -46,15 +48,35 @@ const StylesAndCart = function (props) {
   })
 
   //creates the size select options list
-  let currentSizeOptions = Object.keys(currentStyleDetailedInfo.skus);
+  const currentSizeOptions = Object.keys(currentStyleDetailedInfo.skus);
   let sizeOptionsElements =[];
   for (let i = 0; i < currentSizeOptions.length; i++) {
-    let currentSizeInfo = currentStyleDetailedInfo.skus[currentSizeOptions[i]];
+    const currentSizeInfo = currentStyleDetailedInfo.skus[currentSizeOptions[i]];
     if (currentSizeInfo.quantity > 0) {
       sizeOptionsElements.push(
-        <option key={i} value={currentSizeInfo.size}>{currentSizeInfo.size}</option>
+        <option key={i} value={currentSizeOptions[i]}>{currentSizeInfo.size}</option>
       )
     }
+  }
+  const sizeDefault = sizeOptionsElements.length > 0
+    ? <option defaultValue>Select Size</option>
+    : <option defaultValue>Out of Stock</option>;
+
+  //creates the quantity select options list and also sets default values
+
+  let quantityOptions = [];
+  let quantityDefault = [];
+  if (selectedSizeSKU) {
+    const currentSizeQuantity = currentStyleDetailedInfo.skus[selectedSizeSKU].quantity > 15
+    ? 15
+    : currentStyleDetailedInfo.skus[selectedSizeSKU].quantity ;
+    for (var i = 1; i < currentSizeQuantity + 1; i++) {
+      i = 0
+      ? quantityOptions.push(<option key={i} defaultValue value={i}>{i}</option>)
+      :quantityOptions.push(<option key={i} value={i}>{i}</option>);
+    }
+  } else {
+    quantityDefault = <option defaultValue>Qty</option>
   }
 
   return (
@@ -83,25 +105,21 @@ const StylesAndCart = function (props) {
       </div>
       <div className="styles-bag-container">
         <div className="bag-top-container">
-          <select className="size-select" onChange={handleSelect} name="selectedSize">
-          <option defaultValue>Select Size</option>
+          <select className="size-select" onChange={handleSelect} name="selectedSizeSKU">
+            {sizeDefault}
             {sizeOptionsElements}
           </select>
           <select className="quantity-select" onChange={handleSelect} name="selectedQuantity">
-            <option defaultValue>Qty</option>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
+            {quantityDefault}
+            {quantityOptions}
           </select>
         </div>
         <div className="bag-bottom-container">
           <button className="addtobag-button">Add to Bag </button>
-          <div className="share-logos">
-          <FacebookLogo size={32} />
-          <TwitterLogo size={32} />
-          <PinterestLogo size={32} />
+          <div className="share-logos-container">
+          <div className="one-logo-container"><FacebookLogo size={20} className="social-media-logo"/></div>
+          <div className="one-logo-container"><TwitterLogo size={20} className="social-media-logo" /></div>
+          <div className="one-logo-container"><PinterestLogo size={20} className="social-media-logo"/></div>
           </div>
         </div>
       </div>
