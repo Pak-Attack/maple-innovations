@@ -8,7 +8,7 @@ import ReviewListEntry from './ReviewListEntry.jsx';
         reviewCount: 2,
       }
 
-    console.log('ReviewList Props: ', this.props);
+    // console.log('ReviewList Props: ', this.props);
     this.addMoreReviews = this.addMoreReviews.bind(this);
   }
 

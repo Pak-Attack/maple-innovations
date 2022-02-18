@@ -14,8 +14,8 @@ class RatingsAndReviews extends React.Component {
       ratings: meta_data
     }
 
-    console.log('RatingsAndReviews Main Props (should be empty): ', props)
-    console.log('sample_data: ', this.state.product);
+    // console.log('RatingsAndReviews Main Props (should be empty): ', props)
+    // console.log('sample_data: ', this.state.product);
   }
 
   render() {

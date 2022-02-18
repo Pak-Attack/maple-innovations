@@ -8,8 +8,8 @@ class ReviewListEntry extends React.Component {
 
     }
 
-    console.log("ReviewListEntry Props: ", props);
-    console.log(this.props.review.body.length)
+    // console.log("ReviewListEntry Props: ", props);
+    // console.log(this.props.review.body.length)
 
     this.showMoreReview = this.showMoreReview.bind(this);
   }
