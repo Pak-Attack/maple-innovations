@@ -107,7 +107,39 @@ const sample_data = {
       "helpfulness": 5,
       "photos": [],
     },
+    {
+      "review_id": 9,
+      "rating": 4,
+      "summary": "I am liking these glasses",
+      "recommend": true,
+      "response": "Glad you're enjoying the product!",
+      "body": "They are very dark. But that's good because I'm in very sunny spotsThey are very dark. But that's good because I'm in very sunny spotsThey are very dark. But that's good because I'm in very sunny spotsThey are very dark. But that's good because I'm in very sunny spotsThey are very dark. But that's good because I'm in very sunny spotsThey are very dark. But that's good because I'm in very sunny spotsThey are very dark. But that's good because I'm in very sunny spotsThey are very dark. But that's good because I'm in very sunny spotsThey are very dark. But that's good because I'm in very sunny spotsThey are very dark. But that's good because I'm in very sunny spotsThey are very dark. But that's good because I'm in very sunny spotsThey are very dark. But that's good because I'm in very sunny spotsThey are very dark. But that's good because I'm in very sunny spotsThey are very dark. But that's good because I'm in very sunny spotsThey are very dark. But that's good because",
+      "date": "2019-06-23T00:00:00.000Z",
+      "reviewer_name": "bigbrotherbenjamin",
+      "helpfulness": 5,
+      "photos": [],
+    },
   ]
 }
+
+// const sample_data = {
+//   "product": "2",
+//   "page": 0,
+//   "count": 5,
+//   "results": [
+//     {
+//       "review_id": 1,
+//       "rating": 4,
+//       "summary": "I am liking these glasses",
+//       "recommend": true,
+//       "response": "Glad you're enjoying the product!",
+//       "body": "They are very dark. But that's good because I'm in very sunny spots",
+//       "date": "2019-06-23T00:00:00.000Z",
+//       "reviewer_name": "bigbrotherbenjamin",
+//       "helpfulness": 5,
+//       "photos": [],
+//     },
+//   ]
+// }
 
 export default sample_data;

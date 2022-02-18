@@ -30,12 +30,13 @@ class ReviewListEntry extends React.Component {
               <div className="ratings-and-reviews-entry-box-user-and-date">{this.props.review.reviewer_name}, {new Date(this.props.review.date).toLocaleDateString()} </div>
             </div>
             <br />
-            <div className="ratings-and-reviews-entry-box-title">title: {this.props.review.summary}</div>
+            <div className="ratings-and-reviews-entry-box-title">title: {this.props.review.summary.slice(0, 59)}</div>
             <br />
             <div className="ratings-and-reviews-entry-box-content-body">content body: {this.props.review.body.length < 250 ? this.props.review.body : this.state.showMoreReview ? this.props.review.body : (<div><div>{this.props.review.body.slice(0,249)}</div> <button onClick={this.showMoreReview}>Show more</button></div>)}
             </div>
             <div className="ratings-and-reviews-entry-box-recommend">{this.props.review.recommend ? (<div>XXXcheckMarkXXX I recommend this product</div>) : null }</div>
-            <div className="ratings-and-reviews-entry-box-response>Response">: {this.props.review.response}</div>
+            <div className="ratings-and-reviews-entry-box-response>Response">: {this.props.review.response ?
+            (<div><div>Response From Seller</div> {this.props.review.response}</div>) : null}</div>
             <div>
               <div className="ratings-and-reviews-entry-box-helpful">Helpful? <button> yes</button> {10} <button>Report</button></div>
             </div>
