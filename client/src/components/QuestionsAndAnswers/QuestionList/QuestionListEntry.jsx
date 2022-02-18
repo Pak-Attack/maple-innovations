@@ -1,38 +1,49 @@
 import React from "react";
+import styled from "styled-components";
 
-const QuestionListEntry = (props) => {
-  let dummyData = props.dummyData;
-  if (!dummyData) {
-    dummyData = {
-      "question_id": 45,
-      "question_body": "Who What When Why How?",
-      "question_date": "2019-07-28T00:00:00.000Z",
-      "asker_name": "Whomst",
-      "question_helpfulness": 10,
-      "reported": false,
-      "answers": {
-        71: {
-          "id": 70,
-          "body": "GREAT QUALITY",
-          "date": "2019-11-28T00:00:00.000Z",
-          "answerer_name": "GREATPERSON",
-          "helpfulness": 6,
-          "photos": [],
-        }
-      }
-    };
-  }
+const StylishDiv = styled.div`
+  background: transparent;
+  color: #3a3b3c;
+  margin: 0 1em;
+  padding: 0.25em 1em;
+`;
 
-  console.log('dummyData', dummyData)
+const QuestionListEntry = ({dummyData}) => {
+  //how many answers to render? add method and state
 
+  // return dummyData
+  // ?
+  //   <StylishDiv className="questions-and-answers-question-list-entry">
+  //   <span>
+  //     <h2>Q: {dummyData.question_body}</h2>
+  //     <h3>A: *inline NOT header* Answer body text</h3>
+  //     <p>by USER INFO HERE | Helpful? | Report </p>
+  //   </span>
+  // </StylishDiv>
+  // :
+  // null;
+
+  if (dummyData === undefined) {
+    return (<div></div>)
+  } else {
     return (
-
-      <div className="questions-and-answers-question-list-entry">
-        <span>
-          <h3>Q: {dummyData.question_body}</h3>
-        </span>
-      </div>
+      <StylishDiv className="questions-and-answers-question-list-entry">
+       <span>
+         <h2>Q: {dummyData.question_body}</h2>
+         <h3>A: {dummyData.answers[0]}</h3>
+         <p>by USER INFO HERE | Helpful? | Report </p>
+       </span>
+     </StylishDiv>
     )
-}
+  }
+};
 
 export default QuestionListEntry;
+
+/*
+TODO :
+  - look more into the data I'll need here (console log the dummy data object and pinpoint the data)
+  - consider future functionality by returning to document requirements
+  - dynamically render answers
+*/
+

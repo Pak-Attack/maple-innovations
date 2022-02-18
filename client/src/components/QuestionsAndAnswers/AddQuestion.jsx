@@ -16,3 +16,11 @@ class AddQuestion extends React.Component {
 }
 
 export default AddQuestion;
+
+/*
+
+EDITS TO MAKE :
+  - refactor to functional component
+  - Do I need this component? Or can I just add a button on the list component once Ive fixed the bug there? Or should I add a footer bar component for both buttons?
+
+*/
