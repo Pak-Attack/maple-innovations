@@ -168,3 +168,14 @@ html {
 
 }
 
+.answer-header-body {
+  font-weight: medium;
+  display: inline-block;
+  padding: 4px;
+  /* flex-direction: row; */
+}
+
+.answer-header {
+  display: inline-block;
+}
+

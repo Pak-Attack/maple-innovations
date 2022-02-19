@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-// import AnswerList from "./AnswerList";
 
 const MainDiv = styled.div`
   background: transparent;
@@ -31,12 +30,17 @@ const QuestionListEntry = ({dummyData}) => {
          <div>{
               Object.keys(dummyData.answers).slice(0, answerCount).map((answerId, idx) => (
                 <SubDiv key={idx}>
-                  <h3>A: <span class='START HERE'>{dummyData.answers[answerId].body}</span> </h3>
+                  <h3 className='answer-header'>
+                  {// take answer body out of the h3 and put it in a seperate div (p? h2?)
+                  // conditionally render the h3 'A:'
+                    // if current answerId is the first in the list of Ids, render A:, otherwise, render null or an empty h3 tag for indentation
+                  // use css to make the next div inline
+                  }
+                  A:  </h3>
+                  <span className='answer-header-body'>{dummyData.answers[answerId].body}</span>
                   <p>by: {dummyData.answers[answerId].answerer_name} | Helpful? | Report</p>
                 </SubDiv>
                 ))
-          //  <AnswerList questionInfo={dummyData} />
-
            } </div>
        </span>
      </MainDiv>
@@ -48,6 +52,7 @@ export default QuestionListEntry;
 
 /*
 TODO :
-- fix so that answers render as thin and inline
+- fix so that  'A:' only renders for the first answer of each question (notes above)
+- change all instances of 'dummyData' to 'questionData'
 */
 
