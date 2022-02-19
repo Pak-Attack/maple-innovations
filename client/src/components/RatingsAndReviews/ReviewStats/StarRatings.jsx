@@ -1,11 +1,11 @@
 import React from 'react';
 
 const StarRatings = ({ratings}) => {
-  console.log('StarRatings Props: ', ratings);
+  // console.log('StarRatings Props: ', ratings);
   let totalStars = ratings.ratings["1"] * 1 + ratings.ratings["2"] * 2 + ratings.ratings["3"] * 3 + ratings.ratings["4"] * 4 + ratings.ratings["5"] * 5
   let totalRatings = (ratings.ratings["1"]) + (ratings.ratings["2"]) + (ratings.ratings["3"]) + (ratings.ratings["4"]) + (ratings.ratings["5"]);
   let total = Math.round(totalStars / totalRatings * 100) / 100;
-  console.log(total)
+  // console.log(total)
   return (
     <div>
       <div className="big-star-rating-container">

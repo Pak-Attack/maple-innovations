@@ -1,10 +1,20 @@
 import React from 'react';
 import { CaretDown, CaretUp, ArrowLeft, ArrowRight, CornersOut } from 'phosphor-react';
 
-const Gallery = function (props) {
+const Expanded = function (props) {
   const styleOptions = props.currentStyles.results;
-  const currentStyleId = props.currentStyleId;
-  const expandedView = props.expandedView;
+  const {
+    currentStyleId,
+    expandedView,
+    handleMagnifyingClick,
+    handleExpandedViewClick,
+    handleMagnifyingMovement,
+    magnified,
+    xCoordinate,
+    yCoordinate,
+    mainImageHeight,
+    mainImageWidth
+  } = props;
   let currentStyleImages;
   let mainImage;
   let upButton;
@@ -65,14 +75,14 @@ const Gallery = function (props) {
   let currentStyleThumbnails = currentStyleImages.map((oneThumbnail, index) => {
     if (index === props.currentMainImageIndex) {
       return (
-        <div className="one-thumbnail-container selected-thumbnail" key={index} onClick={() => props.handleThumbnailClick(oneThumbnail.url)}>
-          <img className="one-thumbnail" src={oneThumbnail.thumbnail_url}></img>
+        <div className="one-thumbnail-container-expanded selected-thumbnail" key={index} onClick={() => props.handleThumbnailClick(oneThumbnail.url)}>
+          <img className="one-thumbnail one-thumbnail-expanded" src={oneThumbnail.thumbnail_url}></img>
         </div>
       )
     } else {
       return (
-        <div className="one-thumbnail-container" data-index={index} key={index} onClick={() => props.handleThumbnailClick(oneThumbnail.url, index)}>
-          <img className="one-thumbnail" src={oneThumbnail.thumbnail_url}></img>
+        <div className="one-thumbnail-container-expanded" data-index={index} key={index} onClick={() => props.handleThumbnailClick(oneThumbnail.url, index)}>
+          <img className="one-thumbnail one-thumbnail-expanded" src={oneThumbnail.thumbnail_url}></img>
         </div>
       )
     }
@@ -86,10 +96,10 @@ const Gallery = function (props) {
     let targetThumbnail = document.querySelector('.thumbnail-main-carousel');
     let topSpacing;
     if (direction === 'up') {
-      topSpacing = targetThumbnail.scrollTop - 62;
+      topSpacing = targetThumbnail.scrollTop - 30;
     }
     if (direction === 'down') {
-      topSpacing = targetThumbnail.scrollTop + 62;
+      topSpacing = targetThumbnail.scrollTop + 30;
     }
     if (targetThumbnail) {
       targetThumbnail.scroll({
@@ -100,23 +110,29 @@ const Gallery = function (props) {
     }
   }
 
+  let imageMagnifier =
+    props.magnified ?
+    <div className="image-magnifier" style={{backgroundImage: "url("+mainImage+")"}} onClick={handleMagnifyingClick}></div> :
+    <div></div>
+
   return (
-    <div>
-      <div className="main-image-container">
-        <img className="main-image" src={mainImage} onClick={props.handleExpandedViewClick}></img>
-        <div className="thumbnail-main-container">
+
+      <div className="main-image-container main-image-container-expanded">
+        {imageMagnifier}
+        <div className="thumbnail-main-container-expanded">
           {upButton}
           <div className="thumbnail-main-carousel">
             {currentStyleThumbnails}
           </div>
           {downButton}
         </div>
+        <img className="main-image main-image-expanded" src={mainImage} onClick={handleMagnifyingClick} onMouseMove={magnified ? handleMagnifyingMovement : ()=>{}}></img>
         {leftButton}
         {rightButton}
-        <div className="zoom-button" onClick={props.handleExpandedViewClick}><CornersOut size={18} /></div>
+        <div className="zoom-button" onClick={handleExpandedViewClick}><CornersOut size={18} /></div>
       </div>
-    </div>
+
   )
 };
 
-export default Gallery;
+export default Expanded;
