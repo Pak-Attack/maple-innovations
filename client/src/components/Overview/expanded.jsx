@@ -36,7 +36,7 @@ const Expanded = function (props) {
 
   //Determines if a down button is necessary in the thumbnail carousel
   if (currentStyleImages.length <= 7) {
-    downButton = <div className="thumbnail-button"><CaretDown size={18} /></div>;
+    downButton = <div className="thumbnail-button" style={{visibility:"hidden"}}><CaretDown size={18} /></div>;
   } else {
     downButton =
       <div >
@@ -45,10 +45,12 @@ const Expanded = function (props) {
   }
 
   //creates an up button if the list is scrolled
-  if (props.scrolledDownValue === true) {
+  if (currentStyleImages.length <= 7 || !props.scrolledDownValue) {
+    upButton = <div className="thumbnail-button" style={{visibility:"hidden"}}><CaretUp size={18} /></div>;
+  } else if (props.scrolledDownValue === true) {
     upButton =
       <div>
-        <div className="thumbnail-button" onClick={() => scrollToThumbnail('up')}><CaretUp size={18} /></div>
+        <div className="thumbnail-button" onClick={() => scrollToThumbnail('up')} ><CaretUp size={18} /></div>
       </div>
   } else {
     upButton =

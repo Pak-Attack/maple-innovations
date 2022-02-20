@@ -20,7 +20,7 @@ class Overview extends React.Component {
       magnified: false,
       mainImageHeight: 0,
       mainImageWidth: 0,
-      selectedSize: '',
+      selectedSizeSKU: '',
       selectedQuantity: 0
     }
     this.carouselScrolledDown = this.carouselScrolledDown.bind(this);
@@ -33,10 +33,12 @@ class Overview extends React.Component {
     this.changeMagnifyingPosition = this.changeMagnifyingPosition.bind(this);
     this.handleStyleChangeClick = this.handleStyleChangeClick.bind(this);
     this.handleSelect = this.handleSelect.bind(this);
+    this.handleAddToCart = this.handleAddToCart.bind(this);
   }
 
   carouselScrolledDown(distFromTop) {
-    if (distFromTop > 0) {
+    //element.scroll was not scrolling the exact amount. Unsure why so distfromtop > 5 is to compensate for the decimal remainders.
+    if (distFromTop > 5) {
       this.setState({
         scrolledDownValue: true
       });
@@ -48,12 +50,10 @@ class Overview extends React.Component {
   }
 
   handleThumbnailClick(imageURL, index) {
-    let scrolled;
-    if (index !== 0) {
-      scrolled = true;
-    } else {
-      scrolled = false;
-    }
+    let scrolled = index !== 0
+      ? true
+      : false;
+
     this.setState({
       currentMainImage: imageURL,
       currentMainImageIndex: index,
@@ -175,9 +175,22 @@ class Overview extends React.Component {
 
   }
 
-  handleStyleChangeClick(productId) {
-    //need to make this move arrow to selected element, change thumbnails, and style details
-    console.log('changed style')
+  handleStyleChangeClick(productId, thumbnailLength) {
+    if (this.state.currentMainImageIndex <= thumbnailLength - 1) {
+      this.setState({
+        currentStyleId: productId,
+        selectedSizeSKU: '',
+        selectedQuantity: 0
+      })
+    } else {
+      this.setState({
+        currentStyleId: productId,
+        selectedSizeSKU: '',
+        selectedQuantity: 0,
+        currentMainImageIndex: 0,
+        scrolledDownValue: false
+      })
+    }
   }
 
   handleSelect(event) {
@@ -190,6 +203,12 @@ class Overview extends React.Component {
     this.setState({
       [targetStateElement]: newStateValue
     })
+  }
+
+  handleAddToCart() {
+    this.state.selectedSizeSKU && this.state.selectedQuantity
+    ? console.log("added to cart")
+    : console.log("pick a size and quantity")
   }
 
   render() {
@@ -261,7 +280,9 @@ class Overview extends React.Component {
             currentStyleId={currentStyleId}
             handleSelect={this.handleSelect}
             selectedSizeSKU={selectedSizeSKU}
-            selectedQuantity={selectedQuantity}/>
+            selectedQuantity={selectedQuantity}
+            currentMainImageIndex={currentMainImageIndex}
+            handleAddToCart={this.handleAddToCart}/>
         </div>
 
     } else {

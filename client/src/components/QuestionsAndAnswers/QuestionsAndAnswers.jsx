@@ -20,13 +20,13 @@ const QuestionsAndAnswers = () => {
   const [productID, setProductID] = useState(37311)
   const [pageCount, setPageCount] = useState(5)
 
-  useEffect(() => {
-    axios.get(`/qa/questions?product_id=${productID}&count=${pageCount}`)
-    .then(results => {
-      setDummyData(results.data.results);
-    })
+  // useEffect(() => {
+  //   axios.get(`/qa/questions?product_id=${productID}&count=${pageCount}`)
+  //   .then(results => {
+  //     setDummyData(results.data.results);
+  //   })
 
-  }, []);
+  // }, []);
 
     return (
       <BasicStyle>
