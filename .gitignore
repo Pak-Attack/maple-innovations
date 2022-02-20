@@ -10,3 +10,6 @@ public/app.js
 
 ###TOKENS###
 config.js
+
+###VS CODE SETTINGS###
+.vscode/settings.json
