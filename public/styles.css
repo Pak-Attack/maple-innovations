@@ -179,3 +179,8 @@ html {
   display: inline-block;
 }
 
+.search-box-text-field {
+  width: 75%;
+  cursor: pointer;
+
+}
