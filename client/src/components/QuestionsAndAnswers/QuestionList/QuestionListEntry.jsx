@@ -1,39 +1,49 @@
 import React from "react";
 import styled from "styled-components";
 
-const StylishDiv = styled.div`
+const MainDiv = styled.div`
   background: transparent;
   color: #3a3b3c;
   margin: 0 1em;
   padding: 0.25em 1em;
 `;
 
-const QuestionListEntry = ({dummyData}) => {
-  //how many answers to render? add method and state
+const SubDiv = styled.div`
+  background: transparent;
+  font-weight: thin;
+  color: #3a3b3c;
+  margin: 0 1em;
+  padding: 0.25em 1em;
+`;
 
-  // return dummyData
-  // ?
-  //   <StylishDiv className="questions-and-answers-question-list-entry">
-  //   <span>
-  //     <h2>Q: {dummyData.question_body}</h2>
-  //     <h3>A: *inline NOT header* Answer body text</h3>
-  //     <p>by USER INFO HERE | Helpful? | Report </p>
-  //   </span>
-  // </StylishDiv>
-  // :
-  // null;
+const QuestionListEntry = ({dummyData}) => {
+  const [answerCount, setAnswerCount] = React.useState(2)
 
   if (dummyData === undefined) {
     return (<div></div>)
   } else {
+
     return (
-      <StylishDiv className="questions-and-answers-question-list-entry">
+      <MainDiv className="questions-and-answers-question-list-entry">
        <span>
          <h2>Q: {dummyData.question_body}</h2>
-         <h3>A: {dummyData.answers[0]}</h3>
-         <p>by USER INFO HERE | Helpful? | Report </p>
+         <div>{
+              Object.keys(dummyData.answers).slice(0, answerCount).map((answerId, idx) => (
+                <SubDiv key={idx}>
+                  <h3 className='answer-header'>
+                  {// take answer body out of the h3 and put it in a seperate div (p? h2?)
+                  // conditionally render the h3 'A:'
+                    // if current answerId is the first in the list of Ids, render A:, otherwise, render null or an empty h3 tag for indentation
+                  // use css to make the next div inline
+                  }
+                  A:  </h3>
+                  <span className='answer-header-body'>{dummyData.answers[answerId].body}</span>
+                  <p>by: {dummyData.answers[answerId].answerer_name} | Helpful? | Report</p>
+                </SubDiv>
+                ))
+           } </div>
        </span>
-     </StylishDiv>
+     </MainDiv>
     )
   }
 };
@@ -42,8 +52,7 @@ export default QuestionListEntry;
 
 /*
 TODO :
-  - look more into the data I'll need here (console log the dummy data object and pinpoint the data)
-  - consider future functionality by returning to document requirements
-  - dynamically render answers
+- fix so that  'A:' only renders for the first answer of each question (notes above)
+- change all instances of 'dummyData' to 'questionData'
 */
 
