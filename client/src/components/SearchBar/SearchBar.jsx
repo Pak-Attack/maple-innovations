@@ -94,6 +94,7 @@ class SearchBar extends React.Component {
               type="text"
               placeholder="Search"
               className="search-input"
+              value={this.state.currentSearchText}
               onChange={this.handleSearchChange}></input>
           </div>
           <div className="search-bar-button">
