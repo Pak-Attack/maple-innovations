@@ -7,7 +7,6 @@ import ReviewListEntry from './ReviewListEntry.jsx';
       this.state = {
         reviewCount: 2,
       }
-      this.reviews = this.props.product.results.slice(0, this.state.reviewCount)
 
     // console.log('ReviewList Props: ', this.props);
     this.addMoreReviews = this.addMoreReviews.bind(this);
@@ -19,20 +18,24 @@ import ReviewListEntry from './ReviewListEntry.jsx';
     })
   }
 
-
   render() {
+    const {reviewCount} = this.state
     return (
       <div>
         <div>
           {this.props.product.results.length} reviews sorted by XXXXX
         </div>
         <div>
-          {this.reviews.map((review, key) => (
-            <ReviewListEntry review={review} key={key}/>
+          {this.props.product.results.slice(0, reviewCount).map((review, key) => (
+            <ReviewListEntry
+              review={review}
+              key={key}
+            />
           ))}
         </div>
         <div>
-          <button onClick={this.addMoreReviews}>More+</button><button>Add+</button>
+          {(this.props.product.results.length < 2 && this.props.product.results.length !== 0) || this.props.product.results.length >= reviewCount ? (<button onClick={this.addMoreReviews}>More+</button>) : null}
+          <button>Add New Review</button>
         </div>
       </div>
     )

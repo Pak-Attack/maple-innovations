@@ -2,10 +2,12 @@ import React from "react";
 import styled from "styled-components";
 
 const SearchDiv = styled.div`
-  background: transparent;
+  display: block;
+  background: yellow;
   color: #3a3b3c;
   margin: 0 1em;
   padding: 0.25em 1em;
+  cursor: pointer;
 `;
 
 const SearchQuestions = (props) => {
@@ -22,6 +24,7 @@ const SearchQuestions = (props) => {
           <label>
             <input
               type="text"
+              size="sm"
               placeholder="Have a question? Search for answers"
             />
           </label>
@@ -38,7 +41,7 @@ export default SearchQuestions;
 /*
 
 TODO :
-  - import icons here
+  - use icons here
   - add onChange and onClick functionality
 
 */

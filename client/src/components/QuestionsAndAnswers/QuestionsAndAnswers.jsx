@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from "react";
 import axios from 'axios';
 import SearchQuestions from "./SearchQuestions";
-import AddQuestion from "./AddQuestion";
 import QuestionList from "./QuestionList/QuestionList";
 import QuestionListEntry from "./QuestionList/QuestionListEntry";
 import dummyDataObj from "./dummyData.js"
@@ -36,8 +35,6 @@ const QuestionsAndAnswers = () => {
             <SearchQuestions />
             <QuestionList dummyData={dummyData}/>
             <QuestionListEntry />
-            {/* <MoreAnsweredQuestions />
-            <AddQuestion /> */}
           </div>
         </div>
       </BasicStyle>
@@ -49,5 +46,6 @@ export default QuestionsAndAnswers;
 /*
 
 TODO :
-  - make component for bottom buttons
+  - make component for bottom buttons (?)
+  - why is dummy data necessary for first render?
 */
