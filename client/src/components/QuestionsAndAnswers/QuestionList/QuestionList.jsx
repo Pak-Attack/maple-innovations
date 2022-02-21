@@ -1,18 +1,21 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import QuestionListEntry from "./QuestionListEntry";
 
-const QuestionList = (props) => {
-  const [questionCount, setQuestionCount] = useState(2)
+const QuestionList = ({ questionData }) => {
+  const [questionCount, setQuestionCount] = useState(2);
 
   //write method here that adds two or more to questionCount and answerCount on click
   return (
+    <div>
       <div>
-        <div>
-          {props.dummyData.slice(0, questionCount).map((questionObj, idx) => {
-            // console.log('👾👾👾 questionObj 👾👾👾  ->', questionObj)
-            return <QuestionListEntry dummyData={questionObj} key={idx} />
+        {questionData
+          .sort((a, b) => {
+            return b.question_helpfulness - a.question_helpfulness;
+          })
+          .map((questionObj, idx) => {
+            return <QuestionListEntry questionObj={questionObj} key={idx} />;
           })}
-        </div>
+      </div>
       <button>More Questions</button>
       <button>Add A Question</button>
     </div>
@@ -21,10 +24,9 @@ const QuestionList = (props) => {
 
 export default QuestionList;
 
-
 /*
 TODO:
 - leave buttons here to change the count states on button click
 - WORK ON ORDERING QUESTIONS BY HELPFULNESS
-- slice(0, questionCount).
+- .slice(0, questionCount)
 */
