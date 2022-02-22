@@ -31,29 +31,29 @@ class RatingsAndReviews extends React.Component {
   }
 
   componentDidMount() {
-    this.getReviewData();
+    this.getReviewData(this.state.product_id);
   }
 
   checkState() {
     console.log("state: ", this.state);
   }
 
-  getReviewData() {
-    axios.get("/reviews/").then((results) => {
+  getReviewData(id) {
+    axios.get(`/reviews/${id}`).then((results) => {
       // console.log("axios get results: ", results);
       this.setState(
         {
           product: results.data,
-        },
+        }
         // () => console.log("state updated in 1st get request")
       );
     });
-    axios.get("/reviews/meta/").then((results) => {
+    axios.get(`/reviews/meta/${id}`).then((results) => {
       // console.log("axios get meta results: ", results);
       this.setState(
         {
           ratings: results.data,
-        },
+        }
         // () => console.log("state updated in 2nd get request")
       );
     });
@@ -66,22 +66,18 @@ class RatingsAndReviews extends React.Component {
         <h2> Ratings and Reviews </h2>
         <button onClick={this.checkState}>check state</button>
         <div className="ratings-and-reviews-container">
-
-
-              <div className="ratings-and-reviews-component-containers">
-                <ReviewStats
-                  productRating={this.state.productRating}
-                  ratings={this.state.ratings}
-                />
-              </div>
-              <div>
-                <ReviewList
-                  product={this.state.product}
-                  productRating={this.state.productRating}
-                />
-              </div>
-
-
+          <div className="ratings-and-reviews-component-containers">
+            <ReviewStats
+              productRating={this.state.productRating}
+              ratings={this.state.ratings}
+            />
+          </div>
+          <div>
+            <ReviewList
+              product={this.state.product}
+              productRating={this.state.productRating}
+            />
+          </div>
         </div>
       </div>
     );
