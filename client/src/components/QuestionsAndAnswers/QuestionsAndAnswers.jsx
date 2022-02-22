@@ -28,15 +28,6 @@ const QuestionsAndAnswers = () => {
   const [page, setPage] = useState(1)
   const [pageCount, setPageCount] = useState(5)
 
-
-  useEffect(() => {
-    axios.get(`/qa/questions?product_id=${productID}&page=${page}&count=${pageCount}`)
-    .then(results => {
-      setQuestionData(results.data.results);
-    })
-    //answers api req was here
-  }, []);
-
     return (
       <BasicStyle>
         <Header> Questions and Answers </Header>
