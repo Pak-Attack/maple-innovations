@@ -440,26 +440,27 @@ display: none;
 
 .qa-modal-content {
   width: 500px;
-  background-color: #fff;
+  background-color: whitesmoke;
   outline: 1px solid #444242;
 }
 
-.qa-modal-header, .modal-footer {
-  padding: 10px
+.qa-modal-header, .qa-modal-footer {
+  padding: 10px;
+  font-size: x-small;
 }
 
-.qa-modal-title, .mosal-subtitle {
+.qa-modal-title, .qa-modal-subtitle {
   margin: 0;
   /* align-content: center; */
 }
 
 .qa-modal-body {
+  font-size: x-small;
   padding: 10px;
   border-top: 1px solid #eee;
   border-bottom: 1px solid #eee;
 }
 
 .qa-modal-button {
-  margin: 10px;
   font-size: x-small;
 }
