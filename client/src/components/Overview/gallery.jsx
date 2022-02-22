@@ -1,4 +1,5 @@
 import React from 'react';
+import { useRef } from 'react';
 import { CaretDown, CaretUp, ArrowLeft, ArrowRight, CornersOut } from 'phosphor-react';
 
 const Gallery = function (props) {
@@ -7,6 +8,7 @@ const Gallery = function (props) {
   const expandedView = props.expandedView;
   const currentMainImageIndex = props.currentMainImageIndex;
   const scrolledDownValue = props.scrolledDownValue;
+  const targetThumbnail = useRef(null);
   let currentStyleImages;
   let mainImage;
   let upButton;
@@ -89,16 +91,15 @@ const Gallery = function (props) {
   }
 
   const scrollToThumbnail = function (direction) {
-    let targetThumbnail = document.querySelector('.thumbnail-main-carousel');
     let topSpacing;
     if (direction === 'up') {
-      topSpacing = targetThumbnail.scrollTop - 62.4;
+      topSpacing = targetThumbnail.current.scrollTop - 62.4;
     }
     if (direction === 'down') {
-      topSpacing = targetThumbnail.scrollTop + 62.4;
+      topSpacing = targetThumbnail.current.scrollTop + 62.4;
     }
-    if (targetThumbnail) {
-      targetThumbnail.scroll({
+    if (targetThumbnail.current) {
+      targetThumbnail.current.scroll({
         top: topSpacing,
         behavior: 'smooth'
       })
@@ -112,7 +113,7 @@ const Gallery = function (props) {
         <img className="main-image" src={mainImage} onClick={props.handleExpandedViewClick}></img>
         <div className="thumbnail-main-container">
           {upButton}
-          <div className="thumbnail-main-carousel">
+          <div className="thumbnail-main-carousel" ref={targetThumbnail}>
             {currentStyleThumbnails}
           </div>
           {downButton}

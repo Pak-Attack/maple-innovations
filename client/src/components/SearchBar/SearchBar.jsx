@@ -1,5 +1,5 @@
 import React from 'react';
-import { MagnifyingGlass } from 'phosphor-react';
+import { MagnifyingGlass, XCircle } from 'phosphor-react';
 
 class SearchBar extends React.Component {
   constructor(props) {
@@ -11,9 +11,11 @@ class SearchBar extends React.Component {
     }
     this.handleSearchChange = this.handleSearchChange.bind(this);
     this.handleSearchClick = this.handleSearchClick.bind(this);
-    this.handleChangeOfProductID = props.handleChangeOfProductID;
+    // this.handleChangeOfProductID = props.handleChangeOfProductID;
     this.handleSearchSelection = this.handleSearchSelection.bind(this);
-    this.allProducts = props.allProducts;
+    // this.allProducts = props.allProducts;
+    this.handleCloseSearchResults = this.handleCloseSearchResults.bind(this);
+    this.handleSearchEnterEsc = this.handleSearchEnterEsc.bind(this);
   }
 
   handleSearchChange(event) {
@@ -25,7 +27,8 @@ class SearchBar extends React.Component {
   //gets matching items where its name contains the currentsearchtext
   handleSearchClick(props) {
     var searchResults = [];
-    this.allProducts.forEach((oneItem) => {
+    this.props.allProducts.forEach((oneItem) => {
+
       var currentName = oneItem.name.toLowerCase();
       if (currentName.includes(this.state.currentSearchText.toLowerCase())) {
         searchResults.push({
@@ -42,8 +45,20 @@ class SearchBar extends React.Component {
     })
   }
 
+  handleSearchEnterEsc(event) {
+
+    if (event.key === "Enter") {
+      event.preventDefault();
+      this.handleSearchClick();
+    }
+    // if (event.keyCode === 27) {
+    //   event.preventDefault();
+    //   this.handleCloseSearchResults();
+    // }
+  }
+
   handleSearchSelection(id) {
-    this.handleChangeOfProductID(id)
+    this.props.handleChangeOfProductID(id)
     this.setState({
       currentSearchText: '',
       searched: false,
@@ -51,7 +66,15 @@ class SearchBar extends React.Component {
     })
   }
 
+  handleCloseSearchResults() {
+    this.setState({
+      searched: false,
+      currentSearchText: ''
+    })
+  }
+
   render() {
+    // console.log(this.props.allProducts);
     let formattedSearchResults;
     if (this.state.searched && (this.state.searchMatchData.length > 0)) {
       formattedSearchResults =
@@ -68,7 +91,7 @@ class SearchBar extends React.Component {
         })
     } else {
       formattedSearchResults =
-        <div className="one-search-result-container">
+        <div className="no-results-container">
           <div className="no-results">No matching items</div>
         </div>
 
@@ -79,6 +102,7 @@ class SearchBar extends React.Component {
       searchResultsContainer = null;
     } else {
       searchResultsContainer = <div className="search-results-container">
+        <div className="close-search-results-container" onClick={this.handleCloseSearchResults}><XCircle size={14} weight="light" /></div>
         {formattedSearchResults}
       </div>
     }
@@ -95,6 +119,7 @@ class SearchBar extends React.Component {
               placeholder="Search"
               className="search-input"
               value={this.state.currentSearchText}
+              onKeyPress={this.handleSearchEnterEsc}
               onChange={this.handleSearchChange}></input>
           </div>
           <div className="search-bar-button">

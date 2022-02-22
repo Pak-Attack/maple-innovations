@@ -12,7 +12,7 @@ class Overview extends React.Component {
       currentProduct: props.currentProduct,
       currentStyles: props.currentStyles,
       currentProductRating: props.currentProductRating,
-      currentStyleId: 221015,
+      currentStyleId: props.currentStyles.results[0].style_id,
       scrolledDownValue: false,
       currentMainImage: '',
       currentMainImageIndex: 0,

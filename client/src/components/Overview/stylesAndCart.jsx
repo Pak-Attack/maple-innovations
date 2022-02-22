@@ -130,14 +130,19 @@ const StylesAndCart = function (props) {
         {currentPrice}
       </div>
       <div className="styles-colors-container">
-        <h2>Style > {currentStyleName}</h2>
+        <h2 className="style-name"><span className="style-header">Style > </span>{currentStyleName}</h2>
         <div className="swatch-container">
           {colorSwatches}
         </div>
       </div>
       <div className="styles-bag-container">
         <div className="bag-top-container">
-          <select className="size-select" onChange={handleSelect} name="selectedSizeSKU">
+          <select
+            className="size-select"
+            onChange={handleSelect}
+            name="selectedSizeSKU"
+            value={selectedSizeSKU}
+          >
             {sizeDefault}
             {sizeOptionsElements}
           </select>

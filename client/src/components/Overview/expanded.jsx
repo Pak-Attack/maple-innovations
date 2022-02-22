@@ -1,8 +1,10 @@
 import React from 'react';
+import { useRef } from 'react';
 import { CaretDown, CaretUp, ArrowLeft, ArrowRight, CornersOut } from 'phosphor-react';
 
 const Expanded = function (props) {
   const styleOptions = props.currentStyles.results;
+  const targetThumbnail = useRef(null);
   const {
     currentStyleId,
     expandedView,
@@ -95,16 +97,15 @@ const Expanded = function (props) {
   }
 
   const scrollToThumbnail = function (direction) {
-    let targetThumbnail = document.querySelector('.thumbnail-main-carousel');
     let topSpacing;
     if (direction === 'up') {
-      topSpacing = targetThumbnail.scrollTop - 30;
+      topSpacing = targetThumbnail.current.scrollTop - 30;
     }
     if (direction === 'down') {
-      topSpacing = targetThumbnail.scrollTop + 30;
+      topSpacing = targetThumbnail.current.scrollTop + 30;
     }
-    if (targetThumbnail) {
-      targetThumbnail.scroll({
+    if (targetThumbnail.current) {
+      targetThumbnail.current.scroll({
         top: topSpacing,
         behavior: 'smooth'
       })
@@ -113,22 +114,23 @@ const Expanded = function (props) {
   }
 
   let imageMagnifier =
-    props.magnified ?
-    <div className="image-magnifier" style={{backgroundImage: "url("+mainImage+")"}} onClick={handleMagnifyingClick}></div> :
-    <div></div>
+    props.magnified
+      ? <div className="image-magnifier" style={{backgroundImage: "url("+mainImage+")"}} onClick={handleMagnifyingClick}></div>
+      :<div></div>
 
+  let mainImageClass = `main-image main-image-expanded${ magnified ? ' main-image-expanded-magnified' : ''}`;
   return (
 
       <div className="main-image-container main-image-container-expanded">
         {imageMagnifier}
         <div className="thumbnail-main-container-expanded">
           {upButton}
-          <div className="thumbnail-main-carousel">
+          <div className="thumbnail-main-carousel" ref={targetThumbnail}>
             {currentStyleThumbnails}
           </div>
           {downButton}
         </div>
-        <img className="main-image main-image-expanded" src={mainImage} onClick={handleMagnifyingClick} onMouseMove={magnified ? handleMagnifyingMovement : ()=>{}}></img>
+        <img className={mainImageClass} src={mainImage} onClick={handleMagnifyingClick} onMouseMove={magnified ? handleMagnifyingMovement : ()=>{}}></img>
         {leftButton}
         {rightButton}
         <div className="zoom-button" onClick={handleExpandedViewClick}><CornersOut size={18} /></div>
