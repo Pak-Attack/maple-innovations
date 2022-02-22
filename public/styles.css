@@ -416,19 +416,49 @@ display: none;
 
 }
 
+/*Katie's CSS*/
+
 .answer-header-body {
   font-weight: medium;
-  display: inline-block;
-  padding: 4px;
-  /* flex-direction: row; */
 }
 
 .answer-header {
   display: inline-block;
 }
 
-.search-box-text-field {
-  width: 75%;
-  cursor: pointer;
+.modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+.modal-content {
+  width: 500px;
+  background-color: #fff;
+  outline: 1px solid #444242;
+}
+
+.modal-header, .modal-footer {
+  padding: 10px
+}
+
+.modal-title, .mosal-subtitle {
+  margin: 0;
+  /* align-content: center; */
+}
+
+.modal-body {
+  padding: 10px;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+
+.button {
+  font-size: x-small;
 }

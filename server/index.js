@@ -39,18 +39,18 @@ app.get('/qa/questions', function(req, res) {
 
 });
 
-app.get('/qa/questions/:question_id/answers', function(req, res) {
-  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions/${req.params.question_id}/answers?page=${req.query.page}&count=${req.query.count}`, {
-    headers: {
-      Authorization: config.Authorization,
-    }
-  })
-  .then(answers => {
-    console.log('MASSIVE SUCCESS!!!')
-    res.status(200).send(answers.data);
-  })
+// app.get('/qa/questions/:question_id/answers', function(req, res) {
+//   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions/${req.params.question_id}/answers?page=${req.query.page}&count=${req.query.count}`, {
+//     headers: {
+//       Authorization: config.Authorization,
+//     }
+//   })
+//   .then(answers => {
+//     console.log('MASSIVE SUCCESS!!!')
+//     res.status(200).send(answers.data);
+//   })
 
-});
+// });
 
 app.post('/qa/questions')
 

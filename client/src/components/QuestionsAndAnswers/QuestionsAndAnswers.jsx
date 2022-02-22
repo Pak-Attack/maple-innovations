@@ -7,11 +7,19 @@ import dummyQuestionObj from "./dummyData.js"
 import config from "../../../../config.js"
 import styled from "styled-components";
 
+
 const BasicStyle = styled.div`
-  background: transparent;
+  color: #878787;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: transparent;
   color: #3a3b3c;
   margin: 0 1em;
   padding: 0.25em 1em;
+`;
+
+const Header = styled.p`
+  padding-top: 3em;
+  font-size: small;
 `;
 
 const QuestionsAndAnswers = () => {
@@ -26,17 +34,12 @@ const QuestionsAndAnswers = () => {
     .then(results => {
       setQuestionData(results.data.results);
     })
-
     //answers api req was here
-
   }, []);
-
-// START REFORMATTING TO ACCEPT ANSWER API DATA AND RENDER THAT DYNAMICALLY
-// THEN, SORT IT BEFORE RENDERING
 
     return (
       <BasicStyle>
-        <h2> Questions and Answers </h2>
+        <Header> Questions and Answers </Header>
         <div className="questions-and-answers-container">
           <div className="questions-and-answers-components-container">
             <SearchQuestions />
@@ -51,8 +54,5 @@ const QuestionsAndAnswers = () => {
 export default QuestionsAndAnswers;
 
 /*
-
 TODO :
-  - make component for bottom buttons (?)
-  - why is dummy data necessary for first render?
 */
