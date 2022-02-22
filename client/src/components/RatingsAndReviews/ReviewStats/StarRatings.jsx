@@ -1,28 +1,81 @@
-import React from 'react';
+import React from "react";
 
-const StarRatings = ({ratings}) => {
-  // console.log('StarRatings Props: ', ratings);
-  let totalStars = ratings.ratings["1"] * 1 + ratings.ratings["2"] * 2 + ratings.ratings["3"] * 3 + ratings.ratings["4"] * 4 + ratings.ratings["5"] * 5
-  let totalRatings = (ratings.ratings["1"]) + (ratings.ratings["2"]) + (ratings.ratings["3"]) + (ratings.ratings["4"]) + (ratings.ratings["5"]);
-  let total = Math.round(totalStars / totalRatings * 100) / 100;
+const StarRatings = (props) => {
+  // console.log("StarRatings Ratings Props: ", props);
+  const { ratings, productRating } = props;
+
+  // console.log("StarRatings Ratings Props: ", ratings);
+  // console.log("StarRatings Star Props: ", props.productRating);
+  // console.log("StarRatings Star Props Destructured: ", productRating);
+  const oneStarCount = ratings.ratings["1"];
+  const twoStarCount = ratings.ratings["2"];
+  const threeStarCount = ratings.ratings["3"];
+  const fourStarCount = ratings.ratings["4"];
+  const fiveStarCount = ratings.ratings["5"];
+  let totalStarCount =
+    oneStarCount * 1 +
+    twoStarCount * 2 +
+    threeStarCount * 3 +
+    fourStarCount * 4 +
+    fiveStarCount * 5;
+  let totalRatings =
+    oneStarCount +
+    twoStarCount +
+    threeStarCount +
+    fourStarCount +
+    fiveStarCount;
+  let highestCount = oneStarCount;
+  [oneStarCount, twoStarCount, threeStarCount, fourStarCount, fiveStarCount].forEach(count => count > highestCount ? highestCount = count : null)
+  // console.log('high count: ', highestCount)
+  let totalStarRating = Math.round((totalStarCount / totalRatings) * 100) / 100;
   // console.log(total)
+  const fillRating = productRating * 20;
+  const unfillRating = productRating * 20 - fillRating;
+  // console.log('currentProductRating: ', currentProductRating)
+  const containerStyles = {
+    height: 5,
+    width: "140px",
+    backgroundColor: "#e0e0de",
+    position: "absolute",
+    marginTop: "-7.5px",
+    marginLeft: "30px",
+  };
+
   return (
     <div>
       <div className="big-star-rating-container">
-        <h1 className="big-star-rating">{total}</h1>
-        {/* <div>XXXXX</div> */}
-      </div>
-      <div>1000% of reviews recommend this product</div>
-      <div>
-        <div>5 stars ------------</div>
-        <div>4 stars ------------</div>
-        <div>3 stars ------------</div>
-        <div>2 stars ------------</div>
-        <div>1 stars ------------</div>
-      </div>
+        <h1 className="big-star-rating">{totalStarRating}</h1>
 
+        <div
+          className="review-stats-stars"
+          style={{
+            backgroundImage: `linear-gradient(90deg, black ${fillRating}%, white ${unfillRating}%)`,
+          }}
+        >
+          ★★★★★
+        </div>
+        <div className="review-stats-stars-overlay">☆☆☆☆☆</div>
+      </div>
+      <div style={{marginBottom: "5px"}}>1000% of reviews recommend this product</div>
+
+      <div>
+        {["5", "4", "3", "2", "1"].map((rating, key) => (
+          <div>
+            <div>{rating} Stars</div>
+            <div style={containerStyles}>
+              <div
+                style={{
+                  height: "100%",
+                  backgroundColor: "#000000",
+                  width: `${ratings.ratings[rating] / highestCount * 100}%`,
+                }}
+              ></div>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
-  )
-}
+  );
+};
 
 export default StarRatings;
