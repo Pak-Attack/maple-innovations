@@ -535,18 +535,42 @@ display: none;
 
 .big-star-rating {
   font-size: x-large;
+  font-size: 4rem;
+
+}
+
+.review-list-sort {
+  font-size: 1.4rem;
 }
 
 .ratings-and-reviews-entry-boxes {
   border: 2px solid black;
   margin: 10px auto;
   margin-right: 20%;
+  width: 600px;
 }
 
 .ratings-and-reviews-comments-stars-and-username-line {
+  margin-top: 5px;
+
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+.review-list-stars {
+  margin-left: 10px;
+  font-size: 1.4rem;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.review-list-stars-overlay {
+  margin-left: 10px;
+  margin-top: -20px;
+  position: absolute;
+  font-size: 1.4rem;
 }
 
 .ratings-and-reviews-entry-box-stars {
@@ -554,26 +578,42 @@ display: none;
 }
 
 .ratings-and-reviews-entry-box-user-and-date {
-
+  margin-left: 400px;
+  margin-top: 2px;
+  position: absolute;
+  font-size: 1.4rem;
 }
 
 .ratings-and-reviews-entry-box-title {
+  margin-left: 10px;
   font-weight: bold;
   font-size: large;
+  font-size: 1.4rem;
+
 }
 
 .ratings-and-reviews-entry-box-content-body {
+  margin-left: 10px;
+  font-size: 1.4rem;
 
 }
 
 .ratings-and-reviews-entry-box-recommend {
+  margin-left: 10px;
+  font-size: 1.4rem;
 
 }
 .ratings-and-reviews-entry-box-response {
+  margin-left: 20px;
+  font-size: 1.4rem;
+
 
 }
 
 .ratings-and-reviews-entry-box-helpful {
+  margin-left: 20px;
+  font-size: 1.4rem;
+  margin-bottom: 10px;
 
 }
 
@@ -586,5 +626,62 @@ display: none;
 
 .answer-header {
   display: inline-block;
+}
+
+.review-modal {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.review-modal-content {
+  width: 600px;
+  background-color: #fff;
+}
+
+.review-modal-header {
+  padding: 10px;
+}
+
+.review-modal-title {
+  margin: 0;
+}
+
+.review-modal-body {
+  padding: 10px;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  font-size: 1.4rem;
+
+}
+
+.review-modal-footer {
+  padding: 10px;
+}
+
+.review-modal-close-button {
+
+}
+
+.review-stats-stars {
+  margin-left: 8px;
+  margin-top: 4px;
+  font-size: 1.4rem;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.review-stats-stars-overlay {
+  margin-left: 78px;
+  margin-top: 4px;
+  position: absolute;
+  font-size: 1.4rem;
 }
 
