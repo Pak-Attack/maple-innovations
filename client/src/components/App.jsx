@@ -618,6 +618,7 @@ class App extends React.Component {
           <RelatedItemsAndComparison />
           <QuestionAndAnswers />
           <RatingsAndReviews
+            currentProduct={currentProduct}
             currentProductRating={currentProductRating}
           />
         </div>
