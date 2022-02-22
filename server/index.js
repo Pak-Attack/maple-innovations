@@ -7,11 +7,47 @@ const PORT = 3000;
 app.use(express.static(path.join(__dirname, '..', 'public')));
 app.use(express.json());
 
-app.get('/products')
+app.get('/products', function (req, res) {
+  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products?page=all&count=all', {
+    headers: {
+      Authorization: config.Authorization
+    }
+  })
+    .then(results => {
+      res.status(200).send(results.data);
+    })
+    .catch(results => {
+      res.status(404)
+    })
+})
 
-app.get('/products/:product_id')
+app.get('/products/:product_id', function (req, res) {
+  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/${req.query.product_id}`, {
+    headers: {
+      Authorization: config.Authorization
+    }
+  })
+    .then(results => {
+      res.status(200).send(results.data);
+    })
+    .catch(results => {
+      res.status(404)
+    })
+})
 
-app.get('/products/:product_id/styles')
+app.get('/products/:product_id/styles', function (req, res) {
+  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/${req.query.product_id}/styles`, {
+    headers: {
+      Authorization: config.Authorization
+    }
+  })
+    .then(results => {
+      res.status(200).send(results.data);
+    })
+    .catch(results => {
+      res.status(404)
+    })
+})
 
 app.get('/products/:product_id/related')
 
@@ -44,17 +80,17 @@ app.put('/reviews/:review_id/helpful')
 
 app.put('/reviews/:review_id/report')
 
-// use app.route with requests to the same path
-app.get('/qa/questions', function(req, res) {
+//use app.route with requests to the same path
+app.get('/qa/questions', function (req, res) {
   // console.log('req.query', req.query);
   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions?product_id=${req.query.product_id}&count=${req.query.count}`, {
     headers: {
       Authorization: config.Authorization,
     }
   })
-  .then(results => {
-    res.status(200).send(results.data);
-  })
+    .then(results => {
+      res.status(200).send(results.data);
+    })
 
 });
 
@@ -80,6 +116,6 @@ app.post('/interactions')
 
 
 
-app.listen(PORT, ()=> {
+app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}`)
 });

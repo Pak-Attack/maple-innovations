@@ -2,6 +2,9 @@ import React, {useState} from "react";
 import QuestionListEntry from "./QuestionListEntry";
 
 const QuestionList = (props) => {
+  //how long is this list? add method and state
+  //to render 2 Qs: slice with a count (saved in state) .slice(0, questionCountInState).map
+  // console.log('props.dummyData:', props.dummyData)
   const [questionCount, setQuestionCount] = useState(2)
 
   //write method here that adds two or more to questionCount and answerCount on click
