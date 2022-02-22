@@ -25,19 +25,19 @@ app.put('/reviews/:review_id/helpful')
 
 app.put('/reviews/:review_id/report')
 
-//use app.route with requests to the same path
-app.get('/qa/questions', function(req, res) {
-  // console.log('req.query', req.query);
-  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions?product_id=${req.query.product_id}&count=${req.query.count}`, {
-    headers: {
-      Authorization: config.Authorization,
-    }
-  })
-  .then(results => {
-    res.status(200).send(results.data);
-  })
+// use app.route with requests to the same path
+// app.get('/qa/questions', function(req, res) {
+//   // console.log('req.query', req.query);
+//   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions?product_id=${req.query.product_id}&count=${req.query.count}`, {
+//     headers: {
+//       Authorization: config.Authorization,
+//     }
+//   })
+//   .then(results => {
+//     res.status(200).send(results.data);
+//   })
 
-});
+// });
 
 app.get('/qa/questions/:question_id/answers')
 
