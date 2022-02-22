@@ -426,7 +426,7 @@ display: none;
   display: inline-block;
 }
 
-.modal {
+.qa-modal {
   position: fixed;
   left: 0;
   top: 0;
@@ -438,27 +438,28 @@ display: none;
   justify-content: center;
 }
 
-.modal-content {
+.qa-modal-content {
   width: 500px;
   background-color: #fff;
   outline: 1px solid #444242;
 }
 
-.modal-header, .modal-footer {
+.qa-modal-header, .modal-footer {
   padding: 10px
 }
 
-.modal-title, .mosal-subtitle {
+.qa-modal-title, .mosal-subtitle {
   margin: 0;
   /* align-content: center; */
 }
 
-.modal-body {
+.qa-modal-body {
   padding: 10px;
   border-top: 1px solid #eee;
   border-bottom: 1px solid #eee;
 }
 
-.button {
+.qa-modal-button {
+  margin: 10px;
   font-size: x-small;
 }
