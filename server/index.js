@@ -51,9 +51,28 @@ app.get('/products/:product_id/styles', function (req, res) {
 
 app.get('/products/:product_id/related')
 
-app.get('/reviews/')
-
-app.get('/reviews/meta')
+app.get('/reviews/', (req, res) => {
+  console.log('server getting reviews')
+  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews?product_id=${37314}`, {
+    headers: {
+      Authorization: config.Authorization,
+    }
+  })
+    .then((results) => {
+      res.status(200).send(results.data);
+    })
+})
+app.get('/reviews/meta', (req, res) => {
+  console.log('server getting reviews')
+  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/meta?product_id=${37314}`, {
+    headers: {
+      Authorization: config.Authorization,
+    }
+  })
+    .then((results) => {
+      res.status(200).send(results.data);
+    })
+})
 
 app.post('/reviews')
 
@@ -64,18 +83,16 @@ app.put('/reviews/:review_id/report')
 //use app.route with requests to the same path
 app.get('/qa/questions', function (req, res) {
   // console.log('req.query', req.query);
-  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions?product_id=${req.query.product_id}&count=${req.query.count}`, {
+  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions?product_id=${req.query.product_id}&page=${req.query.page}&count=${req.query.count}`, {
     headers: {
       Authorization: config.Authorization,
     }
   })
-    .then(results => {
-      res.status(200).send(results.data);
-    })
+  .then(questions => {
+    res.status(200).send(questions.data);
+  })
 
 });
-
-app.get('/qa/questions/:question_id/answers')
 
 app.post('/qa/questions')
 
