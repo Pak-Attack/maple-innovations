@@ -23,9 +23,9 @@ const ProductDescription = function (props) {
     <div className="prod-desc-component">
       <div className="slogan-description-container">
         <div>
-          <h1>{slogan}</h1>
+          <h1 className="prod-desc-slogan">{slogan}</h1>
         </div>
-        <div>{description}
+        <div className="prod-desc-description">{description}
         </div>
       </div>
       <div className="product-details-container">

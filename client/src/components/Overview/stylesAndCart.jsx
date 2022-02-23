@@ -2,18 +2,17 @@ import React from 'react';
 import { TwitterLogo, FacebookLogo, PinterestLogo, Check } from "phosphor-react";
 
 const StylesAndCart = function (props) {
-  const {
-    currentStyles,
-    currentProduct,
-    currentProductRating,
-    handleStyleChangeClick,
-    currentStyleId,
-    handleSelect,
-    selectedSizeSKU,
-    selectedQuantity,
-    currentMainImageIndex,
-    handleAddToCart
-  } = props;
+  console.log(props)
+  const currentStyles = props.currentStyles;
+  const currentProduct = props.currentProduct;
+  const currentProductRating = props.currentProductRating;
+  const handleStyleChangeClick = props.handleStyleChangeClick;
+  const currentStyleId = props.currentStyleId;
+  const handleSelect = props.handleSelect;
+  const selectedSizeSKU = props.selectedSizeSKU;
+  const selectedQuantity = props.selectedQuantity;
+  const currentMainImageIndex = props.currentMainImageIndex;
+  const handleAddToCart = props.handleAddToCart;
 
   const fillRating = currentProductRating * 20;
   const unfillRating = (currentProductRating * 20) - fillRating;

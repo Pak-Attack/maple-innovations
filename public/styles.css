@@ -182,6 +182,15 @@ html {
   padding: 5px;
 }
 
+.prod-desc-slogan {
+  font-size: 1.8rem;
+}
+
+.prod-desc-description {
+  font-size: 1.4rem;
+  margin-top: 1rem;
+}
+
 .slogan-description-container {
   display: flex;
   flex-direction: column;

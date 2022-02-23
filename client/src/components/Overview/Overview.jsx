@@ -9,10 +9,7 @@ class Overview extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentProduct: props.currentProduct,
-      currentStyles: props.currentStyles,
-      currentProductRating: props.currentProductRating,
-      currentStyleId: props.currentStyles.results[0].style_id,
+      currentStyleId: this.props.currentStyles.results[1].style_id,
       scrolledDownValue: false,
       currentMainImage: '',
       currentMainImageIndex: 0,
@@ -35,6 +32,16 @@ class Overview extends React.Component {
     this.handleSelect = this.handleSelect.bind(this);
     this.handleAddToCart = this.handleAddToCart.bind(this);
   }
+  //************************************** */
+  //need a function that sets currentstyleid
+  //currentStyleId in state is not being updated after search click
+
+  //probably create another variable that is being passed to child components
+  // componentDidMount() {
+  //   this.setState({
+  //     currentStyleId: this.props.currentStyles.results[0].style_id
+  //   })
+  // }
 
   carouselScrolledDown(distFromTop) {
     //element.scroll was not scrolling the exact amount. Unsure why so distfromtop > 5 is to compensate for the decimal remainders.
@@ -213,9 +220,6 @@ class Overview extends React.Component {
 
   render() {
     const {
-      currentProduct,
-      currentStyles,
-      currentProductRating,
       currentStyleId,
       scrolledDownValue,
       currentMainImage,
@@ -233,7 +237,7 @@ class Overview extends React.Component {
       galleryView =
         <div className="gallery-container">
           <Gallery
-            currentStyles={currentStyles}
+            currentStyles={this.props.currentStyles}
             currentStyleId={currentStyleId}
             carouselScrolledDown={this.carouselScrolledDown}
             scrolledDownValue={scrolledDownValue}
@@ -249,7 +253,7 @@ class Overview extends React.Component {
       galleryView =
         <div className="gallery-container-expanded">
           <Expanded
-            currentStyles={currentStyles}
+            currentStyles={this.props.currentStyles}
             currentStyleId={currentStyleId}
             carouselScrolledDown={this.carouselScrolledDown}
             scrolledDownValue={scrolledDownValue}
@@ -273,9 +277,9 @@ class Overview extends React.Component {
       styleView =
         <div className="styles-container">
           <StylesAndCart
-            currentProduct={currentProduct}
-            currentProductRating={currentProductRating}
-            currentStyles={currentStyles}
+            currentProduct={this.props.currentProduct}
+            currentProductRating={this.props.currentProductRating}
+            currentStyles={this.props.currentStyles}
             handleStyleChangeClick={this.handleStyleChangeClick}
             currentStyleId={currentStyleId}
             handleSelect={this.handleSelect}
@@ -297,7 +301,7 @@ class Overview extends React.Component {
         </div>
         <div className="product-info-container">
           <ProductDescription
-          currentProduct={currentProduct} currentProductRating={currentProductRating} currentStyles={currentStyles}/>
+          currentProduct={this.props.currentProduct} currentProductRating={this.props.currentProductRating} currentStyles={this.props.currentStyles}/>
         </div>
       </div>
     )

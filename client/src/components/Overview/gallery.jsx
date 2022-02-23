@@ -3,33 +3,31 @@ import { useRef } from 'react';
 import { CaretDown, CaretUp, ArrowLeft, ArrowRight, CornersOut } from 'phosphor-react';
 
 const Gallery = function (props) {
-  const styleOptions = props.currentStyles.results;
-  const currentStyleId = props.currentStyleId;
-  const expandedView = props.expandedView;
-  const currentMainImageIndex = props.currentMainImageIndex;
-  const scrolledDownValue = props.scrolledDownValue;
+  // const styleOptions = props.currentStyles.results;
+  // const currentStyleId = props.currentStyleId;
+  // const expandedView = props.expandedView;
+  // const currentMainImageIndex = props.currentMainImageIndex;
+  // const scrolledDownValue = props.scrolledDownValue;
   const targetThumbnail = useRef(null);
-  let currentStyleImages;
+  let currentStyleImages = [];
   let mainImage;
   let upButton;
   let downButton;
   let leftButton;
   let rightButton;
-
-  styleOptions.forEach((oneStyle, index) => {
-    if (oneStyle.style_id === currentStyleId) {
+  props.currentStyles.results.forEach((oneStyle, index) => {
+    if (oneStyle.style_id === props.currentStyleId) {
       currentStyleImages = oneStyle.photos;
-      if (!currentStyleImages[currentMainImageIndex]) {
+      if (!currentStyleImages[props.currentMainImageIndex]) {
         mainImage = currentStyleImages[0].url;
       } else {
-        mainImage = currentStyleImages[currentMainImageIndex].url;
+        mainImage = currentStyleImages[props.currentMainImageIndex].url;
       }
     }
   });
-
   //Determines if a down button is necessary in the thumbnail carousel
   if (currentStyleImages.length <= 7
-    || currentMainImageIndex === currentStyleImages.length - 1) {
+    || props.currentMainImageIndex === currentStyleImages.length - 1) {
     downButton = <div className="thumbnail-button" style={{visibility:"hidden"}}><CaretDown size={18} /></div>;
   } else {
     downButton =
@@ -39,7 +37,7 @@ const Gallery = function (props) {
   }
 
   //creates an up button if the list is scrolled
-  if (currentStyleImages.length <= 7 || !scrolledDownValue) {
+  if (currentStyleImages.length <= 7 || !props.scrolledDownValue) {
     upButton = <div className="thumbnail-button" style={{visibility:"hidden"}}><CaretUp size={18} /></div>;
   } else if (props.scrolledDownValue === true) {
     upButton =
@@ -55,14 +53,14 @@ const Gallery = function (props) {
   }
 
   //determines if left button should be visibile
-  if (currentMainImageIndex > 0) {
+  if (props.currentMainImageIndex > 0) {
     leftButton = <div className="left-button" onClick={() => onClickHandler('left', currentStyleImages)}><ArrowLeft size={24} /></div>
   } else {
     <div className="left-button" style={{ visibility: "hidden" }}><ArrowLeft size={24} /></div>
   }
 
   //determines if right button should be visibile
-  if (currentMainImageIndex < currentStyleImages.length - 1) {
+  if (props.currentMainImageIndex < currentStyleImages.length - 1) {
     // console.log('should render');
     rightButton = <div className="right-button" onClick={() => onClickHandler('right', currentStyleImages)}><ArrowRight size={24} /></div>
   } else {

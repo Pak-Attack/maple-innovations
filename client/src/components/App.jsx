@@ -11721,7 +11721,7 @@ class App extends React.Component {
         ]
       },
       currentProductRating: 4.3,
-      currentStyleId: 37311
+      currentProductID: 37314
       // allProducts: [],
       // currentProduct: {},
       // currentStyles: {},
@@ -11733,30 +11733,45 @@ class App extends React.Component {
     // this.getCurrentProduct = this.getCurrentProduct.bind(this);
   }
 
-  // componentDidMount() {
-  //   let currentId = this.state.currentStyleId;
-  //   axios.all([
-  //     axios.get('/products'),
-  //     axios.get('/products/params', { params: {product_id: currentId}  }),
-  //     axios.get('/products/params/styles', { params: {product_id: currentId}  })])
-  //     .then(axios.spread((firstResponse, secondResponse, thirdResponse) => {
-  //       this.setState({
-  //         allProducts: firstResponse.data,
-  //         currentProduct: secondResponse.data,
-  //         currentStyles: thirdResponse.data
-  //       })
-  //     }))
-  // }
+  componentDidMount() {
+    let currentId = this.state.currentProductID;
+    axios.all([
+      axios.get('/products'),
+      axios.get('/products/params', { params: {product_id: currentId}  }),
+      axios.get('/products/params/styles', { params: {product_id: currentId}  })])
+      .then(axios.spread((firstResponse, secondResponse, thirdResponse) => {
+        this.setState({
+          allProducts: firstResponse.data,
+          currentProduct: secondResponse.data,
+          currentStyles: thirdResponse.data
+        })
+      }))
+  }
 
   // getAllProducts() {
   // }
 
   // getCurrentProduct(id) {
+  //   axios.get('/products/params', { params: {product_id: id}  })
+  //     .then(results=> {
+  //       this.setState({
+  //         currentProduct: results
+  //       })
+  //     })
   // }
 
   handleChangeOfProductID (newID) {
-    //search bar is correctly passing onclick data to this fx
-    // console.log('NewID: ', newID);
+    axios.all([
+      axios.get('/products/params', { params: {product_id: newID}  }),
+      axios.get('/products/params/styles', { params: {product_id: newID}  })])
+      .then(axios.spread((firstResponse, secondResponse) => {
+        //correct data is reaching this point after click event
+        this.setState({
+          currentProduct: firstResponse.data,
+          currentStyles: secondResponse.data,
+          currentProductID: newID
+        })
+      }))
   }
 
   render() {
@@ -11764,7 +11779,8 @@ class App extends React.Component {
       currentProduct,
       currentStyles,
       currentProductRating,
-      allProducts
+      allProducts,
+      currentProductID
     } = this.state;
     return (
       <div>
@@ -11779,6 +11795,7 @@ class App extends React.Component {
             currentProduct={currentProduct}
             currentStyles={currentStyles}
             currentProductRating={currentProductRating}
+            currentProductID={currentProductID}
           />
           <RelatedItemsAndComparison />
           <QuestionAndAnswers />
