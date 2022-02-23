@@ -335,6 +335,10 @@ display: none;
   margin-top: 0.5rem;
 }
 
+.thumbnail-button svg {
+  margin-bottom: -2px;
+}
+
 .thumbnail-button svg polyline {
   stroke: white;
 }
@@ -351,6 +355,10 @@ display: none;
   border-radius: 50%;
 }
 
+.left-button svg {
+  margin-bottom: -2px;
+}
+
 .left-button svg polyline, .left-button svg line {
   stroke: white;
 }
@@ -365,6 +373,10 @@ display: none;
   right: 1rem;
   background-color: black;
   border-radius: 50%;
+}
+
+.right-button svg {
+  margin-bottom: -2px;
 }
 
 .right-button svg polyline, .right-button svg line {
@@ -385,7 +397,7 @@ display: none;
 }
 
 .zoom-button svg {
-  margin-bottom: -1px;
+  margin-bottom: -2px;
 }
 
 .zoom-button svg polyline {

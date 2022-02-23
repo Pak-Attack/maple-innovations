@@ -74,7 +74,6 @@ class SearchBar extends React.Component {
   }
 
   render() {
-    // console.log(this.props.allProducts);
     let formattedSearchResults;
     if (this.state.searched && (this.state.searchMatchData.length > 0)) {
       formattedSearchResults =
