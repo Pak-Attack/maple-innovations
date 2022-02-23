@@ -719,3 +719,11 @@ display: none;
   font-size: 1.4rem;
 }
 
+.review-sort-select {
+  width: 14%;
+  margin-right: 0.5rem;
+  height: 2rem;
+  font-size: 1.4rem;
+  border-radius: 0%;
+}
+

@@ -218,7 +218,7 @@ class ReviewModal extends React.Component {
                   onChange={this.handleReviewBodyValueChange}
                 />
                 <br />
-                {this.state.reviewBodyCharacters < 50 ? (<div>Minimum required characters left: {50 - this.state.reviewBodyCharacters}</div>) : null}
+                {this.state.reviewBodyCharacters < 50 ? (<div>Minimum required characters left: {50 - this.state.reviewBodyCharacters}</div>) : (<div>Minimum reached</div>)}
               </label>
               <br />
               <div>
@@ -229,9 +229,13 @@ class ReviewModal extends React.Component {
                   <br />
                   <input
                     type="text"
+                    placeholder="Example: jackson11!"
+                    maxLength="60"
                     value={this.state.usernameValue}
                     onChange={this.handleUsernameValueChange}
                   />
+                  <br />
+                  For privacy reasons, do not use your full name or email address
                 </label>
                 <br />
                 <label>
@@ -239,9 +243,13 @@ class ReviewModal extends React.Component {
                   <br />
                   <input
                     type="text"
+                    placeholder="Example: jackson11@email.com"
+                    maxLength="60"
                     value={this.state.emailValue}
                     onChange={this.handleEmailValueChange}
                   />
+                  <br />
+                  For authentication reasons, you will not be emailed
                 </label>
               </div>
               <input type="submit" value="Submit" />
