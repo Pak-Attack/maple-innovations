@@ -11796,6 +11796,7 @@ class App extends React.Component {
             currentStyles={currentStyles}
             currentProductRating={currentProductRating}
             currentProductID={currentProductID}
+            currentStyleId={currentStyles.results[0].style_id}
           />
           <RelatedItemsAndComparison />
           <QuestionAndAnswers />

@@ -9,7 +9,7 @@ class Overview extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentStyleId: this.props.currentStyles.results[1].style_id,
+      currentStyleId: '',
       scrolledDownValue: false,
       currentMainImage: '',
       currentMainImageIndex: 0,
@@ -37,11 +37,20 @@ class Overview extends React.Component {
   //currentStyleId in state is not being updated after search click
 
   //probably create another variable that is being passed to child components
-  // componentDidMount() {
-  //   this.setState({
-  //     currentStyleId: this.props.currentStyles.results[0].style_id
-  //   })
-  // }
+
+  componentDidMount() {
+    this.setState({
+      currentStyleId: this.props.currentStyleId
+    })
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.currentStyleId !== prevProps.currentStyleId) {
+      this.setState({
+        currentStyleId: this.props.currentStyleId
+      });
+    }
+  }
 
   carouselScrolledDown(distFromTop) {
     //element.scroll was not scrolling the exact amount. Unsure why so distfromtop > 5 is to compensate for the decimal remainders.

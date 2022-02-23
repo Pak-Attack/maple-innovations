@@ -2,7 +2,6 @@ import React from 'react';
 import { TwitterLogo, FacebookLogo, PinterestLogo, Check } from "phosphor-react";
 
 const StylesAndCart = function (props) {
-  console.log(props)
   const currentStyles = props.currentStyles;
   const currentProduct = props.currentProduct;
   const currentProductRating = props.currentProductRating;
@@ -66,7 +65,8 @@ const StylesAndCart = function (props) {
   })
 
   //creates the size select options list
-  const currentSizeOptions = Object.keys(currentStyleDetailedInfo.skus);
+  const skus = currentStyleDetailedInfo?.skus || {};
+  const currentSizeOptions = Object.keys(skus);
   let sizeOptionsElements = [];
   for (let i = 0; i < currentSizeOptions.length; i++) {
     const currentSizeInfo = currentStyleDetailedInfo.skus[currentSizeOptions[i]];
@@ -106,9 +106,9 @@ const StylesAndCart = function (props) {
   }
 
   //renders price depending if regular or sale price
-  let currentPrice = currentStyleDetailedInfo.sale_price === null
-    ? <div className="current-product-pricing">${currentStyleDetailedInfo.original_price}</div>
-    : <div className="current-product-pricing"><span className="crossed-off-price">${currentStyleDetailedInfo.original_price}</span>${currentStyleDetailedInfo.sale_price}</div>
+  let currentPrice = currentStyleDetailedInfo?.sale_price === null
+    ? <div className="current-product-pricing">${currentStyleDetailedInfo?.original_price || 0.00}</div>
+    : <div className="current-product-pricing"><span className="crossed-off-price">${currentStyleDetailedInfo?.original_price || 0.00}</span>${currentStyleDetailedInfo?.sale_price || 0.00}</div>
 
   return (
     <div className="styles-main-container">
