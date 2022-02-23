@@ -32,11 +32,6 @@ class Overview extends React.Component {
     this.handleSelect = this.handleSelect.bind(this);
     this.handleAddToCart = this.handleAddToCart.bind(this);
   }
-  //************************************** */
-  //need a function that sets currentstyleid
-  //currentStyleId in state is not being updated after search click
-
-  //probably create another variable that is being passed to child components
 
   componentDidMount() {
     this.setState({
@@ -159,36 +154,50 @@ class Overview extends React.Component {
   }
 
   handleMagnifyingMovement(event) {
-    const targetElement = document.querySelector('.main-image')
+    const targetElement = document.querySelector('.main-image');
     const {
       top,
       left,
+      width,
+      height
     } = targetElement.getBoundingClientRect();
-    const y = event.pageY - top - window.pageYOffset - 100;
-    const x = event.pageX - left - window.pageXOffset - 150;
-    this.changeMagnifyingPosition(x, y)
+
+    const y = event.clientY - top;
+    const x = event.clientX - left;
+
+    // Calculate relative position
+    const imgX = (x / width) * 100;
+    const imgY = (y / height) * 100;
+
+    // console.log({y})
+    // console.log({x})
+    // console.log({width})
+    // console.log({height})
+
+    this.changeMagnifyingPosition(x, y, imgX, imgY);
   }
 
-  changeMagnifyingPosition(x, y) {
+  changeMagnifyingPosition(x, y, imgX, imgY) {
     //use a ref instead of queryselector. image-magnifier should be an id
     const magnifyingGlassElement = document.querySelector('.image-magnifier');
     const {
       mainImageHeight,
       mainImageWidth,
-      currentMainImage} = this.state;
+      currentMainImage
+    } = this.state;
 
-    let backGroundNewXPosition = `${(-x * 2.5)}px`;
-    let backGroundNewYPosition = `${-y * 2.5}px`;
+    // let backGroundNewXPosition = `${-(xPos)}px`;
+    // let backGroundNewYPosition = `${-(yPos)}px`;
+
     let bigImageHeight = mainImageHeight * 2.5;
     let bigImageWidth = mainImageWidth * 2.5;
     //changes position of the magnifying glass and its background image
-    magnifyingGlassElement.style.backgroundSize = `${bigImageHeight}px ${bigImageWidth}px`;
+    magnifyingGlassElement.style.backgroundSize = `auto ${bigImageWidth}px`;
     magnifyingGlassElement.style.top = `${y}px`;
     magnifyingGlassElement.style.left = `${x}px`;
     magnifyingGlassElement.style.pointerEvents = 'none';
-    magnifyingGlassElement.style.backgroundPosition = `${backGroundNewXPosition} ${backGroundNewYPosition}`;
+    magnifyingGlassElement.style.backgroundPosition = `${imgX}% ${imgY}%`;
     magnifyingGlassElement.style.backgroundRepeat = 'no-repeat';
-
   }
 
   handleStyleChangeClick(productId, thumbnailLength) {
