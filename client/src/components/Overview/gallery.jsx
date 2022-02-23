@@ -3,11 +3,6 @@ import { useRef } from 'react';
 import { CaretDown, CaretUp, ArrowLeft, ArrowRight, CornersOut } from 'phosphor-react';
 
 const Gallery = function (props) {
-  // const styleOptions = props.currentStyles.results;
-  // const currentStyleId = props.currentStyleId;
-  // const expandedView = props.expandedView;
-  // const currentMainImageIndex = props.currentMainImageIndex;
-  // const scrolledDownValue = props.scrolledDownValue;
   const targetThumbnail = useRef(null);
   let currentStyleImages = [];
   let mainImage;

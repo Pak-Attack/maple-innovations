@@ -595,10 +595,9 @@ class Overview extends React.Component {
           }
         ]
       },
-      //delete above
-      currentStyleId: '',
+      currentStyleId: 221014,
       scrolledDownValue: false,
-      currentMainImage: '',
+      currentMainImage: "https://images.unsplash.com/photo-1554260570-9140fd3b7614?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80",
       currentMainImageIndex: 0,
       expandedView: false,
       magnified: false,
@@ -620,39 +619,17 @@ class Overview extends React.Component {
     this.handleAddToCart = this.handleAddToCart.bind(this);
   }
 
-  // componentDidMount() {
-  //   this.setState({
-  //     currentStyleId: this.props.currentStyleId
-  //   })
-  // }
-
-  // componentDidUpdate(prevProps, prevState) {
-  //   if (this.props.currentStyleId !== prevProps.currentStyleId) {
-  //     this.setState({
-  //       currentStyleId: this.props.currentStyleId,
-  //       currentMainImage: this.props.currentStyles.results[0].photos[0].url,
-  //       currentMainImageIndex: 0
-  //     });
-  //   }
-  // }
-  //******delete */
-  // currentProduct={currentProduct}
-  // currentStyles={currentStyles}
-  // currentStyleId={currentStyles.results[0].style_id}
-  //*****end delete */
-
-
   componentDidMount() {
     let currentProductID = this.props.currentProductID;
     axios.all([
       axios.get('/products/params', { params: { product_id: currentProductID } }),
       axios.get('/products/params/styles', { params: { product_id: currentProductID } })])
       .then(axios.spread((firstResponse, secondResponse) => {
-        //correct data is reaching this point after click event
         this.setState({
           currentProduct: firstResponse.data,
           currentStyles: secondResponse.data,
-          currentStyleId: secondResponse.data.results[0].style_id
+          currentStyleId: secondResponse.data.results[0].style_id,
+          // currentMainImage: this.state.currentStyles.results[0].photos[0].url
         })
       }))
   }
@@ -674,8 +651,6 @@ class Overview extends React.Component {
         }))
       };
     }
-
-
 
   carouselScrolledDown(distFromTop) {
     //element.scroll was not scrolling the exact amount. Unsure why so distfromtop > 5 is to compensate for the decimal remainders.
