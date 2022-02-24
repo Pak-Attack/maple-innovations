@@ -51,13 +51,79 @@ app.get('/products/:product_id/styles', function (req, res) {
 
 app.get('/products/:product_id/related')
 
-app.get('/reviews/')
-
-app.get('/reviews/meta')
+app.get('/reviews/:id', (req, res) => {
+  // console.log('server getting reviews')
+  // console.log('req.body: ', req.body)
+  // console.log('req.params: ', req.params)
+  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews?product_id=${req.params.id}`, {
+    headers: {
+      Authorization: config.Authorization,
+    }
+  })
+    .then((results) => {
+      res.status(200).send(results.data);
+    })
+})
+app.get('/reviews/meta/:id', (req, res) => {
+  // console.log('server getting reviews')
+  // console.log('req.body: ', req.body)
+  // console.log('req.params: ', req.params)
+  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/meta?product_id=${req.params.id}`, {
+    headers: {
+      Authorization: config.Authorization,
+    }
+  })
+    .then((results) => {
+      res.status(200).send(results.data);
+    })
+})
 
 app.post('/reviews')
 
-app.put('/reviews/:review_id/helpful')
+app.put('/reviews/:review_id/helpful', (req, res) => {
+  return axios({
+    method: "PUT",
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/${req.params.review_id}/helpful`,
+    headers: {
+      'Authorization': config.Authorization,
+      'Content-Type': 'application/json'
+    }
+  })
+    .then((data) => {
+      res.sendStatus(204);
+    })
+    .catch((err) => {
+      res.sendStatus(404);
+    });
+//   // console.log(req.body)
+//     console.log(config.Authorization)
+
+//   let options = {
+//     url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/${req.params.review_id}/helpful`,
+//     add methods = PUT
+//     headers: {
+
+//       // 'User-Agent': 'request',
+//       Authorization: config.Authorization,
+//       // 'Content-Type': 'application/json'
+//     }
+//   };
+//   return axios({})
+
+//   return axios.put
+//   console.log(req.params)
+//   axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/${Number(req.params.review_id)}/helpful`, {
+//     headers: {
+//       Authorization: config.Authorization,
+//     }
+//   })
+//     // .then((results) => {
+//     //   res.status(200).send(results.data);
+//     // })
+//     // .catch((err) => console.error(err))
+
+
+})
 
 app.put('/reviews/:review_id/report')
 

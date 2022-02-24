@@ -3,10 +3,11 @@ import StarRatings from './StarRatings.jsx';
 import ProductFeedbackScales from './ProductFeedbackScales.jsx';
 
 const ReviewStats = (props) => {
-  // console.log('ReviewStats Props: ', ratings);
+  // console.log('ReviewStats Props: ', props);
   const {
     ratings,
-    productRating
+    productRating,
+    filterByRating
   } = props;
   return (
     <div>
@@ -15,8 +16,13 @@ const ReviewStats = (props) => {
         <StarRatings
           ratings={ratings}
           productRating={productRating}
+          filterByRating={filterByRating}
         />
-        <ProductFeedbackScales />
+        <br />
+        <ProductFeedbackScales
+          ratings={ratings}
+          productRating={productRating}
+        />
       </div>
     </div>
   )

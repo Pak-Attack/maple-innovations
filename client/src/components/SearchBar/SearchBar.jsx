@@ -11,9 +11,7 @@ class SearchBar extends React.Component {
     }
     this.handleSearchChange = this.handleSearchChange.bind(this);
     this.handleSearchClick = this.handleSearchClick.bind(this);
-    // this.handleChangeOfProductID = props.handleChangeOfProductID;
     this.handleSearchSelection = this.handleSearchSelection.bind(this);
-    // this.allProducts = props.allProducts;
     this.handleCloseSearchResults = this.handleCloseSearchResults.bind(this);
     this.handleSearchEnterEsc = this.handleSearchEnterEsc.bind(this);
   }
@@ -74,7 +72,6 @@ class SearchBar extends React.Component {
   }
 
   render() {
-    // console.log(this.props.allProducts);
     let formattedSearchResults;
     if (this.state.searched && (this.state.searchMatchData.length > 0)) {
       formattedSearchResults =
@@ -94,7 +91,6 @@ class SearchBar extends React.Component {
         <div className="no-results-container">
           <div className="no-results">No matching items</div>
         </div>
-
     }
 
     let searchResultsContainer;
