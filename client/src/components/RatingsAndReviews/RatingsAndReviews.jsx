@@ -1,5 +1,3 @@
-// Austin
-
 import React from "react";
 import axios from "axios";
 import ReviewStats from "./ReviewStats/ReviewStats.jsx";
@@ -13,7 +11,8 @@ class RatingsAndReviews extends React.Component {
     this.state = {
       product: false,
       ratings: false,
-      currentProduct: this.props.currentProduct,
+      // currentProduct: this.props.currentProduct,
+      currentProductID: this.props.currentProductID,
       productRating: this.props.currentProductRating,
       filteredReviews: null,
 
@@ -39,14 +38,14 @@ class RatingsAndReviews extends React.Component {
   }
 
   componentDidMount() {
-    this.getReviewData(this.state.currentProduct.id);
+    this.getReviewData(this.state.currentProductID);
   }
 
   componentDidUpdate() {
     // You don't have to do this check first, but it can help prevent an unneeded render
-    if (this.props.currentProduct !== this.state.currentProduct) {
-      this.setState({ currentProduct: this.props.currentProduct });
-      this.getReviewData(this.state.currentProduct.id);
+    if (this.props.currentProductID !== this.state.currentProductID) {
+      this.setState({ currentProductID: this.props.currentProductID });
+      this.getReviewData(this.state.currentProductID);
     }
   }
 
@@ -129,7 +128,7 @@ class RatingsAndReviews extends React.Component {
                     ? this.state.filteredReviews
                     : this.state.product.results
                 }
-                product_id={this.state.currentProduct.id}
+                product_id={this.state.currentProductID}
                 productRating={this.state.productRating}
                 helpfulButtonClickHandler={this.helpfulButtonClickHandler}
                 notHelpfulButtonClickHandler={this.notHelpfulButtonClickHandler}

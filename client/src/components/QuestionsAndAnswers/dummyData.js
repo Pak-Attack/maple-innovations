@@ -1,4 +1,4 @@
-const dummyData = {
+const dummyQuestionData = {
   "product_id": "5",
   "results": [
      {
@@ -78,8 +78,52 @@ const dummyData = {
             "photos": [],
           }
         }
+      },
+      {
+        "question_id": 40,
+        "question_body": "FIRST?",
+        "question_date": "2019-07-28T00:00:00.000Z",
+        "asker_name": "unfunnyguy",
+        "question_helpfulness": 6,
+        "reported": false,
+        "answers": {
+          71: {
+            "id": 70,
+            "body": "asdfasdfasdf",
+            "date": "2019-11-28T00:00:00.000Z",
+            "answerer_name": "person",
+            "helpfulness": 6,
+            "photos": [],
+          },
+        }
+      },
+      {
+        "question_id": 41,
+        "question_body": "?",
+        "question_date": "2019-07-28T00:00:00.000Z",
+        "asker_name": "unfunnyguy",
+        "question_helpfulness": 55,
+        "reported": false,
+        "answers": {
+          71: {
+            "id": 70,
+            "body": "answer",
+            "date": "2019-11-28T00:00:00.000Z",
+            "answerer_name": "person",
+            "helpfulness": 6,
+            "photos": [],
+          },
+          79: {
+            "id": 78,
+            "body": "another answer",
+            "date": "2019-11-12T00:00:00.000Z",
+            "answerer_name": "another person",
+            "helpfulness": 10,
+            "photos": [],
+          }
+        }
       }
   ]
 }
 
-export default dummyData;
+export default dummyQuestionData;
