@@ -12,7 +12,7 @@ class App extends React.Component {
     this.state = {
       currentProductRating: 3.59,
       allProducts: [],
-      currentProductID: 37314
+      currentProductID: 37358
     }
     this.handleChangeOfProductID = this.handleChangeOfProductID.bind(this);
   }
@@ -35,6 +35,8 @@ class App extends React.Component {
   }
 
   render() {
+    const x = 47; //47
+    // console.log('current test product selected: ', this.state.allProducts[x])
     const {
       currentProductRating,
       allProducts,
@@ -43,9 +45,9 @@ class App extends React.Component {
     return (
       <div>
         <div>
-        <SearchBar
-          allProducts={allProducts}
-          handleChangeOfProductID={this.handleChangeOfProductID}
+          <SearchBar
+            allProducts={allProducts}
+            handleChangeOfProductID={this.handleChangeOfProductID}
           />
         </div>
         <div>
@@ -62,7 +64,7 @@ class App extends React.Component {
           />
         </div>
       </div>
-    )
+    );
   }
 }
 
