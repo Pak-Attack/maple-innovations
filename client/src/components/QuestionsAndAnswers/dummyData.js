@@ -99,7 +99,7 @@ const dummyQuestionData = {
       },
       {
         "question_id": 41,
-        "question_body": "?",
+        "question_body": "THIS IS DUMMY DATA",
         "question_date": "2019-07-28T00:00:00.000Z",
         "asker_name": "unfunnyguy",
         "question_helpfulness": 55,

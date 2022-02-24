@@ -60,7 +60,7 @@ const StarRatings = (props) => {
 
       <div>
         {["5", "4", "3", "2", "1"].map((rating, key) => (
-          <div>
+          <div key={key}>
             <div>{rating} Stars</div>
             <div style={containerStyles}>
               <div

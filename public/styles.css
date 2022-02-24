@@ -617,25 +617,6 @@ display: none;
 
 }
 
-/*Katie's CSS*/
-
-.answer-header-body {
-  font-weight: medium;
-}
-
-.answer-header {
-  display: inline-block;
-}
-
-.qa-modal {
-  position: fixed;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  background-color: transparent;
-}
-
 .review-modal {
   position: fixed;
   left: 0;
@@ -648,32 +629,6 @@ display: none;
   justify-content: center;
 }
 
-.qa-modal-content {
-  width: 500px;
-  background-color: whitesmoke;
-  outline: 1px solid #444242;
-}
-
-.qa-modal-header, .qa-modal-footer {
-  padding: 10px;
-  font-size: x-small;
-}
-
-.qa-modal-title, .qa-modal-subtitle {
-  margin: 0;
-  /* align-content: center; */
-}
-
-.qa-modal-body {
-  font-size: x-small;
-  padding: 10px;
-  border-top: 1px solid #eee;
-  border-bottom: 1px solid #eee;
-}
-
-.qa-modal-button {
-  font-size: x-small;
-}
 .review-modal-content {
   width: 600px;
   background-color: #fff;
@@ -719,3 +674,144 @@ display: none;
   font-size: 1.4rem;
 }
 
+
+/*Katie's CSS*/
+
+/* qa modal */
+
+.qa-modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qa-modal-content {
+  width: 500px;
+  background-color: #f5f5f5;
+  outline: 1px solid #444242;
+  box-shadow: 4px 4px 70px #000000;
+}
+
+.qa-modal-header, .qa-modal-footer {
+  padding: 10px;
+  font-size: x-small;
+}
+
+.qa-modal-title, .qa-modal-subtitle {
+  margin: 0;
+}
+
+.qa-modal-body {
+  font-size: x-small;
+  padding: 10px;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+
+.qa-modal-button {
+  font-size: x-small;
+  margin: 5px 2px 5px 2px;
+}
+
+
+/* search button */
+
+.search-button {
+  border-radius: 2px;
+  background-color: white;
+  border: none;
+  outline: 1px solid #3a3b3c;
+  color: #3a3b3c;
+  text-align: center;
+  font-size: small;
+  padding: 3px 4px 4px 4px;
+  width: 75px;
+  transition: all 0.4s;
+  cursor: pointer;
+  margin: 3px 3px 0px 4px;
+}
+
+.search-button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.search-button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.search-button:hover span {
+  padding-right: 25px;
+}
+
+.search-button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+
+/* list buttons */
+
+.list-button {
+  width: 130px;
+  border-radius: 1px;
+  outline: 1px solid #3a3b3c;
+  background-color: white;
+  border: none;
+  outline: 1px solid #3a3b3c;
+  color: #3a3b3c;
+  text-align: center;
+  font-size: x-small;
+  margin: 0px 2px 0px 4px;
+  padding: 10px 5px 10px 5px;
+  width: 130px;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+
+.list-button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.4s;
+}
+
+.minimize span:after{
+  content: '\002D';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -10px;
+  transition: 0.4s;
+}
+
+.add span:after{
+  content: '\002B';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -10px;
+  transition: 0.4s;
+}
+
+.list-button:hover span{
+  padding-right: 15px;
+}
+
+.list-button:hover span:after {
+  opacity: 1;
+  right: 0;
+}

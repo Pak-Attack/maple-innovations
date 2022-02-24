@@ -16,7 +16,7 @@ const StyledButton = styled.button`
   font-size: x-small;
 `;
 
-const QuestionList = ({ questionData }) => {
+const QuestionList = ({ questionData, highlightedString }) => {
   const [questionCount, setQuestionCount] = useState(2);
   const [show, setShow] = useState(false);
 
@@ -29,12 +29,29 @@ const QuestionList = ({ questionData }) => {
           })
           .slice(0, questionCount)
           .map((questionObj, idx) => {
-            return <QuestionListEntry questionObj={questionObj} key={idx} />;
+            return <QuestionListEntry questionObj={questionObj} highlightedString={highlightedString} key={idx} />;
           })}
       </div>
       <br/>
-        <StyledButton>More Questions + </StyledButton>
-        <StyledButton onClick={() => setShow(true)}>Add A Question + </StyledButton>
+
+        {(questionData.length > questionCount) ?
+          <button className="list-button add" onClick={() => {setQuestionCount(questionData.length)}}>
+            <span>
+            More Questions
+            </span>
+          </button>
+          :
+          <button className="list-button minimize" onClick={() => {setQuestionCount(1)}}>
+            <span>
+              Minimize Questions
+            </span>
+          </button>
+        }
+          <button className="list-button add" onClick={() => setShow(true)}>
+            <span>
+              Add A Question
+            </span>
+          </button>
         <AddQuestionModal show={show} onClose={() => setShow(false)}/>
       <br/>
       <br/>
@@ -47,5 +64,4 @@ export default QuestionList;
 
 /*
 TODO:
--  write method that adds two or more to questionCount and answerCount on click
 */
