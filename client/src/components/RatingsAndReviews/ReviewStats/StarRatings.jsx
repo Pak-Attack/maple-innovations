@@ -25,21 +25,27 @@ const StarRatings = (props) => {
     fourStarCount +
     fiveStarCount;
   let highestCount = oneStarCount;
-  [oneStarCount, twoStarCount, threeStarCount, fourStarCount, fiveStarCount].forEach(count => count > highestCount ? highestCount = count : null)
+  [
+    oneStarCount,
+    twoStarCount,
+    threeStarCount,
+    fourStarCount,
+    fiveStarCount,
+  ].forEach((count) => (count > highestCount ? (highestCount = count) : null));
   // console.log('high count: ', highestCount)
   let totalStarRating = Math.round((totalStarCount / totalRatings) * 100) / 100;
   // console.log(total)
   const fillRating = productRating * 20;
   const unfillRating = productRating * 20 - fillRating;
   // console.log('currentProductRating: ', currentProductRating)
-  const containerStyles = {
-    height: 5,
-    width: "140px",
-    backgroundColor: "#e0e0de",
-    position: "absolute",
-    marginTop: "-7.5px",
-    marginLeft: "30px",
-  };
+  // const containerStyles = {
+  //   height: 5,
+  //   width: "140px",
+  //   backgroundColor: "#e0e0de",
+  //   position: "absolute",
+  //   marginTop: "-7.5px",
+  //   marginLeft: "30px",
+  // };
 
   return (
     <div>
@@ -56,10 +62,13 @@ const StarRatings = (props) => {
         </div>
         <div className="review-stats-stars-overlay">☆☆☆☆☆</div>
       </div>
-      <div style={{marginBottom: "5px"}}>1000% of reviews recommend this product</div>
+      <div style={{ marginBottom: "5px" }}>
+        1000% of reviews recommend this product
+      </div>
 
       <div>
         {["5", "4", "3", "2", "1"].map((rating, key) => (
+
           <div key={key}>
             <div>{rating} Stars</div>
             <div style={containerStyles}>
@@ -72,7 +81,41 @@ const StarRatings = (props) => {
               ></div>
             </div>
           </div>
+          <Rating
+            ratings={ratings}
+            rating={rating}
+            key={key}
+            highestCount={highestCount}
+          />
         ))}
+      </div>
+    </div>
+  );
+};
+
+const Rating = (props) => {
+  const containerStyles = {
+    height: 5,
+    width: "140px",
+    backgroundColor: "#e0e0de",
+    position: "absolute",
+    marginTop: "-7.5px",
+    marginLeft: "30px",
+  };
+  return (
+    <div>
+      <div>{props.rating} Stars</div>
+
+      <div style={containerStyles}>
+        <div
+          style={{
+            height: "100%",
+            backgroundColor: "#000000",
+            width: `${
+              (props.ratings.ratings[props.rating] / props.highestCount) * 100
+            }%`,
+          }}
+        ></div>
       </div>
     </div>
   );

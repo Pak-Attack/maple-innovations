@@ -51,9 +51,28 @@ app.get('/products/:product_id/styles', function (req, res) {
 
 app.get('/products/:product_id/related')
 
-app.get('/reviews/')
-
-app.get('/reviews/meta')
+app.get('/reviews/', (req, res) => {
+  console.log('server getting reviews')
+  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews?product_id=${37314}`, {
+    headers: {
+      Authorization: config.Authorization,
+    }
+  })
+    .then((results) => {
+      res.status(200).send(results.data);
+    })
+})
+app.get('/reviews/meta', (req, res) => {
+  console.log('server getting reviews')
+  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/meta?product_id=${37314}`, {
+    headers: {
+      Authorization: config.Authorization,
+    }
+  })
+    .then((results) => {
+      res.status(200).send(results.data);
+    })
+})
 
 app.post('/reviews')
 

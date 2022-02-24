@@ -17,7 +17,7 @@ const Expanded = function (props) {
     mainImageHeight,
     mainImageWidth
   } = props;
-  let currentStyleImages;
+  let currentStyleImages = [];
   let mainImage;
   let upButton;
   let downButton;
