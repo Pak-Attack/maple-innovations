@@ -33,7 +33,10 @@ class ReviewModal extends React.Component {
     this.handleEmailValueChange = this.handleEmailValueChange.bind(this);
     this.selectStarRating = this.selectStarRating.bind(this);
 
+
     this.stateTest = this.stateTest.bind(this);
+
+    this.onChangeRecommendation = this.onChangeRecommendation.bind(this);
     this.onChangeSize = this.onChangeSize.bind(this);
     this.onChangeWidth = this.onChangeWidth.bind(this);
     this.onChangeComfort = this.onChangeComfort.bind(this);
@@ -89,6 +92,7 @@ class ReviewModal extends React.Component {
       reviewBodyValueValid: false,
       usernameValueValid: false,
       emailValueValid: false,
+      recommendationSelected: null
     });
   }
 
@@ -102,7 +106,7 @@ class ReviewModal extends React.Component {
   handleReviewBodyValueChange() {
     this.setState({
       reviewBodyValue: event.target.value,
-      reviewBodyCharacters: event.target.value.length
+      reviewBodyCharacters: event.target.value.length,
     });
   }
 
@@ -115,6 +119,12 @@ class ReviewModal extends React.Component {
   handleEmailValueChange() {
     this.setState({
       emailValue: event.target.value,
+    });
+  }
+
+  onChangeRecommendation(event) {
+    this.setState({
+      recommendationSelected: event.target.value,
     });
   }
 
@@ -179,6 +189,27 @@ class ReviewModal extends React.Component {
               <NewStarRating selectStarRating={this.selectStarRating} />
             </div>
             <div>
+              Do you recommend this product?
+              <div className="recommendation-radio">
+                <label>
+                  <input
+                    type="radio"
+                    value="Yes"
+                    onChange={this.onChangeWidthValue}
+                    name="recommend"
+                  />{" "}
+                  Yes
+                  <input
+                    type="radio"
+                    value="No"
+                    onChange={this.onChangeRecommendation}
+                    name="recommend"
+                  />{" "}
+                  No
+                </label>
+              </div>
+            </div>
+            <div>
               characteristics rating here
               <button onClick={this.stateTest}>State Tester</button>
               <div>
@@ -218,7 +249,14 @@ class ReviewModal extends React.Component {
                   onChange={this.handleReviewBodyValueChange}
                 />
                 <br />
-                {this.state.reviewBodyCharacters < 50 ? (<div>Minimum required characters left: {50 - this.state.reviewBodyCharacters}</div>) : (<div>Minimum reached</div>)}
+                {this.state.reviewBodyCharacters < 50 ? (
+                  <div>
+                    Minimum required characters left:{" "}
+                    {50 - this.state.reviewBodyCharacters}
+                  </div>
+                ) : (
+                  <div>Minimum reached</div>
+                )}
               </label>
               <br />
               <div>
@@ -235,7 +273,8 @@ class ReviewModal extends React.Component {
                     onChange={this.handleUsernameValueChange}
                   />
                   <br />
-                  For privacy reasons, do not use your full name or email address
+                  For privacy reasons, do not use your full name or email
+                  address
                 </label>
                 <br />
                 <label>

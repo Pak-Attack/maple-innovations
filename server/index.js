@@ -80,7 +80,50 @@ app.get('/reviews/meta/:id', (req, res) => {
 
 app.post('/reviews')
 
-app.put('/reviews/:review_id/helpful')
+app.put('/reviews/:review_id/helpful', (req, res) => {
+  return axios({
+    method: "PUT",
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/${req.params.review_id}/helpful`,
+    headers: {
+      'Authorization': config.Authorization,
+      'Content-Type': 'application/json'
+    }
+  })
+    .then((data) => {
+      res.sendStatus(204);
+    })
+    .catch((err) => {
+      res.sendStatus(404);
+    });
+//   // console.log(req.body)
+//     console.log(config.Authorization)
+
+//   let options = {
+//     url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/${req.params.review_id}/helpful`,
+//     add methods = PUT
+//     headers: {
+
+//       // 'User-Agent': 'request',
+//       Authorization: config.Authorization,
+//       // 'Content-Type': 'application/json'
+//     }
+//   };
+//   return axios({})
+
+//   return axios.put
+//   console.log(req.params)
+//   axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/${Number(req.params.review_id)}/helpful`, {
+//     headers: {
+//       Authorization: config.Authorization,
+//     }
+//   })
+//     // .then((results) => {
+//     //   res.status(200).send(results.data);
+//     // })
+//     // .catch((err) => console.error(err))
+
+
+})
 
 app.put('/reviews/:review_id/report')
 
