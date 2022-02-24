@@ -22,7 +22,7 @@ const Header = styled.p`
 `;
 
 const QuestionsAndAnswers = (props) => {
-  const [productID, setProductID] = useState(37311); //props.currentProduct.id
+  const [productID, setProductID] = useState(props.currentProductID); //props.currentProduct.id
   const [page, setPage] = useState(1);
   const [pageCount, setPageCount] = useState(5);
   const [questionData, setQuestionData] = useState();

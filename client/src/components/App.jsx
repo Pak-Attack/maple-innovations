@@ -56,7 +56,7 @@ class App extends React.Component {
             currentProductID={currentProductID}
           />
           <RelatedItemsAndComparison />
-          <QuestionAndAnswers currentProduct={currentProduct}/>
+          <QuestionAndAnswers currentProductID={currentProductID}/>
           <RatingsAndReviews
             currentProductRating={currentProductRating}
             // currentProduct={currentProduct}
