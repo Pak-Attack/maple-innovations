@@ -10,8 +10,9 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentProductRating: 4.3,
+      currentProductRating: 3.59,
       allProducts: [],
+      currentProductID: 37314
     }
     this.handleChangeOfProductID = this.handleChangeOfProductID.bind(this);
   }
@@ -26,7 +27,7 @@ class App extends React.Component {
       })
   }
 
-  //After clicking on search result, this changes the state of the current product id
+  //After clicking on search results, this will change the state of the current product id
   handleChangeOfProductID (newID) {
     this.setState({
         currentProductID: newID
@@ -54,10 +55,11 @@ class App extends React.Component {
           />
           <RelatedItemsAndComparison />
           <QuestionAndAnswers />
-          <RatingsAndReviews
-            currentProduct={currentProduct}
+          {/* <RatingsAndReviews
             currentProductRating={currentProductRating}
-          />
+            // currentProduct={currentProduct}
+            currentProductID={currentProductID}
+          /> */}
         </div>
       </div>
     )

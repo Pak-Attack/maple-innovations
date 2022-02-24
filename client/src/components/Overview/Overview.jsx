@@ -4,7 +4,6 @@ import StylesAndCart from './stylesAndCart.jsx';
 import Gallery from './gallery.jsx';
 import Expanded from './expanded.jsx';
 import axios from 'axios';
-// import { caretleft } from "phosphor-react";
 
 class Overview extends React.Component {
   constructor(props) {
@@ -646,11 +645,12 @@ class Overview extends React.Component {
             currentProduct: firstResponse.data,
             currentStyles: secondResponse.data,
             currentStyleId: secondResponse.data.results[0].style_id,
-            currentMainImageIndex: 0
+            currentMainImageIndex: 0,
+            currentMainImage: secondResponse.data.results[0].photos[0].url
           })
         }))
       };
-    }
+  }
 
   carouselScrolledDown(distFromTop) {
     //element.scroll was not scrolling the exact amount. Unsure why so distfromtop > 5 is to compensate for the decimal remainders.

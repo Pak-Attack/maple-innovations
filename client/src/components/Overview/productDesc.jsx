@@ -9,7 +9,8 @@ const ProductDescription = function (props) {
   let productFeatures = allFeatures.map((oneFeature, index)=>{
     let currentFeature = oneFeature.feature;
     let currentValue = oneFeature.value;
-    return (
+    if (currentValue) {
+          return (
       <div className="detail-item-container" key={index}>
         <div className="one-product-detail-item-feature-container">
           <p className="product-detail-item-feature">{currentFeature}</p>
@@ -17,6 +18,17 @@ const ProductDescription = function (props) {
         </div>
       </div>
     )
+    } else {
+      return (
+        <div className="detail-item-container" key={index}>
+          <div className="one-product-detail-item-feature-container">
+            <p className="product-detail-item-feature">{currentFeature}</p>
+
+          </div>
+        </div>
+      )
+    }
+
   })
 
   return (

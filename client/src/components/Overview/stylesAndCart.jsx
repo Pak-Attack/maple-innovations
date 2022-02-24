@@ -1,5 +1,5 @@
 import React from 'react';
-import { TwitterLogo, FacebookLogo, PinterestLogo, Check } from "phosphor-react";
+import { TwitterLogo, FacebookLogo, PinterestLogo, Check, Minus } from "phosphor-react";
 
 const StylesAndCart = function (props) {
   const currentStyles = props.currentStyles;
@@ -80,11 +80,14 @@ const StylesAndCart = function (props) {
   //creates the default setting for the size select list
   let sizeDefault;
   if (sizeOptionsElements.length > 0) {
-    if (selectedSizeSKU) {
-      sizeDefault = <option defaultValue disabled={true}>Select Size</option>
-    } else {
-      sizeDefault = <option defaultValue>Select Size</option>
-    }
+    selectedSizeSKU
+      ? sizeDefault = <option defaultValue disabled={true}>Select Size</option>
+      : sizeDefault = <option defaultValue>Select Size</option>
+    // if (selectedSizeSKU) {
+    //   sizeDefault = <option defaultValue disabled={true}>Select Size</option>
+    // } else {
+    //   sizeDefault = <option defaultValue>Select Size</option>
+    // }
   } else {
     sizeDefault = <option defaultValue>Out of Stock</option>;
   }
@@ -102,13 +105,20 @@ const StylesAndCart = function (props) {
         : quantityOptions.push(<option key={i} value={i}>{i}</option>);
     }
   } else {
-    quantityDefault = <option defaultValue>Qty</option>
+    quantityDefault = <option defaultValue className="no-quantity">－</option>
   }
 
   //renders price depending if regular or sale price
   let currentPrice = currentStyleDetailedInfo?.sale_price === null
     ? <div className="current-product-pricing">${currentStyleDetailedInfo?.original_price || 0.00}</div>
     : <div className="current-product-pricing"><span className="crossed-off-price">${currentStyleDetailedInfo?.original_price || 0.00}</span>${currentStyleDetailedInfo?.sale_price || 0.00}</div>
+
+  //create placeholder for reviews section that conditionally renders only if there are reviews
+
+  //determines if add to cart button should be rendered
+  let addToBag = selectedSizeSKU
+    ? <button className="addtobag-button" onClick={handleAddToCart}>Add to Bag </button>
+    : <button className="addtobag-button" style={{visibility:"hidden"}}>Add to Bag </button>
 
   return (
     <div className="styles-main-container">
@@ -151,7 +161,7 @@ const StylesAndCart = function (props) {
           </select>
         </div>
         <div className="bag-bottom-container">
-          <button className="addtobag-button" onClick={handleAddToCart}>Add to Bag </button>
+          {addToBag}
           <div className="share-logos-container">
             <div className="one-logo-container"><FacebookLogo size={20} className="social-media-logo" /></div>
             <div className="one-logo-container"><TwitterLogo size={20} className="social-media-logo" /></div>
