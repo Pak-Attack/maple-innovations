@@ -91,6 +91,7 @@ const StarRatings = (props) => {
             key={key}
             totalRatings={totalRatings}
             filterByRating={filterByRating}
+            highestCount={highestCount}
           />
         ))}
       </div>
