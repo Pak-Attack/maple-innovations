@@ -48,7 +48,11 @@ const AddAnswerModal = (props) => {
 
         </div>
         <div className="qa-modal-footer">
+          <span>
          <button onClick={props.onClose} className="qa-modal-button">Close</button>
+         <button onClick={props.onClose} className="qa-modal-button">Submit Answer</button>
+
+         </span>
         </div>
       </div>
     </div>
@@ -57,3 +61,8 @@ const AddAnswerModal = (props) => {
 }
 
 export default AddAnswerModal;
+
+/*
+TODO:
+- add submit functionality
+*/

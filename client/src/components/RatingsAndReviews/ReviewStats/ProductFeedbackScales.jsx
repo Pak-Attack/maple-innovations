@@ -2,8 +2,6 @@ import React from "react";
 import { CaretDown } from "phosphor-react";
 
 const ProductFeedbackScales = (props) => {
-  // console.log("ProductFeedbackScales Props: ", props);
-  // console.log("ProductFeedbackScales Props: ", props.ratings.characteristics);
   let size, width, comfort, quality, length, fit;
 
   props.ratings.characteristics.Size
@@ -25,11 +23,9 @@ const ProductFeedbackScales = (props) => {
     ? (fit = props.ratings.characteristics.Fit.value)
     : null;
 
-  console.log();
   const containerStyles = {
     height: 5,
     width: "180px",
-    //actually only 190px across
     backgroundColor: "#e0e0de",
     position: "absolute",
     marginTop: "-7.5px",
@@ -73,8 +69,8 @@ const ProductFeedbackScales = (props) => {
               Too Large
             </div>
           </div>
-            <br />
-            <br />
+          <br />
+          <br />
         </div>
       ) : null}
 
@@ -110,8 +106,8 @@ const ProductFeedbackScales = (props) => {
               Too Large
             </div>
           </div>
-            <br />
-            <br />
+          <br />
+          <br />
         </div>
       ) : null}
 
@@ -153,108 +149,120 @@ const ProductFeedbackScales = (props) => {
       ) : null}
 
       {/* Quality */}
-      { quality ?
-      <div>
-      <div>
-        <h4 style={{ marginBottom: "5px" }}>Quality</h4>
-        <br />
-        <div
-          style={{
-            height: "100%",
-            marginLeft: `${(quality / 5) * 180}px`,
-            marginTop: "-15px",
-          }}
-        >
-          <div>
-            <CaretDown size={20} />
-          </div>
-        </div>
-      </div>
-
-      <div style={containerStyles}>
-        <div style={{ marginLeft: "-1px", marginTop: "-3px" }}>|</div>
-        <div style={{ marginLeft: "89px", marginTop: "-11.5px" }}>|</div>
-        <div style={{ marginLeft: "179px", marginTop: "-12px" }}>|</div>
-
-        <div style={{ marginLeft: "0px", marginTop: "5px" }}>Too Small</div>
-        <div style={{ marginLeft: "73px", marginTop: "-11.5px" }}>Perfect</div>
-        <div style={{ marginLeft: "135px", marginTop: "-12px" }}>Too Large</div>
-      </div>
-      <br />
-      <br />
-      </div>
-      : null }
-
-      {/* Length */}
-      { length ?
-      <div>
-      <div>
-        <h4 style={{ marginBottom: "5px" }}>Length</h4>
-        <br />
-        <div
-          style={{
-            height: "100%",
-            marginLeft: `${(length / 5) * 180}px`,
-            marginTop: "-15px",
-          }}
-        >
-          <div>
-            <CaretDown size={20} />
-          </div>
-        </div>
-      </div>
-
-      <div style={containerStyles}>
-        <div style={{ marginLeft: "-1px", marginTop: "-3px" }}>|</div>
-        <div style={{ marginLeft: "89px", marginTop: "-11.5px" }}>|</div>
-        <div style={{ marginLeft: "179px", marginTop: "-12px" }}>|</div>
-
-        <div style={{ marginLeft: "0px", marginTop: "5px" }}>Too Small</div>
-        <div style={{ marginLeft: "73px", marginTop: "-11.5px" }}>Perfect</div>
-        <div style={{ marginLeft: "135px", marginTop: "-12px" }}>Too Large</div>
-      </div>
-      <br />
-      <br />
-      </div>
-      : null }
-
-      {/* Fit */}
-      { fit ?
-      <div>
+      {quality ? (
         <div>
-          <h4 style={{ marginBottom: "5px" }}>Fit</h4>
-          <br />
-          <div
-            style={{
-              height: "100%",
-              marginLeft: `${(fit / 5) * 180}px`,
-              marginTop: "-15px",
-            }}
-          >
-            <div>
-              <CaretDown size={20} />
+          <div>
+            <h4 style={{ marginBottom: "5px" }}>Quality</h4>
+            <br />
+            <div
+              style={{
+                height: "100%",
+                marginLeft: `${(quality / 5) * 180}px`,
+                marginTop: "-15px",
+              }}
+            >
+              <div>
+                <CaretDown size={20} />
+              </div>
             </div>
           </div>
+
+          <div style={containerStyles}>
+            <div style={{ marginLeft: "-1px", marginTop: "-3px" }}>|</div>
+            <div style={{ marginLeft: "89px", marginTop: "-11.5px" }}>|</div>
+            <div style={{ marginLeft: "179px", marginTop: "-12px" }}>|</div>
+
+            <div style={{ marginLeft: "0px", marginTop: "5px" }}>Too Small</div>
+            <div style={{ marginLeft: "73px", marginTop: "-11.5px" }}>
+              Perfect
+            </div>
+            <div style={{ marginLeft: "135px", marginTop: "-12px" }}>
+              Too Large
+            </div>
+          </div>
+          <br />
+          <br />
         </div>
+      ) : null}
 
-        <div style={containerStyles}>
-          <div style={{ marginLeft: "-1px", marginTop: "-3px" }}>|</div>
-          <div style={{ marginLeft: "89px", marginTop: "-11.5px" }}>|</div>
-          <div style={{ marginLeft: "179px", marginTop: "-12px" }}>|</div>
+      {/* Length */}
+      {length ? (
+        <div>
+          <div>
+            <h4 style={{ marginBottom: "5px" }}>Length</h4>
+            <br />
+            <div
+              style={{
+                height: "100%",
+                marginLeft: `${(length / 5) * 180}px`,
+                marginTop: "-15px",
+              }}
+            >
+              <div>
+                <CaretDown size={20} />
+              </div>
+            </div>
+          </div>
 
-          <div style={{ marginLeft: "0px", marginTop: "5px" }}>Too Small</div>
-          <div style={{ marginLeft: "73px", marginTop: "-11.5px" }}>Perfect</div>
-          <div style={{ marginLeft: "135px", marginTop: "-12px" }}>Too Large</div>
+          <div style={containerStyles}>
+            <div style={{ marginLeft: "-1px", marginTop: "-3px" }}>|</div>
+            <div style={{ marginLeft: "89px", marginTop: "-11.5px" }}>|</div>
+            <div style={{ marginLeft: "179px", marginTop: "-12px" }}>|</div>
+
+            <div style={{ marginLeft: "0px", marginTop: "5px" }}>Too Small</div>
+            <div style={{ marginLeft: "73px", marginTop: "-11.5px" }}>
+              Perfect
+            </div>
+            <div style={{ marginLeft: "135px", marginTop: "-12px" }}>
+              Too Large
+            </div>
+          </div>
+          <br />
+          <br />
         </div>
-        <br />
-        <br />
-      </div>
-      : null }
+      ) : null}
 
-    <br />
-    <br />
-    <br />
-    <br />
+      {/* Fit */}
+      {fit ? (
+        <div>
+          <div>
+            <h4 style={{ marginBottom: "5px" }}>Fit</h4>
+            <br />
+            <div
+              style={{
+                height: "100%",
+                marginLeft: `${(fit / 5) * 180}px`,
+                marginTop: "-15px",
+              }}
+            >
+              <div>
+                <CaretDown size={20} />
+              </div>
+            </div>
+          </div>
+
+          <div style={containerStyles}>
+            <div style={{ marginLeft: "-1px", marginTop: "-3px" }}>|</div>
+            <div style={{ marginLeft: "89px", marginTop: "-11.5px" }}>|</div>
+            <div style={{ marginLeft: "179px", marginTop: "-12px" }}>|</div>
+
+            <div style={{ marginLeft: "0px", marginTop: "5px" }}>Too Small</div>
+            <div style={{ marginLeft: "73px", marginTop: "-11.5px" }}>
+              Perfect
+            </div>
+            <div style={{ marginLeft: "135px", marginTop: "-12px" }}>
+              Too Large
+            </div>
+          </div>
+          <br />
+          <br />
+        </div>
+      ) : null}
+
+      <br />
+      <br />
+      <br />
+      <br />
     </div>
   );
 };

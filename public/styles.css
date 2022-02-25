@@ -1,4 +1,3 @@
-
 /* default styling resets */
 * {
   padding: 0;
@@ -36,7 +35,7 @@ html {
   border-right: none;
   border-top: none;
   border-left: none;
-  border-bottom: underline solid black 2px;;
+  border-bottom: underline solid black 2px;
   /* background-color: darkgray; */
   width: 12rem;
 }
@@ -133,7 +132,6 @@ html {
   align-items: center;
 }
 
-
 /* End SearchBar specific styling */
 /* _______________________________________ */
 
@@ -223,7 +221,7 @@ html {
   font-size: 1.4rem;
 }
 
-.checkmark{
+.checkmark {
   padding-right: 0.5rem;
 }
 
@@ -289,7 +287,7 @@ html {
 }
 
 .thumbnail-main-carousel::-webkit-scrollbar {
-display: none;
+  display: none;
 }
 
 .one-thumbnail-container {
@@ -325,11 +323,11 @@ display: none;
   border: 2px solid black;
   width: 15rem;
   height: 15rem;
-  scroll-behavior: 'smooth';
+  scroll-behavior: "smooth";
   transform: translate(-50%, -50%);
 }
 
-.thumbnail-button{
+.thumbnail-button {
   display: block;
   background-color: rgba(250, 250, 250, 0.5);
   border-radius: 50%;
@@ -365,7 +363,8 @@ display: none;
   margin-bottom: -2px;
 }
 
-.left-button svg polyline, .left-button svg line {
+.left-button svg polyline,
+.left-button svg line {
   stroke: black;
 }
 
@@ -385,7 +384,8 @@ display: none;
   margin-bottom: -2px;
 }
 
-.right-button svg polyline, .right-button svg line {
+.right-button svg polyline,
+.right-button svg line {
   stroke: black;
 }
 
@@ -467,7 +467,6 @@ display: none;
   font-weight: 100;
   text-transform: uppercase;
   /* letter-spacing: -0.15rem; */
-  ;
 }
 
 .styles-colors-container {
@@ -524,7 +523,6 @@ display: none;
   border-radius: 50%;
   height: 1.5rem;
   width: 1.5rem;
-
 }
 
 .size-select {
@@ -589,14 +587,12 @@ display: none;
   transition: ease-in-out 0.2s;
 }
 
-
 /* End overview specific styling */
-
 
 /* Austin CSS */
 
 .product-data {
-  font-weight: bold
+  font-weight: bold;
 }
 
 .ratings-and-reviews-container {
@@ -617,7 +613,6 @@ display: none;
 .big-star-rating {
   font-size: x-large;
   font-size: 4rem;
-
 }
 
 .review-list-sort {
@@ -625,7 +620,6 @@ display: none;
 }
 
 .ratings-and-reviews-entry-boxes {
-  /* border: 2px solid black; */
   border-bottom: 2px solid gray;
   margin: 10px auto;
   margin-right: 20%;
@@ -639,10 +633,6 @@ display: none;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-}
-
-.ratings-and-reviews-entry-box-stars {
-
 }
 
 .ratings-and-reviews-entry-box-user-and-date {
@@ -667,13 +657,11 @@ display: none;
   font-size: 1.4rem;
 }
 
-
 .ratings-and-reviews-entry-box-title {
   margin-left: 10px;
   font-weight: bold;
   font-size: large;
   font-size: 1.4rem;
-
 }
 
 .ratings-and-reviews-entry-box-content-body {
@@ -685,7 +673,6 @@ display: none;
 .ratings-and-reviews-entry-box-recommend {
   margin-left: 10px;
   font-size: 1.4rem;
-
 }
 
 .ratings-and-reviews-entry-box-response-box {
@@ -697,32 +684,56 @@ display: none;
 }
 
 .ratings-and-reviews-entry-box-response {
-  /* margin-left: 20px; */
   font-size: 1.4rem;
-
 }
 
 .ratings-and-reviews-entry-box-helpful {
   margin-left: 20px;
   font-size: 1.4rem;
   margin-bottom: 20px;
-  font-weight: 100,
-
+  font-weight: 100;
 }
 
-.review-buttons {
-  width: 100px;
-  margin-right: 0.5rem;
-  height: 4rem;
-  font-size: 1.4rem;
-  border-radius: 0%;
-  background-color: white;
-  border: 1px solid black;
-}
-
-.review-buttons-collection {
+.review-photos {
   display: flex;
   flex-direction: row;
+  justify-content: space-around;
+}
+
+.size-characteristics {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.comfort-characteristics {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.quality-characteristics {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.fit-characteristics {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.length-characteristics {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.width-characteristics {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
 
 .review-modal {
@@ -762,12 +773,8 @@ display: none;
   padding: 10px;
 }
 
-.review-modal-close-button {
-
-}
-
 .review-stats-stars {
-  margin-left: 22px;
+  margin-left: 8px;
   margin-top: 4px;
   font-size: 1.4rem;
   -webkit-background-clip: text;
@@ -783,15 +790,249 @@ display: none;
 }
 
 .review-sort-select {
+  width: 14%;
+  margin-right: 0.5rem;
+  height: 2rem;
+  font-size: 1.4rem;
+  border-radius: 0%;
+}
+
+
+.size-characteristics {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  border-bottom: 2px solid gray;
+}
+
+.width-characteristics {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  border-bottom: 2px solid gray;
+}
+
+.comfort-characteristics {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  border-bottom: 2px solid gray;
+}
+
+.quality-characteristics {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  border-bottom: 2px solid gray;
+}
+
+.length-characteristics {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  border-bottom: 2px solid gray;
+}
+
+.fit-characteristics {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  border-bottom: 2px solid gray;
+}
+
+
+
+/*Katie's CSS*/
+
+/* qa modal */
+
+.qa-modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: transparent;
+}
+.review-buttons {
+  width: 100px;
+  margin-right: 0.5rem;
+  height: 4rem;
+  font-size: 1.4rem;
+  border-radius: 0%;
+  background-color: white;
+  border: 1px solid black;
+}
+
+.review-buttons-collection {
+  display: flex;
+  flex-direction: row;
+}
+
+.review-modal {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qa-modal-content {
+  width: 500px;
+  background-color: #f5f5f5;
+  outline: 1px solid #444242;
+  box-shadow: 4px 4px 70px #000000;
+}
+
+.qa-modal-header, .qa-modal-footer {
+  padding: 10px;
+  font-size: x-small;
+}
+
+.qa-modal-title, .qa-modal-subtitle {}
+
+
+.qa-modal-title, .qa-modal-subtitle {
+
+  margin: 0;
+}
+
+.qa-modal-body {
+  font-size: x-small;
+  padding: 10px;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  font-size: 1.4rem;
+}
+
+.qa-modal-button {
+  font-size: x-small;
+  margin: 5px 2px 5px 2px;
+}
+
+.review-modal-content {
+  width: 600px;
+  background-color: #fff;
+}
+
+
+/* search button */
+
+.search-button {
+  border-radius: 2px;
+  background-color: white;
+  border: none;
+  outline: 1px solid #3a3b3c;
+  color: #3a3b3c;
+  text-align: center;
+  font-size: small;
+  padding: 3px 4px 4px 4px;
+  width: 75px;
+  transition: all 0.4s;
+  cursor: pointer;
+  margin: 3px 3px 0px 4px;
+}
+
+.search-button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.search-button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.search-button:hover span {
+  padding-right: 25px;
+}
+
+.search-button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+
+/* list buttons */
+
+.list-button {
+  width: 130px;
+  border-radius: 1px;
+  outline: 1px solid #3a3b3c;
+  background-color: white;
+  border: none;
+  outline: 1px solid #3a3b3c;
+  color: #3a3b3c;
+  text-align: center;
+  font-size: x-small;
+  margin: 0px 2px 0px 4px;
+  padding: 10px 5px 10px 5px;
+  width: 130px;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+
+.list-button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.4s;
+
+}
+
+.review-stats-stars {
+  margin-left: 22px;
+  margin-top: 4px;
+  font-size: 1.4rem;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.minimize span:after{
+  content: '\002D';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -10px;
+  transition: 0.4s;
+}
+
+.add span:after{
+  content: '\002B';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -10px;
+  transition: 0.4s;
+}
+
+.list-button:hover span{
+  padding-right: 15px;
+}
+
+.list-button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+.review-sort-select {
   width: 80px;
   margin-right: 0.5rem;
   height: 2rem;
   font-size: 1.4rem;
-  /* border-radius: 0%; */
   border: none;
   text-decoration: underline;
 }
-
 
 /*Katie's CSS*/
 
@@ -803,7 +1044,6 @@ display: none;
   display: inline-block;
 }
 
-
 .qa-modal {
   position: fixed;
   left: 0;
@@ -813,19 +1053,20 @@ display: none;
   background-color: transparent;
 }
 
-
 .qa-modal-content {
   width: 500px;
   background-color: whitesmoke;
   outline: 1px solid #444242;
 }
 
-.qa-modal-header, .qa-modal-footer {
+.qa-modal-header,
+.qa-modal-footer {
   padding: 10px;
   font-size: x-small;
 }
 
-.qa-modal-title, .qa-modal-subtitle {
+.qa-modal-title,
+.qa-modal-subtitle {
   margin: 0;
   /* align-content: center; */
 }
