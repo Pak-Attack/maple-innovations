@@ -130,8 +130,10 @@ class RatingsAndReviews extends React.Component {
 
   render() {
     return (
-      <div>
-        <h2> Ratings and Reviews </h2>
+      <div id="reviews-section-link">
+        <h1 style={{ marginLeft: "4%", color: '#3A3B3C' }}> Ratings and Reviews </h1>
+        <br />
+        <br />
         <div className="ratings-and-reviews-container">
           <div className="ratings-and-reviews-component-containers">
             {this.state.product && this.state.ratings ? (

@@ -13,8 +13,7 @@ class App extends React.Component {
       currentProductRating: null,
       allProducts: [],
       totalRatings: 0,
-      // currentProductID: 37316,
-      currentProductID: 37358,
+      currentProductID: 37316,
     };
     this.handleChangeOfProductID = this.handleChangeOfProductID.bind(this);
     this.getCurrentProductRating = this.getCurrentProductRating.bind(this);
@@ -86,7 +85,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { currentProductRating, allProducts, currentProductID } = this.state;
+    const { currentProductRating, allProducts, currentProductID, totalRatings } = this.state;
     return (
       <div>
         <div>
@@ -99,8 +98,8 @@ class App extends React.Component {
           <Overview
             currentProductRating={currentProductRating}
             currentProductID={currentProductID}
+            totalRatings={totalRatings}
           />
-          <RelatedItemsAndComparison />
           <QuestionAndAnswers currentProductID={currentProductID} />
           <RatingsAndReviews
             currentProductRating={currentProductRating}

@@ -2,14 +2,20 @@ import React from "react";
 import styled from "styled-components";
 
 const SearchBox = styled.input`
+  height: 3rem;
+  font-size: 2rem;
   border-radius: 2px;
   outline: 1px solid #3a3b3c;
   border: transparent;
   padding: 3px 3px 3px 3px;
   width: 80%;
   cursor: pointer;
-  margin: 5px 1px 3px 1px;
+  margin-top: 15px;
+  margin-bottom: 15px;
   flex-grow: 1;
+  &:hover {
+    outline: 3px solid #bbb;
+  }
 `;
 
 const SearchQuestions = (props) => {
@@ -19,9 +25,7 @@ const SearchQuestions = (props) => {
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            console.log('submitted form')
-          }}
-          >
+          }}>
           <label>
             <SearchBox onChange={(e) => {
             props.onSearchKeystroke(e)
@@ -41,9 +45,4 @@ const SearchQuestions = (props) => {
 
 export default SearchQuestions;
 
-/*
-TODO :
-  - use search icon
-  - add onClick functionality
-*/
 

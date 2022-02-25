@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 const StyledInput = styled.input`
   width: 100%;
+  font-size: 1.6rem;
   cursor: pointer;
   margin: 5px 1px 3px 1px;
 `;
@@ -63,8 +64,3 @@ const AddQuestionModal = (props) => {
 }
 
 export default AddQuestionModal;
-
-/*
-TODO:
-- add submit functionality
-*/

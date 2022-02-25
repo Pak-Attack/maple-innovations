@@ -2,7 +2,6 @@ import React, {useState, useEffect} from "react";
 import styled from "styled-components";
 import axios from 'axios';
 import AddAnswerModal from "./AddAnswerModal"
-import Highlighter from "react-highlight-words";
 
 const MainDiv = styled.div`
   color: #3a3b3c;
@@ -14,32 +13,28 @@ const MainDiv = styled.div`
 const BlockHeader = styled.h2`
   padding: .25em 0em .25em;
   display: block;
+  font-size: 2.2rem;
 `;
 
 const AnswerBlock = styled.div`
   background: transparent;
   font-weight: thin;
-  font-size: 11px;
+  font-size: 2rem;
   padding: 0.25em 1em;
 `;
 
 const Paragraph = styled.p`
   color: #3a3b3c;
   font-size: x-small;
-  font-size: 7px;
+  font-size: 1.5rem;
   font-weight: 200;
   margin-bottom: 5px;
-`;
-
-const Button = styled.button`
-  height: 16px;
-  font-size: x-small;
 `;
 
 const StyledSpan = styled.span`
   color: #3a3b3c;
   height: 16px;
-  font-size: 7px;
+  font-size: 1.5rem;
   float: right;
   vertical-align: baseline;
   font-weight: 200;
@@ -47,15 +42,23 @@ const StyledSpan = styled.span`
 
 const ClickableSpan= styled.span`
   text-decoration-line: underline;
-  font-size: 7px;
+  font-size: 1.5rem;
   cursor: pointer;
+  &:hover {
+    transition: 0.3s;
+    color: #bbb;
+  }
 `;
 
 const ClickableDiv= styled.div`
   margin: 1em 2em;
   text-decoration-line: underline;
-  font-size: 7px;
+  font-size: 1.2rem;
   cursor: pointer;
+  &:hover {
+    transition: 0.3s;
+    color: #bbb;
+  }
 `;
 
 const QuestionListEntry = ({questionObj, highlightedString}) => {
@@ -67,15 +70,9 @@ const QuestionListEntry = ({questionObj, highlightedString}) => {
   } else {
     return (
       <MainDiv className="questions-and-answers-question-list-entry">
-      {/* <Highlighter
-          highlightClassName="YourHighlightClass"
-          searchWords={highlightedString}
-          autoEscape={true}
-          textToHighlight={"yes it will keep you warm and hidden from predators"}
-        /> */}
        <span>
         <BlockHeader>Q: {questionObj.question_body}
-           <StyledSpan>  Helpful?  <ClickableSpan>Yes</ClickableSpan>  |  <ClickableSpan onClick={() => setShow(true)}>Add Answer</ClickableSpan>
+           <StyledSpan>  Helpful?  <ClickableSpan>Yes</ClickableSpan> ({questionObj.question_helpfulness}) |  <ClickableSpan onClick={() => setShow(true)}>Add Answer</ClickableSpan>
            <AddAnswerModal show={show} onClose={() => setShow(false)}/>
            </StyledSpan>
         </BlockHeader>
@@ -88,29 +85,28 @@ const QuestionListEntry = ({questionObj, highlightedString}) => {
                 <h5> A: </h5> {answerObj.body}
               </span>
               <Paragraph>
-                by {answerObj.answerer_name}  |  Helpful? <ClickableSpan>Yes</ClickableSpan>  |  <ClickableSpan>Report</ClickableSpan>
+                by {answerObj.answerer_name}, {new Date(answerObj.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}  |  Helpful? <ClickableSpan>Yes</ClickableSpan> ({answerObj.helpfulness}) |  <ClickableSpan>Report</ClickableSpan>
               </Paragraph>
             </AnswerBlock>
           ))}
       </span>
-        {(Object.values(questionObj.answers).length > 2)
-        ?
-        <ClickableDiv onClick={() => {setAnswerCount(questionObj.answers.length)}}>More answers</ClickableDiv>
-        :
-        null}
+      {
+      (Object.values(questionObj.answers).length <= 2)
+          ?
+          null
+          :
+            ((Object.values(questionObj.answers).length === answerCount)
+            ?
+            <ClickableDiv onClick={() => {setAnswerCount(2)}}>Collapse answers</ClickableDiv>
+            :
+            <ClickableDiv onClick={() => {setAnswerCount(Object.values(questionObj.answers).length)}}>See more answers</ClickableDiv>
+            )
+        }
+
      </MainDiv>
     )
   }
 };
 
 export default QuestionListEntry;
-
-/*
-TODO :
-- add highlight functionality here (use highlightedString prop as text to highlight within this div)
-*/
-
-
-
-
 
