@@ -130,7 +130,7 @@ class RatingsAndReviews extends React.Component {
 
   render() {
     return (
-      <div>
+      <div id="reviews-section-link">
         <h2> Ratings and Reviews </h2>
         <div className="ratings-and-reviews-container">
           <div className="ratings-and-reviews-component-containers">
