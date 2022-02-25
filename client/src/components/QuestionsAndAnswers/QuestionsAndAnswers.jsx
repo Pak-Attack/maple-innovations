@@ -32,7 +32,7 @@ const QuestionsAndAnswers = (props) => {
   useEffect(() => {
     axios.get(`/qa/questions?product_id=${productID}&page=${page}&count=${pageCount}`)
     .then(results => {
-      console.log('results.data.results', results.data.results)
+      // console.log('results.data.results', results.data.results)
       setQuestionData(results.data.results);
       setFilteredData(results.data.results)
     })

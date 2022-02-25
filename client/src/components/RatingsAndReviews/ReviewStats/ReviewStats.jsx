@@ -1,13 +1,14 @@
-import React from 'react';
-import StarRatings from './StarRatings.jsx';
-import ProductFeedbackScales from './ProductFeedbackScales.jsx';
+import React from "react";
+import StarRatings from "./StarRatings.jsx";
+import ProductFeedbackScales from "./ProductFeedbackScales.jsx";
 
 const ReviewStats = (props) => {
-  // console.log('ReviewStats Props: ', props);
   const {
     ratings,
     productRating,
-    filterByRating
+    filterByRating,
+    removeAllFilters,
+    filterStarsSelected,
   } = props;
   return (
     <div>
@@ -17,6 +18,8 @@ const ReviewStats = (props) => {
           ratings={ratings}
           productRating={productRating}
           filterByRating={filterByRating}
+          removeAllFilters={removeAllFilters}
+          filterStarsSelected={filterStarsSelected}
         />
         <br />
         <ProductFeedbackScales
@@ -25,7 +28,7 @@ const ReviewStats = (props) => {
         />
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default ReviewStats;
