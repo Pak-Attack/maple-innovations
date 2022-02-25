@@ -242,9 +242,9 @@ html {
   position: relative;
 }
 
-.main-image-container-expanded {
+/* .main-image-container-expanded {
   height: 100%;
-}
+} */
 
 .main-image.main-image-expanded-magnified:hover {
   cursor: url(images/minus-circle-light-20x20.png), zoom-out;
@@ -595,7 +595,7 @@ html {
 }
 
 .social-media-logo:hover {
-  background-color: rgb(85, 85, 85);
+  background-color: rgb(109, 108, 108);
   transition: ease-in-out 0.2s;
 }
 
