@@ -8,15 +8,15 @@ import styled from "styled-components";
 
 const BasicStyle = styled.div`
   color: #3a3b3c;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: sans-serif;
   background-color: transparent;
-  margin: 0 1em;
+  margin: 40px;
   padding: 0.25em 1em;
 `;
 
 const Header = styled.p`
   padding-top: 3em;
-  font-size: 2rem;
+  font-size: 3rem;
 `;
 
 const QuestionsAndAnswers = (props) => {
