@@ -57,7 +57,6 @@ class ReviewListEntry extends React.Component {
     } else {
       unfillRating = 100 - fillRating - 80;
     }
-    console.log(this.props)
 
     return (
       <div>
