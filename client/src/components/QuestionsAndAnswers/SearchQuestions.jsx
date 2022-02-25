@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 
 const SearchBox = styled.input`
+  height: 3rem;
+  font-size: 2rem;
   border-radius: 2px;
   outline: 1px solid #3a3b3c;
   border: transparent;
@@ -10,6 +12,9 @@ const SearchBox = styled.input`
   cursor: pointer;
   margin: 5px 1px 3px 1px;
   flex-grow: 1;
+  &:hover {
+    outline: 1.5px solid #3a3b3c;
+  }
 `;
 
 const SearchQuestions = (props) => {
