@@ -32,7 +32,7 @@ class RatingsAndReviews extends React.Component {
   componentDidUpdate() {
     if (this.props.currentProductID !== this.state.currentProductID) {
       this.setState({ currentProductID: this.props.currentProductID });
-      this.getReviewData(this.state.currentProductID, this.state.sortMethod);
+      this.getReviewData(this.props.currentProductID, this.state.sortMethod);
     }
   }
 

@@ -29,13 +29,6 @@ const StarRatings = (props) => {
     fourStarCount * 1 +
     fiveStarCount * 1;
   let highestCount = oneStarCount;
-  [
-    oneStarCount,
-    twoStarCount,
-    threeStarCount,
-    fourStarCount,
-    fiveStarCount,
-  ].forEach((count) => (count > highestCount ? (highestCount = count) : null));
   let totalStarRating = (totalStarCount / totalRatings).toFixed(1);
 
   const fillRating = totalStarRating * 20;
@@ -45,10 +38,10 @@ const StarRatings = (props) => {
     Number(ratings.recommended.true) /
     (Number(ratings.recommended.true) + Number(ratings.recommended.false));
 
-  let starsSelected;
-  props.filterStarsSelected
-    ? (starsSelected = `${props.filterStarsSelected[0]}`)
-    : null;
+  // let starsSelected;
+  // props.filterStarsSelected
+  //   ? (starsSelected = `${props.filterStarsSelected[0]}`)
+  //   : null;
 
   let result = "";
   if (props.filterStarsSelected) {

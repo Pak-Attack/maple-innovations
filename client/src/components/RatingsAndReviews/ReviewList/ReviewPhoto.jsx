@@ -11,8 +11,8 @@ class ReviewPhoto extends React.Component {
       <div>
         <img
           className="individual-review-photos"
-          src={this.props.url}
-          style={{ width: "100px", height: "100px" }}
+          src={this.props.photo.url}
+          style={{ width: "100px", height: "66px" }}
         />
       </div>
     );
