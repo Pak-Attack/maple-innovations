@@ -3,13 +3,16 @@ import QuestionListEntry from "./QuestionListEntry";
 import AddQuestionModal from "./AddQuestionModal"
 import styled from "styled-components";
 
+const StyledList = styled.div`
+  width: 95%;
+`;
 
 const QuestionList = ({ questionData, highlightedString }) => {
   const [questionCount, setQuestionCount] = useState(2);
   const [show, setShow] = useState(false);
 
   return (
-    <div>
+    <StyledList>
       <div style={{ maxHeight: "350px", overflowY: "scroll" }}>
         {questionData
           .sort((a, b) => {
@@ -45,12 +48,8 @@ const QuestionList = ({ questionData, highlightedString }) => {
       <br/>
       <br/>
       <br/>
-    </div>
+    </StyledList>
   );
 };
 
 export default QuestionList;
-
-/*
-TODO:
-*/

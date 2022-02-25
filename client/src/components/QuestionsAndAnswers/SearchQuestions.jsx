@@ -10,10 +10,11 @@ const SearchBox = styled.input`
   padding: 3px 3px 3px 3px;
   width: 80%;
   cursor: pointer;
-  margin: 5px 1px 3px 1px;
+  margin-top: 15px;
+  margin-bottom: 15px;
   flex-grow: 1;
   &:hover {
-    outline: 1.5px solid #3a3b3c;
+    outline: 3px solid #bbb;
   }
 `;
 
@@ -24,9 +25,7 @@ const SearchQuestions = (props) => {
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            console.log('submitted form')
-          }}
-          >
+          }}>
           <label>
             <SearchBox onChange={(e) => {
             props.onSearchKeystroke(e)
@@ -46,9 +45,4 @@ const SearchQuestions = (props) => {
 
 export default SearchQuestions;
 
-/*
-TODO :
-  - use search icon
-  - add onClick functionality
-*/
 

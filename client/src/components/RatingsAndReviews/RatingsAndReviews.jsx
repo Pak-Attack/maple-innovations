@@ -131,7 +131,9 @@ class RatingsAndReviews extends React.Component {
   render() {
     return (
       <div id="reviews-section-link">
-        <h2> Ratings and Reviews </h2>
+        <h1 style={{ marginLeft: "4%", color: '#3A3B3C' }}> Ratings and Reviews </h1>
+        <br />
+        <br />
         <div className="ratings-and-reviews-container">
           <div className="ratings-and-reviews-component-containers">
             {this.state.product && this.state.ratings ? (
@@ -152,6 +154,8 @@ class RatingsAndReviews extends React.Component {
                     ? this.state.filteredReviews
                     : this.state.product.results
                 }
+                getReviewData={this.getReviewData}
+                sortMethod={this.state.sortMethod}
                 updateSortMethod={this.updateSortMethod}
                 ratings={this.state.ratings}
                 submitNewReview={this.submitNewReview}
