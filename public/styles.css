@@ -815,6 +815,19 @@ html {
   border-radius: 0%;
 }
 
+/*Katie's CSS*/
+
+/* qa modal */
+
+.qa-modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: transparent;
+}
+
 .review-buttons {
   width: 100px;
   margin-right: 0.5rem;
