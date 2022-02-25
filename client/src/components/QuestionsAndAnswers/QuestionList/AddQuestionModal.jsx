@@ -64,8 +64,3 @@ const AddQuestionModal = (props) => {
 }
 
 export default AddQuestionModal;
-
-/*
-TODO:
-- add submit functionality
-*/

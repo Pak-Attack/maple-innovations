@@ -2,7 +2,6 @@ import React, {useState, useEffect} from "react";
 import styled from "styled-components";
 import axios from 'axios';
 import AddAnswerModal from "./AddAnswerModal"
-import Highlighter from "react-highlight-words";
 
 const MainDiv = styled.div`
   color: #3a3b3c;
@@ -66,20 +65,11 @@ const QuestionListEntry = ({questionObj, highlightedString}) => {
   const [answerCount, setAnswerCount] = useState(2)
   const [show, setShow] = useState(false);
 
-  // useEffect(() => {
-  // }, [answerCount]);
-
   if (questionObj === undefined) {
     return (<div></div>)
   } else {
     return (
       <MainDiv className="questions-and-answers-question-list-entry">
-      {/* <Highlighter
-          highlightClassName="YourHighlightClass"
-          searchWords={highlightedString}
-          autoEscape={true}
-          textToHighlight={"yes it will keep you warm and hidden from predators"}
-        /> */}
        <span>
         <BlockHeader>Q: {questionObj.question_body}
            <StyledSpan>  Helpful?  <ClickableSpan>Yes</ClickableSpan> ({questionObj.question_helpfulness}) |  <ClickableSpan onClick={() => setShow(true)}>Add Answer</ClickableSpan>
@@ -120,7 +110,3 @@ const QuestionListEntry = ({questionObj, highlightedString}) => {
 
 export default QuestionListEntry;
 
-/*
-TODO :
-- add highlight functionality here (use highlightedString prop as text to highlight within this div)
-*/

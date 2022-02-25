@@ -3,7 +3,6 @@ import QuestionListEntry from "./QuestionListEntry";
 import AddQuestionModal from "./AddQuestionModal"
 import styled from "styled-components";
 
-
 const QuestionList = ({ questionData, highlightedString }) => {
   const [questionCount, setQuestionCount] = useState(2);
   const [show, setShow] = useState(false);
@@ -50,7 +49,3 @@ const QuestionList = ({ questionData, highlightedString }) => {
 };
 
 export default QuestionList;
-
-/*
-TODO:
-*/

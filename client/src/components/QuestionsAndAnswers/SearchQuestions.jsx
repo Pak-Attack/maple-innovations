@@ -24,9 +24,7 @@ const SearchQuestions = (props) => {
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            console.log('submitted form')
-          }}
-          >
+          }}>
           <label>
             <SearchBox onChange={(e) => {
             props.onSearchKeystroke(e)
@@ -46,9 +44,4 @@ const SearchQuestions = (props) => {
 
 export default SearchQuestions;
 
-/*
-TODO :
-  - use search icon
-  - add onClick functionality
-*/
 
