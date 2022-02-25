@@ -6,6 +6,14 @@ class ReviewModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      starRatingSelected: null,
+      recommendationSelected: null,
+      sizeSelected: 0,
+      widthSelected: 0,
+      comfortSelected: 0,
+      qualitySelected: 0,
+      lengthSelected: 0,
+      fitSelected: 0,
       reviewSummaryValue: "",
       reviewBodyValue: "",
       usernameValue: "",
@@ -14,13 +22,6 @@ class ReviewModal extends React.Component {
       reviewBodyValueValid: false,
       usernameValueValid: false,
       emailValueValid: false,
-      starRatingSelected: null,
-      sizeSelected: 0,
-      widthSelected: 0,
-      comfortSelected: 0,
-      qualitySelected: 0,
-      lengthSelected: 0,
-      fitSelected: 0,
       reviewBodyCharacters: 0,
     };
 
@@ -32,9 +33,6 @@ class ReviewModal extends React.Component {
     this.handleUsernameValueChange = this.handleUsernameValueChange.bind(this);
     this.handleEmailValueChange = this.handleEmailValueChange.bind(this);
     this.selectStarRating = this.selectStarRating.bind(this);
-
-
-    this.stateTest = this.stateTest.bind(this);
 
     this.onChangeRecommendation = this.onChangeRecommendation.bind(this);
     this.onChangeSize = this.onChangeSize.bind(this);
@@ -51,39 +49,59 @@ class ReviewModal extends React.Component {
 
   handleReviewFormSubmit() {
     event.preventDefault();
-    // console.log(
-    //   "console logging that form is submitting, but code not built out yet!"
-    // );
-    const form = {
+    let characteristics = {};
+    let size, width, comfort, quality, length, fit;
+
+    this.props.ratings.characteristics.Size
+      ? (characteristics[this.props.ratings.characteristics.Size.id] =
+          this.state.sizeSelected)
+      : null;
+    this.props.ratings.characteristics.Width
+      ? (characteristics[this.props.ratings.characteristics.Width.id] =
+          this.state.widthSelected)
+      : null;
+    this.props.ratings.characteristics.Comfort
+      ? (characteristics[this.props.ratings.characteristics.Comfort.id] =
+          this.state.comfortSelected)
+      : null;
+    this.props.ratings.characteristics.Quality
+      ? (characteristics[this.props.ratings.characteristics.Quality.id] =
+          this.state.qualitySelected)
+      : null;
+    this.props.ratings.characteristics.Length
+      ? (characteristics[this.props.ratings.characteristics.Length.id] =
+          this.state.lengthSelected)
+      : null;
+    this.props.ratings.characteristics.Fit
+      ? (characteristics[this.props.ratings.characteristics.Fit.id] =
+          this.state.fitSelected)
+      : null;
+
+    const review = {
       rating: this.state.starRatingSelected,
+      recommend: this.state.recommendationSelected,
+      photos: [],
+      characteristics: characteristics,
+
       summary: this.state.reviewSummaryValue,
       body: this.state.reviewBodyValue,
-      username: this.state.usernameValue,
+      name: this.state.usernameValue,
       email: this.state.emailValue,
     };
-    if (form.summary === "") {
-      alert("Fill out Review Summary");
-      return;
-    }
-    if (form.body === "") {
-      alert("Fill out Review Body");
-      return;
-    }
-    if (form.username === "") {
-      alert("Input a nickname");
-      return;
-    }
-    if (form.email === "") {
-      alert("Input a valid email");
-      return;
-    }
 
-    // console.log("form: ", form);
+    this.props.submitNewReview(review);
+
     this.props.showModalState();
-    // axios.post('api placeholder', form)
-    //   .then(alert('Form Submitted'))
-    //   .catch(err => console.error(err))
+
     this.setState({
+      starRatingSelected: null,
+      recommendationSelected: null,
+      sizeSelected: 0,
+      widthSelected: 0,
+      comfortSelected: 0,
+      qualitySelected: 0,
+      lengthSelected: 0,
+      fitSelected: 0,
       reviewSummaryValue: "",
       reviewBodyValue: "",
       usernameValue: "",
@@ -92,7 +110,7 @@ class ReviewModal extends React.Component {
       reviewBodyValueValid: false,
       usernameValueValid: false,
       emailValueValid: false,
-      recommendationSelected: null
+      reviewBodyCharacters: 0,
     });
   }
 
@@ -100,7 +118,6 @@ class ReviewModal extends React.Component {
     this.setState({
       reviewSummaryValue: event.target.value,
     });
-    // console.log(this.state.reviewSummaryValue);
   }
 
   handleReviewBodyValueChange() {
@@ -164,15 +181,6 @@ class ReviewModal extends React.Component {
     });
   }
 
-  stateTest() {
-    console.log("sizeSelected", this.state.sizeSelected);
-    console.log("widthSelected", this.state.widthSelected);
-    console.log("comfortSelected", this.state.comfortSelected);
-    console.log("qualitySelected", this.state.qualitySelected);
-    console.log("lengthSelected", this.state.lengthSelected);
-    console.log("fitSelected", this.state.fitSelected);
-  }
-
   render() {
     return (
       <div className="review-modal">
@@ -182,48 +190,51 @@ class ReviewModal extends React.Component {
         >
           <div className="review-modal-header">
             <h2 className="review-modal-title">Write Your Review</h2>
-            <h4>About the Product Name Here</h4>
           </div>
           <div className="review-modal-body">
-            <div>
-              <NewStarRating selectStarRating={this.selectStarRating} />
-            </div>
-            <div>
-              Do you recommend this product?
-              <div className="recommendation-radio">
-                <label>
-                  <input
-                    type="radio"
-                    value="Yes"
-                    onChange={this.onChangeWidthValue}
-                    name="recommend"
-                  />{" "}
-                  Yes
-                  <input
-                    type="radio"
-                    value="No"
-                    onChange={this.onChangeRecommendation}
-                    name="recommend"
-                  />{" "}
-                  No
-                </label>
-              </div>
-            </div>
-            <div>
-              characteristics rating here
-              <button onClick={this.stateTest}>State Tester</button>
-              <div>
-                <Characteristics
-                  onChangeSize={this.onChangeSize}
-                  onChangeWidth={this.onChangeWidth}
-                  onChangeComfort={this.onChangeComfort}
-                  onChangeQuality={this.onChangeQuality}
-                  onChangeLength={this.onChangeLength}
-                  onChangeFit={this.onChangeFit}
-                />
-              </div>
-            </div>
             <form onSubmit={this.handleReviewFormSubmit}>
+              <div>
+                <NewStarRating selectStarRating={this.selectStarRating} />
+              </div>
+              <br />
+              <div>
+                Do you recommend this product?
+                <div className="recommendation-radio">
+                  <label>
+                    <input
+                      type="radio"
+                      value={true}
+                      onChange={this.onChangeRecommendation}
+                      name="recommend"
+                    />{" "}
+                    Yes
+                    <div> </div>
+                    <input
+                      type="radio"
+                      value={false}
+                      onChange={this.onChangeRecommendation}
+                      name="recommend"
+                    />{" "}
+                    No
+                  </label>
+                </div>
+              </div>
+              <br />
+              <div>
+                Characteristics
+                <br />
+                <div>
+                  <br />
+                  <Characteristics
+                    onChangeSize={this.onChangeSize}
+                    onChangeWidth={this.onChangeWidth}
+                    onChangeComfort={this.onChangeComfort}
+                    onChangeQuality={this.onChangeQuality}
+                    onChangeLength={this.onChangeLength}
+                    onChangeFit={this.onChangeFit}
+                  />
+                </div>
+              </div>
               <label>
                 Review Summary
                 <br />
@@ -231,10 +242,12 @@ class ReviewModal extends React.Component {
                   type="text"
                   placeholder="Example: Best purchase ever!"
                   maxLength="60"
+                  required={true}
                   value={this.state.reviewSummaryValue}
                   onChange={this.handleReviewSummaryValueChange}
                 />
               </label>
+              <br />
               <br />
               <label>
                 Review Body
@@ -245,6 +258,7 @@ class ReviewModal extends React.Component {
                   maxLength="1000"
                   minLength="50"
                   width="100px"
+                  required={true}
                   value={this.state.reviewBodyValue}
                   onChange={this.handleReviewBodyValueChange}
                 />
@@ -259,6 +273,12 @@ class ReviewModal extends React.Component {
                 )}
               </label>
               <br />
+              {/* <label>
+                Upload your photos:
+                <button>Click to upload</button>
+              </label>
+              <br />
+              <br /> */}
               <div>
                 User Info
                 <br />
@@ -269,6 +289,7 @@ class ReviewModal extends React.Component {
                     type="text"
                     placeholder="Example: jackson11!"
                     maxLength="60"
+                    required={true}
                     value={this.state.usernameValue}
                     onChange={this.handleUsernameValueChange}
                   />
@@ -277,13 +298,15 @@ class ReviewModal extends React.Component {
                   address
                 </label>
                 <br />
+                <br />
                 <label>
                   Email
                   <br />
                   <input
-                    type="text"
+                    type="email"
                     placeholder="Example: jackson11@email.com"
                     maxLength="60"
+                    required={true}
                     value={this.state.emailValue}
                     onChange={this.handleEmailValueChange}
                   />
@@ -291,6 +314,8 @@ class ReviewModal extends React.Component {
                   For authentication reasons, you will not be emailed
                 </label>
               </div>
+              <br />
+              <br />
               <input type="submit" value="Submit" />
             </form>
           </div>
@@ -299,7 +324,7 @@ class ReviewModal extends React.Component {
               className="review-modal-close-button"
               onClick={this.props.showModalState}
             >
-              Close Modal
+              Close Review Box
             </button>
           </div>
         </div>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 class NewStarRating extends React.Component {
   constructor(props) {
@@ -11,23 +11,26 @@ class NewStarRating extends React.Component {
       starFour: false,
       starFive: false,
       clicked: false,
-      ratingDescription: null
-    }
+      ratingDescription: null,
+    };
 
-    this.clearStars = this.clearStars.bind(this)
-    this.onStarOneMouseEnterChange = this.onStarOneMouseEnterChange.bind(this)
-    this.onStarTwoMouseEnterChange = this.onStarTwoMouseEnterChange.bind(this)
-    this.onStarThreeMouseEnterChange = this.onStarThreeMouseEnterChange.bind(this)
-    this.onStarFourMouseEnterChange = this.onStarFourMouseEnterChange.bind(this)
-    this.onStarFiveMouseEnterChange = this.onStarFiveMouseEnterChange.bind(this)
+    this.clearStars = this.clearStars.bind(this);
+    this.onStarOneMouseEnterChange = this.onStarOneMouseEnterChange.bind(this);
+    this.onStarTwoMouseEnterChange = this.onStarTwoMouseEnterChange.bind(this);
+    this.onStarThreeMouseEnterChange =
+      this.onStarThreeMouseEnterChange.bind(this);
+    this.onStarFourMouseEnterChange =
+      this.onStarFourMouseEnterChange.bind(this);
+    this.onStarFiveMouseEnterChange =
+      this.onStarFiveMouseEnterChange.bind(this);
 
-    this.handleStarOneClick = this.handleStarOneClick.bind(this)
-    this.handleStarTwoClick = this.handleStarTwoClick.bind(this)
-    this.handleStarThreeClick = this.handleStarThreeClick.bind(this)
-    this.handleStarFourClick = this.handleStarFourClick.bind(this)
-    this.handleStarFiveClick = this.handleStarFiveClick.bind(this)
+    this.handleStarOneClick = this.handleStarOneClick.bind(this);
+    this.handleStarTwoClick = this.handleStarTwoClick.bind(this);
+    this.handleStarThreeClick = this.handleStarThreeClick.bind(this);
+    this.handleStarFourClick = this.handleStarFourClick.bind(this);
+    this.handleStarFiveClick = this.handleStarFiveClick.bind(this);
 
-    this.clearStarsAfterClick = this.clearStarsAfterClick.bind(this)
+    this.clearStarsAfterClick = this.clearStarsAfterClick.bind(this);
   }
 
   clearStars() {
@@ -37,7 +40,7 @@ class NewStarRating extends React.Component {
         starTwo: false,
         starThree: false,
         starFour: false,
-        starFive: false
+        starFive: false,
       });
     }
   }
@@ -48,13 +51,13 @@ class NewStarRating extends React.Component {
       starTwo: false,
       starThree: false,
       starFour: false,
-      starFive: false
+      starFive: false,
     });
   }
 
   onStarOneMouseEnterChange() {
     this.setState({
-      starOne: true
+      starOne: true,
     });
   }
 
@@ -64,25 +67,25 @@ class NewStarRating extends React.Component {
     this.setState({
       starOne: true,
       clicked: true,
-      ratingDescription: "Poor"
+      ratingDescription: "Poor",
     });
   }
 
   onStarTwoMouseEnterChange() {
     this.setState({
       starOne: true,
-      starTwo: true
+      starTwo: true,
     });
   }
 
   handleStarTwoClick() {
     this.clearStarsAfterClick();
-    this.props.selectStarRating(2)
+    this.props.selectStarRating(2);
     this.setState({
       starOne: true,
       starTwo: true,
       clicked: true,
-      ratingDescription: "Fair"
+      ratingDescription: "Fair",
     });
   }
 
@@ -90,42 +93,41 @@ class NewStarRating extends React.Component {
     this.setState({
       starOne: true,
       starTwo: true,
-      starThree: true
+      starThree: true,
     });
   }
 
   handleStarThreeClick() {
     this.clearStarsAfterClick();
-    this.props.selectStarRating(3)
+    this.props.selectStarRating(3);
     this.setState({
       starOne: true,
       starTwo: true,
       starThree: true,
       clicked: true,
-      ratingDescription: "Average"
+      ratingDescription: "Average",
     });
   }
-
 
   onStarFourMouseEnterChange() {
     this.setState({
       starOne: true,
       starTwo: true,
       starThree: true,
-      starFour: true
+      starFour: true,
     });
   }
 
   handleStarFourClick() {
     this.clearStarsAfterClick();
-    this.props.selectStarRating(4)
+    this.props.selectStarRating(4);
     this.setState({
       starOne: true,
       starTwo: true,
       starThree: true,
       starFour: true,
       clicked: true,
-      ratingDescription: "Good"
+      ratingDescription: "Good",
     });
   }
 
@@ -135,13 +137,13 @@ class NewStarRating extends React.Component {
       starTwo: true,
       starThree: true,
       starFour: true,
-      starFive: true
+      starFive: true,
     });
   }
 
   handleStarFiveClick() {
     this.clearStarsAfterClick();
-    this.props.selectStarRating(5)
+    this.props.selectStarRating(5);
     this.setState({
       starOne: true,
       starTwo: true,
@@ -149,52 +151,70 @@ class NewStarRating extends React.Component {
       starFour: true,
       starFive: true,
       clicked: true,
-      ratingDescription: "Great"
+      ratingDescription: "Great",
     });
   }
 
   render() {
-
     return (
-      <div className="star-rating" style={{display: "flex", flexDirection: "row", fontWeight: this.state.hovering ? 'bold' : 'normal'}}>
+      <div
+        className="star-rating"
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          fontWeight: this.state.hovering ? "bold" : "normal",
+        }}
+      >
         <div
-            type="button"
-            onMouseLeave={this.clearStars}
-            onMouseEnter={this.onStarOneMouseEnterChange}
-            onClick={this.handleStarOneClick.bind(this)}
-          > {this.state.starOne ? '★' : '☆'}
+          type="button"
+          onMouseLeave={this.clearStars}
+          onMouseEnter={this.onStarOneMouseEnterChange}
+          onClick={this.handleStarOneClick.bind(this)}
+        >
+          {" "}
+          {this.state.starOne ? "★" : "☆"}
         </div>
         <div
-            type="button"
-            onMouseLeave={this.clearStars}
-            onMouseEnter={this.onStarTwoMouseEnterChange}
-            onClick={this.handleStarTwoClick.bind(this)}
-          > {this.state.starTwo ? '★' : '☆'}
+          type="button"
+          onMouseLeave={this.clearStars}
+          onMouseEnter={this.onStarTwoMouseEnterChange}
+          onClick={this.handleStarTwoClick.bind(this)}
+        >
+          {" "}
+          {this.state.starTwo ? "★" : "☆"}
         </div>
         <div
-            type="button"
-            onMouseLeave={this.clearStars}
-            onMouseEnter={this.onStarThreeMouseEnterChange}
-            onClick={this.handleStarThreeClick.bind(this)}
-          > {this.state.starThree ? '★' : '☆'}
+          type="button"
+          onMouseLeave={this.clearStars}
+          onMouseEnter={this.onStarThreeMouseEnterChange}
+          onClick={this.handleStarThreeClick.bind(this)}
+        >
+          {" "}
+          {this.state.starThree ? "★" : "☆"}
         </div>
         <div
-            type="button"
-            onMouseLeave={this.clearStars}
-            onMouseEnter={this.onStarFourMouseEnterChange}
-            onClick={this.handleStarFourClick.bind(this)}
-          > {this.state.starFour ? '★' : '☆'}
+          type="button"
+          onMouseLeave={this.clearStars}
+          onMouseEnter={this.onStarFourMouseEnterChange}
+          onClick={this.handleStarFourClick.bind(this)}
+        >
+          {" "}
+          {this.state.starFour ? "★" : "☆"}
         </div>
         <div
-            type="button"
-            onMouseLeave={this.clearStars}
-            onMouseEnter={this.onStarFiveMouseEnterChange}
-            onClick={this.handleStarFiveClick.bind(this)}
-          > {this.state.starFive ? '★' : '☆'}
+          type="button"
+          onMouseLeave={this.clearStars}
+          onMouseEnter={this.onStarFiveMouseEnterChange}
+          onClick={this.handleStarFiveClick.bind(this)}
+        >
+          {" "}
+          {this.state.starFive ? "★" : "☆"}
         </div>
-        <div style={{marginLeft: "5px", marginTop: "2.5px"}}>{this.state.ratingDescription}</div>
+        <div style={{ marginLeft: "5px", marginTop: "2.5px" }}>
+          {this.state.ratingDescription}
+        </div>
       </div>
-    )
+    );
   }
 }
 

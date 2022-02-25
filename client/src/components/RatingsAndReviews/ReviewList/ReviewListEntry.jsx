@@ -1,4 +1,6 @@
 import React from "react";
+import axios from "axios";
+import ReviewPhoto from "./ReviewPhoto.jsx";
 import { Check } from "phosphor-react";
 
 class ReviewListEntry extends React.Component {
@@ -11,15 +13,13 @@ class ReviewListEntry extends React.Component {
       review: this.props.review,
     };
 
-    // console.log(this.props.review.body.length)
-    // console.log("ReviewListEntry Props: ", this.props);
-
     this.showMoreReview = this.showMoreReview.bind(this);
-    this.helpfulButtonClickHandlerSplit = this.helpfulButtonClickHandlerSplit.bind(this);
+    this.helpfulButtonClickHandlerSplit =
+      this.helpfulButtonClickHandlerSplit.bind(this);
+    this.report = this.report.bind(this);
   }
 
   componentDidUpdate() {
-    // You don't have to do this check first, but it can help prevent an unneeded render
     if (this.props.review.helpfulness !== this.state.review.helpfulness) {
       this.setState({ review: this.props.review });
     }
@@ -33,15 +33,35 @@ class ReviewListEntry extends React.Component {
 
   helpfulButtonClickHandlerSplit(a, b) {
     if (!this.state.helpfulnessButtonClicked) {
-    this.props.helpfulButtonClickHandler(a, b)
-    this.setState({
-      helpfulnessButtonClicked: true
-    })}
+      this.setState({
+        helpfulnessButtonClicked: true,
+      });
+      this.props.helpfulButtonClickHandler(a, b);
+    }
+  }
+
+  report(id) {
+    console.log(this.state.review);
+    axios
+      .put(`/reviews/${id}/report`)
+      .then(() => {
+        alert("Review flagged for inspection by our staff.");
+      })
+      .catch((err) => console.error(err));
   }
 
   render() {
     const fillRating = this.state.review.rating * 20;
-    const unfillRating = this.state.review.rating * 20 - fillRating;
+    let unfillRating = 100 - fillRating;
+
+    if (this.state.review.rating >= 3) {
+      unfillRating = 100 - fillRating;
+    } else if (this.state.review.rating === 2) {
+      unfillRating = 100 - fillRating - 40;
+    } else {
+      unfillRating = 100 - fillRating - 60;
+    }
+
     return (
       <div>
         <div>
@@ -51,14 +71,14 @@ class ReviewListEntry extends React.Component {
                 <div
                   className="review-list-stars"
                   style={{
-                    backgroundImage: `linear-gradient(90deg, black ${fillRating}%, white ${unfillRating}%)`,
+                    // backgroundImage: `linear-gradient(90deg, black ${fillRating}%, white ${unfillRating}%)`,
+                    backgroundImage: `linear-gradient(to right, black ${fillRating}%, white ${unfillRating}%)`,
                   }}
                 >
                   ★★★★★
                 </div>
                 <div className="review-list-stars-overlay">☆☆☆☆☆</div>
               </div>
-
               <div className="ratings-and-reviews-entry-box-user-and-date">
                 {this.props.review.reviewer_name},{" "}
                 {new Date(this.props.review.date).toLocaleDateString()}{" "}
@@ -90,6 +110,20 @@ class ReviewListEntry extends React.Component {
               )}
             </div>
             <br />
+            <br />
+
+            <div className="review-photos">
+              {this.props.review.photos.map((photo, key) => (
+                <ReviewPhoto
+                  photo={photo}
+                  key={key}
+                  url={this.props.review.photos.url}
+                />
+              ))}
+            </div>
+            <br />
+            <br />
+
             <div className="ratings-and-reviews-entry-box-recommend">
               {this.props.review.recommend ? (
                 <div>
@@ -135,29 +169,23 @@ class ReviewListEntry extends React.Component {
                   style={{
                     textDecoration: "underline",
                   }}
-                  onClick={() => this.helpfulButtonClickHandlerSplit(this.props.review.review_id, this.props.product_id)}
+                  onClick={() =>
+                    this.helpfulButtonClickHandlerSplit(
+                      this.props.review.review_id,
+                      this.props.product_id
+                    )
+                  }
                 >
                   {" "}
                   Yes
                 </a>{" "}
                 {`(${this.state.review.helpfulness})`}
-
-                {/* <a
-                  style={{
-                    textDecoration: "underline",
-                  }}
-                  onClick={this.props.notHelpfulButtonClickHandler}
-                >
-                  {" "}
-                  No
-                </a>
-                {`(${this.state.review.helpfulness})`} */}
-
                 {" | "}
                 <a
                   style={{
                     textDecoration: "underline",
                   }}
+                  onClick={() => this.report(this.state.review.review_id)}
                 >
                   Report
                 </a>
