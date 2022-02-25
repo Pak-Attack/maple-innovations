@@ -31,15 +31,16 @@
 }
 
 .qa-modal-content {
-  width: 500px;
+  font-size: 1.8rem;
+  width: 600px;
   background-color: #f5f5f5;
   outline: 1px solid #444242;
   box-shadow: 4px 4px 70px #000000;
 }
 
 .qa-modal-header, .qa-modal-footer {
+  font-size: 1.8rem;
   padding: 10px;
-  font-size: x-small;
 }
 
 .qa-modal-title, .qa-modal-subtitle {
@@ -47,14 +48,14 @@
 }
 
 .qa-modal-body {
-  font-size: x-small;
+  font-size: 1.8rem;
   padding: 10px;
   border-top: 1px solid #eee;
   border-bottom: 1px solid #eee;
 }
 
 .qa-modal-button {
-  font-size: x-small;
+  font-size: 1.8rem;
   margin: 5px 2px 5px 2px;
 }
 
@@ -62,18 +63,19 @@
 
 /* search button */
 .search-button {
+  height: 3rem;
   border-radius: 2px;
   background-color: white;
   border: none;
   outline: 1px solid #3a3b3c;
   color: #3a3b3c;
   text-align: center;
-  font-size: small;
+  font-size: 2rem;
   padding: 3px 4px 4px 4px;
-  width: 75px;
+  width: 110px;
   transition: all 0.4s;
   cursor: pointer;
-  margin: 3px 3px 0px 4px;
+  margin-left: 4px;
 }
 
 .search-button span {
@@ -103,9 +105,8 @@
 
 
 
-/* list buttons 1 */
+/* list buttons */
 .list-button {
-  width: 130px;
   border-radius: 1px;
   outline: 1px solid #3a3b3c;
   background-color: white;
@@ -113,10 +114,11 @@
   outline: 1px solid #3a3b3c;
   color: #3a3b3c;
   text-align: center;
-  font-size: x-small;
+  font-size: 1.5rem;
   margin: 0px 2px 0px 4px;
   padding: 10px 5px 10px 5px;
-  width: 130px;
+  width: 180px;
+  height: 50px;
   transition: all 0.5s;
   cursor: pointer;
 }

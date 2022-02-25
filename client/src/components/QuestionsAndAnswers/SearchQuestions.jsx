@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 
 const SearchBox = styled.input`
+  height: 3rem;
+  font-size: 2rem;
   border-radius: 2px;
   outline: 1px solid #3a3b3c;
   border: transparent;

@@ -14,32 +14,28 @@ const MainDiv = styled.div`
 const BlockHeader = styled.h2`
   padding: .25em 0em .25em;
   display: block;
+  font-size: 2.2rem;
 `;
 
 const AnswerBlock = styled.div`
   background: transparent;
   font-weight: thin;
-  font-size: 11px;
+  font-size: 2rem;
   padding: 0.25em 1em;
 `;
 
 const Paragraph = styled.p`
   color: #3a3b3c;
   font-size: x-small;
-  font-size: 7px;
+  font-size: 1.5rem;
   font-weight: 200;
   margin-bottom: 5px;
-`;
-
-const Button = styled.button`
-  height: 16px;
-  font-size: x-small;
 `;
 
 const StyledSpan = styled.span`
   color: #3a3b3c;
   height: 16px;
-  font-size: 7px;
+  font-size: 1.5rem;
   float: right;
   vertical-align: baseline;
   font-weight: 200;
@@ -47,7 +43,7 @@ const StyledSpan = styled.span`
 
 const ClickableSpan= styled.span`
   text-decoration-line: underline;
-  font-size: 7px;
+  font-size: 1.5rem;
   cursor: pointer;
   &:hover {
     transition: 0.3s;
@@ -58,7 +54,7 @@ const ClickableSpan= styled.span`
 const ClickableDiv= styled.div`
   margin: 1em 2em;
   text-decoration-line: underline;
-  font-size: 7px;
+  font-size: 1.2rem;
   cursor: pointer;
   &:hover {
     transition: 0.3s;

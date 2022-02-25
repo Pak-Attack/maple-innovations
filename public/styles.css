@@ -1,4 +1,3 @@
-
 /* default styling resets */
 * {
   padding: 0;
@@ -36,7 +35,7 @@ html {
   border-right: none;
   border-top: none;
   border-left: none;
-  border-bottom: underline solid black 2px;;
+  border-bottom: underline solid black 2px;
   /* background-color: darkgray; */
   width: 12rem;
 }
@@ -133,7 +132,6 @@ html {
   align-items: center;
 }
 
-
 /* End SearchBar specific styling */
 /* _______________________________________ */
 
@@ -223,7 +221,7 @@ html {
   font-size: 1.4rem;
 }
 
-.checkmark{
+.checkmark {
   padding-right: 0.5rem;
 }
 
@@ -289,7 +287,7 @@ html {
 }
 
 .thumbnail-main-carousel::-webkit-scrollbar {
-display: none;
+  display: none;
 }
 
 .one-thumbnail-container {
@@ -325,11 +323,11 @@ display: none;
   border: 2px solid black;
   width: 15rem;
   height: 15rem;
-  scroll-behavior: 'smooth';
+  scroll-behavior: "smooth";
   transform: translate(-50%, -50%);
 }
 
-.thumbnail-button{
+.thumbnail-button {
   display: block;
   background-color: rgba(250, 250, 250, 0.5);
   border-radius: 50%;
@@ -361,7 +359,8 @@ display: none;
   margin-bottom: -2px;
 }
 
-.left-button svg polyline, .left-button svg line {
+.left-button svg polyline,
+.left-button svg line {
   stroke: black;
 }
 
@@ -381,7 +380,8 @@ display: none;
   margin-bottom: -2px;
 }
 
-.right-button svg polyline, .right-button svg line {
+.right-button svg polyline,
+.right-button svg line {
   stroke: black;
 }
 
@@ -463,7 +463,6 @@ display: none;
   font-weight: 100;
   text-transform: uppercase;
   /* letter-spacing: -0.15rem; */
-  ;
 }
 
 .styles-colors-container {
@@ -520,7 +519,6 @@ display: none;
   border-radius: 50%;
   height: 1.5rem;
   width: 1.5rem;
-
 }
 
 .size-select {
@@ -579,14 +577,12 @@ display: none;
   transition: ease-in-out 0.2s;
 }
 
-
 /* End overview specific styling */
-
 
 /* Austin CSS */
 
 .product-data {
-  font-weight: bold
+  font-weight: bold;
 }
 
 .ratings-and-reviews-container {
@@ -607,7 +603,6 @@ display: none;
 .big-star-rating {
   font-size: x-large;
   font-size: 4rem;
-
 }
 
 .review-list-sort {
@@ -615,7 +610,6 @@ display: none;
 }
 
 .ratings-and-reviews-entry-boxes {
-  /* border: 2px solid black; */
   border-bottom: 2px solid gray;
   margin: 10px auto;
   margin-right: 20%;
@@ -629,10 +623,6 @@ display: none;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-}
-
-.ratings-and-reviews-entry-box-stars {
-
 }
 
 .ratings-and-reviews-entry-box-user-and-date {
@@ -657,13 +647,11 @@ display: none;
   font-size: 1.4rem;
 }
 
-
 .ratings-and-reviews-entry-box-title {
   margin-left: 10px;
   font-weight: bold;
   font-size: large;
   font-size: 1.4rem;
-
 }
 
 .ratings-and-reviews-entry-box-content-body {
@@ -675,7 +663,6 @@ display: none;
 .ratings-and-reviews-entry-box-recommend {
   margin-left: 10px;
   font-size: 1.4rem;
-
 }
 
 .ratings-and-reviews-entry-box-response-box {
@@ -687,17 +674,56 @@ display: none;
 }
 
 .ratings-and-reviews-entry-box-response {
-  /* margin-left: 20px; */
   font-size: 1.4rem;
-
 }
 
 .ratings-and-reviews-entry-box-helpful {
   margin-left: 20px;
   font-size: 1.4rem;
   margin-bottom: 20px;
-  font-weight: 100,
+  font-weight: 100;
+}
 
+.review-photos {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.size-characteristics {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.comfort-characteristics {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.quality-characteristics {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.fit-characteristics {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.length-characteristics {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.width-characteristics {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
 
 .review-modal {
@@ -735,10 +761,6 @@ display: none;
 
 .review-modal-footer {
   padding: 10px;
-}
-
-.review-modal-close-button {
-
 }
 
 .review-stats-stars {
@@ -821,7 +843,6 @@ display: none;
   margin-right: 0.5rem;
   height: 2rem;
   font-size: 1.4rem;
-  /* border-radius: 0%; */
   border: none;
   text-decoration: underline;
 }

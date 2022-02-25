@@ -8,17 +8,16 @@ import config from "../../../../config.js"
 import styled from "styled-components";
 
 const BasicStyle = styled.div`
-  color: #878787;
+  color: #3a3b3c;
   font-family: Arial, Helvetica, sans-serif;
   background-color: transparent;
-  color: #3a3b3c;
   margin: 0 1em;
   padding: 0.25em 1em;
 `;
 
 const Header = styled.p`
   padding-top: 3em;
-  font-size: small;
+  font-size: 2rem;
 `;
 
 const QuestionsAndAnswers = (props) => {
@@ -32,7 +31,7 @@ const QuestionsAndAnswers = (props) => {
   useEffect(() => {
     axios.get(`/qa/questions?product_id=${productID}&page=${page}&count=${pageCount}`)
     .then(results => {
-      console.log('results.data.results', results.data.results)
+      // console.log('results.data.results', results.data.results)
       setQuestionData(results.data.results);
       setFilteredData(results.data.results)
     })
