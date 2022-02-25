@@ -47,7 +47,7 @@ class ReviewListEntry extends React.Component {
       .then(() => {
         alert("Review flagged for inspection by our staff.");
       })
-      .catch((err) => console.error(err));
+      .catch(err => console.error(err));
   }
 
   render() {
@@ -71,7 +71,6 @@ class ReviewListEntry extends React.Component {
                 <div
                   className="review-list-stars"
                   style={{
-                    // backgroundImage: `linear-gradient(90deg, black ${fillRating}%, white ${unfillRating}%)`,
                     backgroundImage: `linear-gradient(to right, black ${fillRating}%, white ${unfillRating}%)`,
                   }}
                 >

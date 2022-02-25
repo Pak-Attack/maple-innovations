@@ -94,7 +94,7 @@ class Characteristics extends React.Component {
                 value="A size too small"
                 onChange={this.onChangeSizeValue}
                 name="size"
-                style={{ marginLeft: "50px" }}
+                style={{ marginLeft: "45px" }}
               />
               <br />A size too small
             </div>
@@ -115,7 +115,7 @@ class Characteristics extends React.Component {
                 value="Perfect"
                 onChange={this.onChangeSizeValue}
                 name="size"
-                style={{ marginLeft: "50px" }}
+                style={{ marginLeft: "5px" }}
               />
               <br />
               Perfect
@@ -126,7 +126,7 @@ class Characteristics extends React.Component {
                 value="½ a size too big"
                 onChange={this.onChangeSizeValue}
                 name="size"
-                style={{ marginLeft: "50px" }}
+                style={{ marginLeft: "45px" }}
               />
               <br />½ a size too big
             </div>
@@ -136,7 +136,7 @@ class Characteristics extends React.Component {
                 value="A size too wide"
                 onChange={this.onChangeSizeValue}
                 name="size"
-                style={{ marginLeft: "50px" }}
+                style={{ marginLeft: "30px" }}
               />{" "}
               <br />A size too big
             </div>
@@ -163,7 +163,7 @@ class Characteristics extends React.Component {
                 value="Too narrow"
                 onChange={this.onChangeWidthValue}
                 name="width"
-                style={{ marginLeft: "50px" }}
+                style={{ marginLeft: "25px" }}
               />{" "}
               <br /> Too narrow
             </div>
@@ -173,7 +173,7 @@ class Characteristics extends React.Component {
                 value="Slightly narrow"
                 onChange={this.onChangeWidthValue}
                 name="width"
-                style={{ marginLeft: "50px" }}
+                style={{ marginLeft: "40px" }}
               />{" "}
               <br /> Slightly narrow
             </div>
@@ -183,7 +183,7 @@ class Characteristics extends React.Component {
                 value="Perfect"
                 onChange={this.onChangeWidthValue}
                 name="width"
-                style={{ marginLeft: "50px" }}
+                style={{ marginLeft: "15px" }}
               />{" "}
               <br />
               Perfect
@@ -195,7 +195,7 @@ class Characteristics extends React.Component {
                 value="Slightly wide"
                 onChange={this.onChangeWidthValue}
                 name="width"
-                style={{ marginLeft: "50px" }}
+                style={{ marginLeft: "35px" }}
               />{" "}
               <br />
               Slightly wide
@@ -207,7 +207,7 @@ class Characteristics extends React.Component {
                 value="Too wide"
                 onChange={this.onChangeWidthValue}
                 name="width"
-                style={{ marginLeft: "50px" }}
+                style={{ marginLeft: "20px" }}
               />{" "}
               <br />
               Too wide
@@ -235,7 +235,7 @@ class Characteristics extends React.Component {
                 value="Uncomfortable"
                 onChange={this.onChangeComfortValue}
                 name="comfort"
-                style={{ marginLeft: "50px" }}
+                style={{ marginLeft: "35px" }}
               />{" "}
               <br />
               Uncomfortable
@@ -247,7 +247,7 @@ class Characteristics extends React.Component {
                 value="Slightly uncomfortable"
                 onChange={this.onChangeComfortValue}
                 name="comfort"
-                style={{ marginLeft: "50px" }}
+                style={{ marginLeft: "60px" }}
               />{" "}
               <br />
               Slightly uncomfortable
@@ -258,7 +258,7 @@ class Characteristics extends React.Component {
                 value="Ok"
                 onChange={this.onChangeComfortValue}
                 name="comfort"
-                style={{ marginLeft: "50px" }}
+                style={{ marginLeft: "00px" }}
               />{" "}
               <br />
               Ok
@@ -269,7 +269,7 @@ class Characteristics extends React.Component {
                 value="Comfortable"
                 onChange={this.onChangeComfortValue}
                 name="comfort"
-                style={{ marginLeft: "50px" }}
+                style={{ marginLeft: "30px" }}
               />{" "}
               <br />
               Comfortable
@@ -280,7 +280,7 @@ class Characteristics extends React.Component {
                 value="Perfect"
                 onChange={this.onChangeComfortValue}
                 name="comfort"
-                style={{ marginLeft: "50px" }}
+                style={{ marginLeft: "15px" }}
               />{" "}
               <br />
               Perfect
@@ -308,7 +308,7 @@ class Characteristics extends React.Component {
                 value="Poor"
                 onChange={this.onChangeQualityValue}
                 name="quality"
-                style={{ marginLeft: "50px" }}
+                style={{ marginLeft: "5px" }}
               />{" "}
               <br />
               Poor
@@ -319,7 +319,7 @@ class Characteristics extends React.Component {
                 value="Below average"
                 onChange={this.onChangeQualityValue}
                 name="quality"
-                style={{ marginLeft: "50px" }}
+                style={{ marginLeft: "40px" }}
               />{" "}
               <br />
               Below average
@@ -330,7 +330,7 @@ class Characteristics extends React.Component {
                 value="What I expected"
                 onChange={this.onChangeQualityValue}
                 name="quality"
-                style={{ marginLeft: "50px" }}
+                style={{ marginLeft: "45px" }}
               />{" "}
               <br />
               What I expected
@@ -341,7 +341,7 @@ class Characteristics extends React.Component {
                 value="Pretty great"
                 onChange={this.onChangeQualityValue}
                 name="Pretty great"
-                style={{ marginLeft: "50px" }}
+                style={{ marginLeft: "30px" }}
               />{" "}
               <br />
               Comfortable
@@ -380,7 +380,7 @@ class Characteristics extends React.Component {
                 value="Runs short"
                 onChange={this.onChangeLengthValue}
                 name="length"
-                style={{ marginLeft: "50px" }}
+                style={{ marginLeft: "25px" }}
               />{" "}
               <br />
               Runs short
@@ -402,7 +402,7 @@ class Characteristics extends React.Component {
                 value="Perfect"
                 onChange={this.onChangeLengthValue}
                 name="length"
-                style={{ marginLeft: "50px" }}
+                style={{ marginLeft: "15px" }}
               />{" "}
               <br />
               Perfect

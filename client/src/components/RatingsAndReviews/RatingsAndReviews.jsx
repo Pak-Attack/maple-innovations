@@ -2,8 +2,6 @@ import React from "react";
 import axios from "axios";
 import ReviewStats from "./ReviewStats/ReviewStats.jsx";
 import ReviewList from "./ReviewList/ReviewList.jsx";
-import sample_data from "./sample_ratings_data.js";
-import meta_data from "./meta_data.js";
 import ReviewModal from "./ReviewList/ReviewModal/ReviewModal.jsx";
 
 class RatingsAndReviews extends React.Component {
@@ -83,7 +81,8 @@ class RatingsAndReviews extends React.Component {
   helpfulButtonClickHandler(review_id, product_id) {
     axios
       .put(`/reviews/${review_id}/helpful`)
-      .then(() => this.getReviewData(product_id));
+      .then(() => this.getReviewData(product_id, this.state.sortMethod))
+      .catch((err) => console.error(err));
   }
 
   filterByRating(rating) {
@@ -124,7 +123,7 @@ class RatingsAndReviews extends React.Component {
     axios
       .post("/reviews", data)
       .then((results) => {
-        this.getReviewData(this.state.currentProductID);
+        this.getReviewData(this.state.currentProductID, this.state.sortMethod);
       })
       .catch((err) => console.err(err));
   }
