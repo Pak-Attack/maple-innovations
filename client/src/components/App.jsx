@@ -13,6 +13,7 @@ class App extends React.Component {
       currentProductRating: null,
       allProducts: [],
       totalRatings: 0,
+      // currentProductID: 37316,
       currentProductID: 37358,
     };
     this.handleChangeOfProductID = this.handleChangeOfProductID.bind(this);

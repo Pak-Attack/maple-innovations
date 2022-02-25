@@ -694,36 +694,42 @@ html {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  border-bottom: 2px solid gray;
 }
 
 .comfort-characteristics {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  border-bottom: 2px solid gray;
 }
 
 .quality-characteristics {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  border-bottom: 2px solid gray;
 }
 
 .fit-characteristics {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  border-bottom: 2px solid gray;
 }
 
 .length-characteristics {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  border-bottom: 2px solid gray;
 }
 
 .width-characteristics {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  border-bottom: 2px solid gray;
 }
 
 .review-modal {
@@ -786,51 +792,6 @@ html {
   font-size: 1.4rem;
   border-radius: 0%;
 }
-
-
-.size-characteristics {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  border-bottom: 2px solid gray;
-}
-
-.width-characteristics {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  border-bottom: 2px solid gray;
-}
-
-.comfort-characteristics {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  border-bottom: 2px solid gray;
-}
-
-.quality-characteristics {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  border-bottom: 2px solid gray;
-}
-
-.length-characteristics {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  border-bottom: 2px solid gray;
-}
-
-.fit-characteristics {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  border-bottom: 2px solid gray;
-}
-
-
 
 /*Katie's CSS*/
 

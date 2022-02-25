@@ -152,6 +152,8 @@ class RatingsAndReviews extends React.Component {
                     ? this.state.filteredReviews
                     : this.state.product.results
                 }
+                getReviewData={this.getReviewData}
+                sortMethod={this.state.sortMethod}
                 updateSortMethod={this.updateSortMethod}
                 ratings={this.state.ratings}
                 submitNewReview={this.submitNewReview}

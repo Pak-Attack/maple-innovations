@@ -9,7 +9,6 @@ class ReviewListEntry extends React.Component {
     this.state = {
       showMoreReview: false,
       productRating: this.props.productRating,
-      helpfulnessButtonClicked: false,
       review: this.props.review,
     };
 
@@ -31,23 +30,20 @@ class ReviewListEntry extends React.Component {
     });
   }
 
-  helpfulButtonClickHandlerSplit(a, b) {
-    if (!this.state.helpfulnessButtonClicked) {
-      this.setState({
-        helpfulnessButtonClicked: true,
-      });
-      this.props.helpfulButtonClickHandler(a, b);
+  helpfulButtonClickHandlerSplit(review_id, product_id) {
+    if (!this.props.helpfulnessButtonClicked.includes(review_id)) {
+      this.props.helpfulnessButtonClickedListAdder(review_id);
+      this.props.helpfulButtonClickHandler(review_id, product_id);
     }
   }
 
   report(id) {
-    console.log(this.state.review);
     axios
       .put(`/reviews/${id}/report`)
       .then(() => {
-        alert("Review flagged for inspection by our staff.");
+        this.props.getReviewData(this.props.product_id, this.props.sortMethod)
       })
-      .catch(err => console.error(err));
+      .catch((err) => console.error(err));
   }
 
   render() {
