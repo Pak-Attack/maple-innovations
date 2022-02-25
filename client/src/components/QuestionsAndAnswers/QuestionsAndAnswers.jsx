@@ -8,21 +8,20 @@ import config from "../../../../config.js"
 import styled from "styled-components";
 
 const BasicStyle = styled.div`
-  color: #878787;
+  color: #3a3b3c;
   font-family: Arial, Helvetica, sans-serif;
   background-color: transparent;
-  color: #3a3b3c;
   margin: 0 1em;
   padding: 0.25em 1em;
 `;
 
 const Header = styled.p`
   padding-top: 3em;
-  font-size: small;
+  font-size: 2rem;
 `;
 
 const QuestionsAndAnswers = (props) => {
-  const [productID, setProductID] = useState(props.currentProductID); //props.currentProduct.id
+  const [productID, setProductID] = useState(37316); //props.currentProductID
   const [page, setPage] = useState(1);
   const [pageCount, setPageCount] = useState(5);
   const [questionData, setQuestionData] = useState();
@@ -45,7 +44,7 @@ const QuestionsAndAnswers = (props) => {
     var userSearch = e.target.value;
     var results = [];
 
-    if (userSearch.length >= 3) {
+    if (userSearch.length >= 1) {
       setHighlightedString(userSearch);
       console.log('highlightedString', highlightedString)
       questionData.map((questionObj) => {
@@ -70,7 +69,7 @@ const QuestionsAndAnswers = (props) => {
 
     return (
       <BasicStyle>
-        <Header> Questions and Answers </Header>
+        <Header> Questions & Answers </Header>
         <div className="questions-and-answers-container">
           <div className="questions-and-answers-components-container">
             <SearchQuestions onSearchKeystroke={onSearchKeystroke}/>
