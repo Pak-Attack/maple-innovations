@@ -610,7 +610,7 @@ html {
 .ratings-and-reviews-container {
   display: flex;
   flex-direction: row;
-  margin-left: 10%;
+  margin-left: 4%;
 }
 
 .ratings-and-reviews-component-containers {
