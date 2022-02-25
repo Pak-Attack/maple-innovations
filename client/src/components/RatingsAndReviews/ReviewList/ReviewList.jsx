@@ -9,10 +9,12 @@ class ReviewList extends React.Component {
       reviewCount: 2,
       showModal: false,
       reviewEntries: this.props.product,
+      helpfulnessButtonClicked: []
     };
 
     this.addMoreReviews = this.addMoreReviews.bind(this);
     this.showModalState = this.showModalState.bind(this);
+    this.helpfulnessButtonClickedListAdder = this.helpfulnessButtonClickedListAdder.bind(this);
   }
 
   componentDidUpdate() {
@@ -31,6 +33,14 @@ class ReviewList extends React.Component {
     this.setState({
       showModal: !this.state.showModal,
     });
+  }
+
+  helpfulnessButtonClickedListAdder(id) {
+    let helpfulnessButtonClicked = this.state.helpfulnessButtonClicked;
+    helpfulnessButtonClicked.push(id)
+    this.setState({
+      helpfulnessButtonClicked: helpfulnessButtonClicked
+    })
   }
 
   render() {
@@ -55,11 +65,14 @@ class ReviewList extends React.Component {
             <ReviewListEntry
               review={review}
               key={key}
+              getReviewData={this.props.getReviewData}
+              sortMethod={this.props.sortMethod}
               product_id={this.props.product_id}
               productRating={this.props.productRating}
               helpfulButtonClickHandler={this.props.helpfulButtonClickHandler}
-              notHelpfulButtonClickHandler={
-                this.props.notHelpfulButtonClickHandler
+              helpfulnessButtonClicked={this.state.helpfulnessButtonClicked}
+              helpfulnessButtonClickedListAdder={
+                this.helpfulnessButtonClickedListAdder
               }
             />
           ))}

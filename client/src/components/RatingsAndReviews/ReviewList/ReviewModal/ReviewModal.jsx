@@ -18,6 +18,14 @@ class ReviewModal extends React.Component {
       reviewBodyValue: "",
       usernameValue: "",
       emailValue: "",
+      urlCount: 0,
+      urlValue1: "",
+      urlValue2: "",
+      urlValue3: "",
+      urlValue4: "",
+      urlValue5: "",
+
+      showUrlUpload: false,
       reviewSummaryValueValid: false,
       reviewBodyValueValid: false,
       usernameValueValid: false,
@@ -26,13 +34,25 @@ class ReviewModal extends React.Component {
     };
 
     this.handleReviewFormSubmit = this.handleReviewFormSubmit.bind(this);
+    this.selectStarRating = this.selectStarRating.bind(this);
     this.handleReviewSummaryValueChange =
       this.handleReviewSummaryValueChange.bind(this);
     this.handleReviewBodyValueChange =
       this.handleReviewBodyValueChange.bind(this);
+    this.handlePicture1URLValueChange =
+      this.handlePicture1URLValueChange.bind(this);
+    this.handlePicture2URLValueChange =
+      this.handlePicture2URLValueChange.bind(this);
+    this.handlePicture3URLValueChange =
+      this.handlePicture3URLValueChange.bind(this);
+    this.handlePicture4URLValueChange =
+      this.handlePicture4URLValueChange.bind(this);
+    this.handlePicture5URLValueChange =
+      this.handlePicture5URLValueChange.bind(this);
     this.handleUsernameValueChange = this.handleUsernameValueChange.bind(this);
     this.handleEmailValueChange = this.handleEmailValueChange.bind(this);
-    this.selectStarRating = this.selectStarRating.bind(this);
+    this.showUrlUploadToggle = this.showUrlUploadToggle.bind(this);
+    this.showOneMoreUrlBox = this.showOneMoreUrlBox.bind(this);
 
     this.onChangeRecommendation = this.onChangeRecommendation.bind(this);
     this.onChangeSize = this.onChangeSize.bind(this);
@@ -89,6 +109,15 @@ class ReviewModal extends React.Component {
       email: this.state.emailValue,
     };
 
+    const urlStates = [
+      this.state.urlValue1,
+      this.state.urlValue2,
+      this.state.urlValue3,
+      this.state.urlValue4,
+      this.state.urlValue5,
+    ];
+    review.photos = urlStates.filter((url) => url.length > 0);
+
     this.props.submitNewReview(review);
 
     this.props.showModalState();
@@ -106,6 +135,13 @@ class ReviewModal extends React.Component {
       reviewBodyValue: "",
       usernameValue: "",
       emailValue: "",
+      urlCount: 0,
+      urlValue1: "",
+      urlValue2: "",
+      urlValue3: "",
+      urlValue4: "",
+      urlValue5: "",
+      showUrlUpload: false,
       reviewSummaryValueValid: false,
       reviewBodyValueValid: false,
       usernameValueValid: false,
@@ -136,6 +172,50 @@ class ReviewModal extends React.Component {
   handleEmailValueChange() {
     this.setState({
       emailValue: event.target.value,
+    });
+  }
+
+  handlePicture1URLValueChange() {
+    this.setState({
+      urlValue1: event.target.value,
+    });
+  }
+
+  handlePicture2URLValueChange() {
+    this.setState({
+      urlValue2: event.target.value,
+    });
+  }
+
+  handlePicture3URLValueChange() {
+    this.setState({
+      urlValue3: event.target.value,
+    });
+  }
+
+  handlePicture4URLValueChange() {
+    this.setState({
+      urlValue4: event.target.value,
+    });
+  }
+
+  handlePicture5URLValueChange() {
+    this.setState({
+      urlValue5: event.target.value,
+    });
+  }
+
+  showUrlUploadToggle() {
+    this.setState({
+      showUrlUpload: true,
+    });
+  }
+
+  showOneMoreUrlBox() {
+    event.preventDefault()
+    let count = this.state.urlCount + 1;
+    this.setState({
+      urlCount: count,
     });
   }
 
@@ -186,7 +266,8 @@ class ReviewModal extends React.Component {
       <div className="review-modal">
         <div
           className="review-modal-content"
-          onClick={(e) => e.stopPropagation()}
+          // onClick={(e) => e.stopPropagation()}
+          style={{ maxHeight: "700px", overflowY: "scroll" }}
         >
           <div className="review-modal-header">
             <h2 className="review-modal-title">Write Your Review</h2>
@@ -242,6 +323,7 @@ class ReviewModal extends React.Component {
                   type="text"
                   placeholder="Example: Best purchase ever!"
                   maxLength="60"
+                  style={{ width: "300px" }}
                   required={true}
                   value={this.state.reviewSummaryValue}
                   onChange={this.handleReviewSummaryValueChange}
@@ -257,7 +339,7 @@ class ReviewModal extends React.Component {
                   placeholder="Why did you like the product or not?"
                   maxLength="1000"
                   minLength="50"
-                  width="100px"
+                  style={{ width: "300px" }}
                   required={true}
                   value={this.state.reviewBodyValue}
                   onChange={this.handleReviewBodyValueChange}
@@ -273,12 +355,7 @@ class ReviewModal extends React.Component {
                 )}
               </label>
               <br />
-              {/* <label>
-                Upload your photos:
-                <button>Click to upload</button>
-              </label>
-              <br />
-              <br /> */}
+
               <div>
                 User Info
                 <br />
@@ -289,6 +366,7 @@ class ReviewModal extends React.Component {
                     type="text"
                     placeholder="Example: jackson11!"
                     maxLength="60"
+                    style={{ width: "300px" }}
                     required={true}
                     value={this.state.usernameValue}
                     onChange={this.handleUsernameValueChange}
@@ -306,6 +384,7 @@ class ReviewModal extends React.Component {
                     type="email"
                     placeholder="Example: jackson11@email.com"
                     maxLength="60"
+                    style={{ width: "300px" }}
                     required={true}
                     value={this.state.emailValue}
                     onChange={this.handleEmailValueChange}
@@ -314,6 +393,131 @@ class ReviewModal extends React.Component {
                   For authentication reasons, you will not be emailed
                 </label>
               </div>
+              <br />
+              <br />
+
+              {this.state.showUrlUpload ? null : (
+                <button onClick={this.showUrlUploadToggle}>
+                  Upload Photo URL
+                </button>
+              )}
+
+              {this.state.showUrlUpload && this.state.urlCount >= 0 ? (
+                <div>Photo URL Uploads | Limit: 5</div>
+              ) : null}
+
+              {this.state.showUrlUpload && this.state.urlCount < 4 ? (
+                <button onClick={this.showOneMoreUrlBox}>
+                  Add Another Photo URL
+                </button>
+              ) : null}
+
+              {this.state.showUrlUpload && this.state.urlCount >= 0 ? (
+                <div>
+                  <div>
+                    <label>
+                      <br />
+                      <input
+                        type="text"
+                        placeholder="Only URLs for hosted images are valid"
+                        maxLength="1000"
+                        style={{width: "300px"}}
+                        required={false}
+                        value={this.state.urlValue1}
+                        onChange={this.handlePicture1URLValueChange}
+                      />
+                      <br />
+                      <div>Please enter a valid URL for a hosted photo</div>
+                    </label>
+                    <br />
+                  </div>
+                </div>
+              ) : null}
+
+              {this.state.showUrlUpload && this.state.urlCount >= 1 ? (
+                <div>
+                  <div>
+                    <label>
+                      <input
+                        type="text"
+                        placeholder="Only URLs for hosted images are valid"
+                        maxLength="1000"
+                        style={{width: "300px"}}
+                        required={false}
+                        value={this.state.urlValue2}
+                        onChange={this.handlePicture2URLValueChange}
+                      />
+                      <br />
+                      <div>Please enter a valid URL for a hosted photo</div>
+                    </label>
+                    <br />
+                  </div>
+                </div>
+              ) : null}
+
+              {this.state.showUrlUpload && this.state.urlCount >= 2 ? (
+                <div>
+                  <div>
+                    <label>
+                      <input
+                        type="text"
+                        placeholder="Only URLs for hosted images are valid"
+                        maxLength="1000"
+                        style={{width: "300px"}}
+                        required={false}
+                        value={this.state.urlValue3}
+                        onChange={this.handlePicture3URLValueChange}
+                      />
+                      <br />
+                      <div>Please enter a valid URL for a hosted photo</div>
+                    </label>
+                    <br />
+                  </div>
+                </div>
+              ) : null}
+
+              {this.state.showUrlUpload && this.state.urlCount >= 3 ? (
+                <div>
+                  <div>
+                    <label>
+                      <input
+                        type="text"
+                        placeholder="Only URLs for hosted images are valid"
+                        maxLength="1000"
+                        style={{width: "300px"}}
+                        required={false}
+                        value={this.state.urlValue4}
+                        onChange={this.handlePicture4URLValueChange}
+                      />
+                      <br />
+                      <div>Please enter a valid URL for a hosted photo</div>
+                    </label>
+                    <br />
+                  </div>
+                </div>
+              ) : null}
+
+              {this.state.showUrlUpload && this.state.urlCount >= 4 ? (
+                <div>
+                  <div>
+                    <label>
+                      <input
+                        type="text"
+                        placeholder="Only URLs for hosted images are valid"
+                        maxLength="1000"
+                        style={{width: "300px"}}
+                        required={false}
+                        value={this.state.urlValue5}
+                        onChange={this.handlePicture5URLValueChange}
+                      />
+                      <br />
+                      <div>Please enter a valid URL for a hosted photo</div>
+                    </label>
+                    <br />
+                  </div>
+                </div>
+              ) : null}
+
               <br />
               <br />
               <input type="submit" value="Submit" />
