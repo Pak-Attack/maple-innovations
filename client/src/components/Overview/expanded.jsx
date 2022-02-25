@@ -64,7 +64,7 @@ const Expanded = function (props) {
 
   //determines if left button should be visibile
   if (props.currentMainImageIndex > 0) {
-    leftButton = <div className="left-button" onClick={() => onClickHandler('left', currentStyleImages)}><ArrowLeft size={24} /></div>
+    leftButton = <div className="left-button left-button-expanded" onClick={() => onClickHandler('left', currentStyleImages)}><ArrowLeft size={24} /></div>
   } else {
     <div className="left-button" style={{ visibility: "hidden" }}><ArrowLeft size={24} /></div>
   }
