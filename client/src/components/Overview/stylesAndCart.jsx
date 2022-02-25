@@ -12,6 +12,7 @@ const StylesAndCart = function (props) {
   const selectedQuantity = props.selectedQuantity;
   const currentMainImageIndex = props.currentMainImageIndex;
   const handleAddToCart = props.handleAddToCart;
+  const totalRatings = props.totalRatings;
 
   const fillRating = currentProductRating * 20;
   const unfillRating = (currentProductRating * 20) - fillRating;
@@ -83,11 +84,6 @@ const StylesAndCart = function (props) {
     selectedSizeSKU
       ? sizeDefault = <option defaultValue disabled={true}>Select Size</option>
       : sizeDefault = <option defaultValue>Select Size</option>
-    // if (selectedSizeSKU) {
-    //   sizeDefault = <option defaultValue disabled={true}>Select Size</option>
-    // } else {
-    //   sizeDefault = <option defaultValue>Select Size</option>
-    // }
   } else {
     sizeDefault = <option defaultValue>Out of Stock</option>;
   }
@@ -114,25 +110,28 @@ const StylesAndCart = function (props) {
     : <div className="current-product-pricing"><span className="crossed-off-price">${currentStyleDetailedInfo?.original_price || 0.00}</span>${currentStyleDetailedInfo?.sale_price || 0.00}</div>
 
   //create placeholder for reviews section that conditionally renders only if there are reviews
+  let starRatings = !totalRatings
+    ? <div className="empty-styles-review-container"></div>
+    : <div className="styles-review-container">
+      <div className="stars" style={{ backgroundImage: `linear-gradient(90deg, #3A3B3C ${fillRating}%, white ${unfillRating}%)` }}>
+        {/* ☆☆☆☆☆ */}
+        ★★★★★
+      </div>
+      <div className="stars-overlay">
+        ☆☆☆☆☆
+        {/* ★★★★★ */}
+      </div>
+      <a className="reviews-link" href="#reviews-section-link">Read All Reviews ({props.totalRatings})</a>
+    </div>
 
   //determines if add to cart button should be rendered
   let addToBag = selectedSizeSKU
     ? <button className="addtobag-button" onClick={handleAddToCart}>Add to Bag </button>
-    : <button className="addtobag-button" style={{visibility:"hidden"}}>Add to Bag </button>
+    : <button className="addtobag-button" style={{ visibility: "hidden" }}>Add to Bag </button>
 
   return (
     <div className="styles-main-container">
-      <div className="styles-review-container">
-        <div className="stars" style={{ backgroundImage: `linear-gradient(90deg, black ${fillRating}%, white ${unfillRating}%)` }}>
-          {/* ☆☆☆☆☆ */}
-          ★★★★★
-        </div>
-        <div className="stars-overlay">
-          ☆☆☆☆☆
-          {/* ★★★★★ */}
-        </div>
-        <a className="reviews-link" href="">Read All Reviews</a>
-      </div>
+      {starRatings}
       <div className="styles-title-container">
         <h4 className="category-name">{currentProduct.category}</h4>
         <h2 className="current-product-name">{currentProduct.name}</h2>
