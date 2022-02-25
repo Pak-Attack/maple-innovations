@@ -47,16 +47,17 @@ class ReviewListEntry extends React.Component {
   }
 
   render() {
-    const fillRating = this.state.review.rating * 20;
+    let fillRating = this.props.review.rating * 20;
     let unfillRating = 100 - fillRating;
 
-    if (this.state.review.rating >= 3) {
+    if (this.props.review.rating >= 3) {
       unfillRating = 100 - fillRating;
-    } else if (this.state.review.rating === 2) {
+    } else if (this.props.review.rating === 2) {
       unfillRating = 100 - fillRating - 40;
     } else {
-      unfillRating = 100 - fillRating - 60;
+      unfillRating = 100 - fillRating - 80;
     }
+    console.log(this.props)
 
     return (
       <div>
@@ -71,7 +72,7 @@ class ReviewListEntry extends React.Component {
                   }}
                 >
                   ★★★★★
-                </div>
+                  </div>
                 <div className="review-list-stars-overlay">☆☆☆☆☆</div>
               </div>
               <div className="ratings-and-reviews-entry-box-user-and-date">
