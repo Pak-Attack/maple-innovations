@@ -22,7 +22,7 @@ const QuestionList = ({ questionData, highlightedString }) => {
 
   return (
     <div>
-      <div>
+      <div style={{ maxHeight: "220px", overflowY: "scroll" }}>
         {questionData
           .sort((a, b) => {
             return b.question_helpfulness - a.question_helpfulness;
@@ -41,12 +41,13 @@ const QuestionList = ({ questionData, highlightedString }) => {
             </span>
           </button>
           :
-          <button className="list-button minimize" onClick={() => {setQuestionCount(1)}}>
+          <button className="list-button minimize" onClick={() => {setQuestionCount(2)}}>
             <span>
               Minimize Questions
             </span>
           </button>
         }
+
           <button className="list-button add" onClick={() => setShow(true)}>
             <span>
               Add A Question

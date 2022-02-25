@@ -49,6 +49,10 @@ const ClickableSpan= styled.span`
   text-decoration-line: underline;
   font-size: 7px;
   cursor: pointer;
+  &:hover {
+    transition: 0.3s;
+    color: #bbb;
+  }
 `;
 
 const ClickableDiv= styled.div`
@@ -56,11 +60,18 @@ const ClickableDiv= styled.div`
   text-decoration-line: underline;
   font-size: 7px;
   cursor: pointer;
+  &:hover {
+    transition: 0.3s;
+    color: #bbb;
+  }
 `;
 
 const QuestionListEntry = ({questionObj, highlightedString}) => {
   const [answerCount, setAnswerCount] = useState(2)
   const [show, setShow] = useState(false);
+
+  // useEffect(() => {
+  // }, [answerCount]);
 
   if (questionObj === undefined) {
     return (<div></div>)
@@ -75,7 +86,7 @@ const QuestionListEntry = ({questionObj, highlightedString}) => {
         /> */}
        <span>
         <BlockHeader>Q: {questionObj.question_body}
-           <StyledSpan>  Helpful?  <ClickableSpan>Yes</ClickableSpan>  |  <ClickableSpan onClick={() => setShow(true)}>Add Answer</ClickableSpan>
+           <StyledSpan>  Helpful?  <ClickableSpan>Yes</ClickableSpan> ({questionObj.question_helpfulness}) |  <ClickableSpan onClick={() => setShow(true)}>Add Answer</ClickableSpan>
            <AddAnswerModal show={show} onClose={() => setShow(false)}/>
            </StyledSpan>
         </BlockHeader>
@@ -88,16 +99,24 @@ const QuestionListEntry = ({questionObj, highlightedString}) => {
                 <h5> A: </h5> {answerObj.body}
               </span>
               <Paragraph>
-                by {answerObj.answerer_name}  |  Helpful? <ClickableSpan>Yes</ClickableSpan>  |  <ClickableSpan>Report</ClickableSpan>
+                by {answerObj.answerer_name}, {new Date(answerObj.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}  |  Helpful? <ClickableSpan>Yes</ClickableSpan> ({answerObj.helpfulness}) |  <ClickableSpan>Report</ClickableSpan>
               </Paragraph>
             </AnswerBlock>
           ))}
       </span>
-        {(Object.values(questionObj.answers).length > 2)
-        ?
-        <ClickableDiv onClick={() => {setAnswerCount(questionObj.answers.length)}}>More answers</ClickableDiv>
-        :
-        null}
+      {
+      (Object.values(questionObj.answers).length <= 2)
+          ?
+          null
+          :
+            ((Object.values(questionObj.answers).length === answerCount)
+            ?
+            <ClickableDiv onClick={() => {setAnswerCount(2)}}>Collapse answers</ClickableDiv>
+            :
+            <ClickableDiv onClick={() => {setAnswerCount(Object.values(questionObj.answers).length)}}>See more answers</ClickableDiv>
+            )
+        }
+
      </MainDiv>
     )
   }
@@ -109,8 +128,3 @@ export default QuestionListEntry;
 TODO :
 - add highlight functionality here (use highlightedString prop as text to highlight within this div)
 */
-
-
-
-
-

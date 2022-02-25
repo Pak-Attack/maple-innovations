@@ -10,6 +10,9 @@ const SearchBox = styled.input`
   cursor: pointer;
   margin: 5px 1px 3px 1px;
   flex-grow: 1;
+  &:hover {
+    outline: 1.5px solid #3a3b3c;
+  }
 `;
 
 const SearchQuestions = (props) => {
