@@ -693,6 +693,84 @@ html {
   justify-content: space-around;
 }
 
+.review-modal {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.review-modal-content {
+  width: 600px;
+  background-color: #fff;
+}
+
+.review-modal-header {
+  padding: 10px;
+}
+
+.review-modal-title {
+  margin: 0;
+}
+
+.review-modal-body {
+  padding: 10px;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  font-size: 1.4rem;
+
+}
+
+.review-modal-footer {
+  padding: 10px;
+}
+
+.review-modal-close-button {
+
+}
+
+.review-stats-stars {
+  margin-left: 8px;
+  margin-top: 4px;
+  font-size: 1.4rem;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.review-stats-stars-overlay {
+  margin-left: 78px;
+  margin-top: 4px;
+  position: absolute;
+  font-size: 1.4rem;
+}
+
+.review-sort-select {
+  width: 14%;
+  margin-right: 0.5rem;
+  height: 2rem;
+  font-size: 1.4rem;
+  border-radius: 0%;
+}
+
+
+/*Katie's CSS*/
+
+/* qa modal */
+
+.qa-modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: transparent;
+}
 .review-buttons {
   width: 100px;
   margin-right: 0.5rem;
@@ -720,13 +798,16 @@ html {
   justify-content: center;
 }
 
-.review-modal-content {
-  width: 600px;
-  background-color: #fff;
+.qa-modal-content {
+  width: 500px;
+  background-color: #f5f5f5;
+  outline: 1px solid #444242;
+  box-shadow: 4px 4px 70px #000000;
 }
 
-.review-modal-header {
+.qa-modal-header, .qa-modal-footer {
   padding: 10px;
+  font-size: x-small;
 }
 
 .size-characteristics {
@@ -771,22 +852,97 @@ html {
   border-bottom: 2px solid gray;
 }
 
-.review-modal-title {
+.qa-modal-title, .qa-modal-subtitle {
+
   margin: 0;
 }
 
-.review-modal-body {
+.qa-modal-body {
+  font-size: x-small;
   padding: 10px;
   border-top: 1px solid #eee;
   border-bottom: 1px solid #eee;
   font-size: 1.4rem;
 }
 
-.review-modal-footer {
-  padding: 10px;
+.qa-modal-button {
+  font-size: x-small;
+  margin: 5px 2px 5px 2px;
+}
+  
+.review-modal-content {
+  width: 600px;
+  background-color: #fff;
 }
 
-.review-modal-close-button {
+
+/* search button */
+
+.search-button {
+  border-radius: 2px;
+  background-color: white;
+  border: none;
+  outline: 1px solid #3a3b3c;
+  color: #3a3b3c;
+  text-align: center;
+  font-size: small;
+  padding: 3px 4px 4px 4px;
+  width: 75px;
+  transition: all 0.4s;
+  cursor: pointer;
+  margin: 3px 3px 0px 4px;
+}
+
+.search-button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.search-button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.search-button:hover span {
+  padding-right: 25px;
+}
+
+.search-button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+/* list buttons */
+
+.list-button {
+  width: 130px;
+  border-radius: 1px;
+  outline: 1px solid #3a3b3c;
+  background-color: white;
+  border: none;
+  outline: 1px solid #3a3b3c;
+  color: #3a3b3c;
+  text-align: center;
+  font-size: x-small;
+  margin: 0px 2px 0px 4px;
+  padding: 10px 5px 10px 5px;
+  width: 130px;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+
+.list-button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.4s;
+
 }
 
 .review-stats-stars {
@@ -798,13 +954,32 @@ html {
   -webkit-text-fill-color: transparent;
 }
 
-.review-stats-stars-overlay {
-  margin-left: 78px;
-  margin-top: 4px;
+.minimize span:after{
+  content: '\002D';
   position: absolute;
-  font-size: 1.4rem;
+  opacity: 0;
+  top: 0;
+  right: -10px;
+  transition: 0.4s;
 }
 
+.add span:after{
+  content: '\002B';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -10px;
+  transition: 0.4s;
+}
+
+.list-button:hover span{
+  padding-right: 15px;
+}
+
+.list-button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
 .review-sort-select {
   width: 80px;
   margin-right: 0.5rem;

@@ -154,6 +154,7 @@ app.put("/reviews/:review_id/report", (req, res) => {
     });
 });
 
+
 //use app.route with requests to the same path
 app.get("/qa/questions", function (req, res) {
   // console.log('req.query', req.query);
@@ -170,6 +171,22 @@ app.get("/qa/questions", function (req, res) {
       res.status(200).send(questions.data);
     });
 });
+// app.get('/qa/questions/:question_id/answers', function(req, res) {
+//   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions/${req.params.question_id}/answers?page=${req.query.page}&count=${req.query.count}`, {
+//     headers: {
+//       Authorization: config.Authorization,
+//     }
+//   })
+//   .then(answers => {
+//     console.log('MASSIVE SUCCESS!!!')
+//     res.status(200).send(answers.data);
+//   })
+
+// });
+
+app.post('/qa/questions')
+
+app.post('/qa/questions/:questions_id/answers')
 
 app.post("/qa/questions");
 
