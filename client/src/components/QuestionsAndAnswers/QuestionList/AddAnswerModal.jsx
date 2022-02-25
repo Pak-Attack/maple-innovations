@@ -63,7 +63,3 @@ const AddAnswerModal = (props) => {
 
 export default AddAnswerModal;
 
-/*
-TODO:
-- add submit functionality
-*/

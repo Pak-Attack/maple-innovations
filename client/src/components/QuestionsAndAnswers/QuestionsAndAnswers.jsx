@@ -3,21 +3,20 @@ import axios from 'axios';
 import SearchQuestions from "./SearchQuestions";
 import QuestionList from "./QuestionList/QuestionList";
 import QuestionListEntry from "./QuestionList/QuestionListEntry";
-import dummyQuestionObj from "./dummyData.js"
 import config from "../../../../config.js"
 import styled from "styled-components";
 
 const BasicStyle = styled.div`
   color: #3a3b3c;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: sans-serif;
   background-color: transparent;
-  margin: 0 1em;
+  margin: 40px;
   padding: 0.25em 1em;
 `;
 
 const Header = styled.p`
   padding-top: 3em;
-  font-size: 2rem;
+  font-size: 3rem;
 `;
 
 const QuestionsAndAnswers = (props) => {
@@ -31,11 +30,9 @@ const QuestionsAndAnswers = (props) => {
   useEffect(() => {
     axios.get(`/qa/questions?product_id=${productID}&page=${page}&count=${pageCount}`)
     .then(results => {
-      // console.log('results.data.results', results.data.results)
       setQuestionData(results.data.results);
       setFilteredData(results.data.results)
     })
-    //answers api req was here
   }, [productID]);
 
 
@@ -44,9 +41,8 @@ const QuestionsAndAnswers = (props) => {
     var userSearch = e.target.value;
     var results = [];
 
-    if (userSearch.length >= 1) {
+    if (userSearch.length >= 3) {
       setHighlightedString(userSearch);
-      console.log('highlightedString', highlightedString)
       questionData.map((questionObj) => {
         let lowercaseQuestion = questionObj.question_body.toLowerCase();
         if (lowercaseQuestion.includes(userSearch)) {
@@ -63,7 +59,6 @@ const QuestionsAndAnswers = (props) => {
     } else {
       setFilteredData(questionData);
       setHighlightedString('')
-      //e.target.innerHTML
     }
   };
 
@@ -81,7 +76,3 @@ const QuestionsAndAnswers = (props) => {
 }
 
 export default QuestionsAndAnswers;
-
-/*
-TODO :
-*/
