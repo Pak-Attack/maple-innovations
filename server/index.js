@@ -153,9 +153,33 @@ app.put('/qa/answers/:answer_id/helpful')
 
 app.put('/qa/answers/:answer_id/report')
 
-app.get('/cart')
+app.get('/cart', function(req, res) {
+  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/cart', {
+    headers: {
+      Authorization: config.Authorization
+    }
+  })
+    .then(results => {
+      res.status(200).send(results.data);
+    })
+    .catch(results => {
+      res.status(404)
+    })
+})
 
-app.post('/cart')
+app.post('/cart', function (req, res) {
+  axios.post(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/cart/`, {sku_id: req.query.sku_id}, {
+    headers: {
+      Authorization: config.Authorization
+    }
+  })
+    .then(results => {
+      res.sendStatus(201);
+    })
+    .catch(err => {
+      res.sendStatus(404)
+    })
+})
 
 app.post('/interactions')
 

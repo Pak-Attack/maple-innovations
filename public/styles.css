@@ -357,6 +357,10 @@ display: none;
   border-radius: 50%;
 }
 
+.left-button-expanded {
+  left: 4rem;
+}
+
 .left-button svg {
   margin-bottom: -2px;
 }
@@ -555,6 +559,12 @@ display: none;
   border-radius: 0%;
   background-color: white;
   border: 1px solid black;
+}
+
+.addtobag-button:hover {
+  background-color: black;
+  color: white;
+  transition: ease-in-out 0.2s;
 }
 
 .share-logos-container {

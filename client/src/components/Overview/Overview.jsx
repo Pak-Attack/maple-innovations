@@ -627,8 +627,7 @@ class Overview extends React.Component {
         this.setState({
           currentProduct: firstResponse.data,
           currentStyles: secondResponse.data,
-          currentStyleId: secondResponse.data.results[0].style_id,
-          // currentMainImage: this.state.currentStyles.results[0].photos[0].url
+          currentStyleId: secondResponse.data.results[0].style_id
         })
       }))
   }
@@ -836,9 +835,20 @@ class Overview extends React.Component {
   }
 
   handleAddToCart() {
-    this.state.selectedSizeSKU && this.state.selectedQuantity
-      ? console.log("added to cart")
-      : console.log("pick a size and quantity")
+    if(this.state.selectedSizeSKU && this.state.selectedQuantity) {
+      axios.post('/cart', null, { params: {
+        sku_id: this.state.selectedSizeSKU
+      }})
+        .then((results)=>{
+          this.setState({
+            selectedSizeSKU: '',
+            selectedQuantity: 0
+          })
+        })
+        .catch((err)=> {
+          console.log('catch: ', err)
+        })
+    }
   }
 
   render() {

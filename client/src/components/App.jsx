@@ -12,7 +12,7 @@ class App extends React.Component {
     this.state = {
       currentProductRating: 3.59,
       allProducts: [],
-      currentProductID: 37358
+      currentProductID: 37314
     }
     this.handleChangeOfProductID = this.handleChangeOfProductID.bind(this);
   }
