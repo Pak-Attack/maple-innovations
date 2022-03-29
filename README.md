@@ -16,8 +16,15 @@
 ![Cart and SearchBar](http://g.recordit.co/eZJPjUCBid.gif)
 
 
-#### Questions & Answers Demo
+#### ❓Questions & Answers Demo
+##### Search functionality filters both questions and answers for a particular product
+<img src="https://user-images.githubusercontent.com/86626323/160524246-49664a30-1cb0-4294-97e3-792de3a24be8.gif" width=100%/>
 
+##### Expand and collapse buttons display all questions and answers on demand, with an infinite scroll 
+<img src="https://user-images.githubusercontent.com/86626323/160621510-7a28ca5d-d096-425b-b5b1-9a564df14484.gif" width=100%/>
+
+##### Users can add questions as well as answers to other users' questions for the displayed product
+<img src="https://user-images.githubusercontent.com/86626323/160526917-695d4938-67d3-4d1e-a16b-45eb41087e08.gif" width=100%/>
 
 
 #### Ratings and Reviews Demo
