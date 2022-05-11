@@ -8,12 +8,12 @@
 #### Overview Gallery Demo
 ##### Photo gallery with carousel, conditionally rendered buttons, enlarged photo gallery with maintained features, and magnifying glass.
 
-![Overview](http://g.recordit.co/1k1Jv1plna.gif)
+![Overview](http://g.recordit.co/aDCe8TGpZ8.gif)
 
 #### Overview Cart and SearchBar Demo
 ##### Clicking on swatch changes product, conditionally rendered sizes, quantities, and add to bag button. Buttons to share on social media. Search bar is able to search for any keyword in the category, description, or name. 
 
-![Cart and SearchBar](http://g.recordit.co/eZJPjUCBid.gif)
+![Cart and SearchBar](http://g.recordit.co/EWl1WzsWna.gif)
 
 
 #### ❓Questions & Answers Demo
