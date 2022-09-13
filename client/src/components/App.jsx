@@ -1,19 +1,19 @@
 import React from "react";
 import axios from "axios";
-import Overview from "./Overview/Overview.jsx";
-import QuestionAndAnswers from "./QuestionsAndAnswers/QuestionsAndAnswers.jsx";
+// import Overview from "./Overview/Overview.jsx";
+// import QuestionAndAnswers from "./QuestionsAndAnswers/QuestionsAndAnswers.jsx";
 import RatingsAndReviews from "./RatingsAndReviews/RatingsAndReviews.jsx";
-import RelatedItemsAndComparison from "./RelatedItemsAndComparison/RelatedItemsAndComparison.jsx";
+// import RelatedItemsAndComparison from "./RelatedItemsAndComparison/RelatedItemsAndComparison.jsx";
 import SearchBar from "./SearchBar/SearchBar.jsx";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentProductRating: null,
+      currentProductRating: 5,
       allProducts: [],
       totalRatings: 0,
-      currentProductID: 37316,
+      currentProductID: 37399,
     };
     this.handleChangeOfProductID = this.handleChangeOfProductID.bind(this);
     this.getCurrentProductRating = this.getCurrentProductRating.bind(this);
@@ -21,21 +21,24 @@ class App extends React.Component {
 
   //loads data necessary for search bar
   componentDidMount() {
-    axios
-      .get("/products")
-      .then((results) => {
-        this.setState({
-          allProducts: results.data,
-        });
-      })
-      .then(this.getCurrentProductRating());
+    // axios
+    //   .get("/products")
+    //   .then((results) => {
+    //     this.setState({
+    //       allProducts: results.data,
+    //     });
+    //   })
+    //   .then(this.getCurrentProductRating());
+
+    this.getCurrentProductRating();
+
   }
 
   //After clicking on search results, this will change the state of the current product id
   handleChangeOfProductID(newID) {
-    this.setState({
-      currentProductID: newID,
-    });
+    // this.setState({
+    //   currentProductID: newID,
+    // });
   }
 
   getCurrentProductRating() {
@@ -86,6 +89,8 @@ class App extends React.Component {
 
   render() {
     const { currentProductRating, allProducts, currentProductID, totalRatings } = this.state;
+    console.log(currentProductID)
+
     return (
       <div>
         <div>
@@ -95,12 +100,12 @@ class App extends React.Component {
           />
         </div>
         <div>
-          <Overview
+          {/* <Overview
             currentProductRating={currentProductRating}
             currentProductID={currentProductID}
             totalRatings={totalRatings}
-          />
-          <QuestionAndAnswers currentProductID={currentProductID} />
+          /> */}
+          {/* <QuestionAndAnswers currentProductID={currentProductID} /> */}
           <RatingsAndReviews
             currentProductRating={currentProductRating}
             currentProductID={currentProductID}

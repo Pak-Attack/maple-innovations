@@ -1,134 +1,127 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import axios from "axios";
 import ReviewStats from "./ReviewStats/ReviewStats.jsx";
 import ReviewList from "./ReviewList/ReviewList.jsx";
 import ReviewModal from "./ReviewList/ReviewModal/ReviewModal.jsx";
 
-class RatingsAndReviews extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      product: false,
-      ratings: false,
-      currentProductID: this.props.currentProductID,
-      productRating: this.props.currentProductRating,
-      filteredReviews: null,
-      sortMethod: "relevant",
-      filterStarsSelected: [],
-    };
+const RatingsAndReviews = (props) => {
+  const [state, setState] = useState({
+    product: false,
+    ratings: false,
+    currentProductID: props.currentProductID,
+    productRating: props.currentProductRating,
+    filteredReviews: null,
+    sortMethod: "relevant",
+    filterStarsSelected: [],
+  })
 
-    this.getReviewData = this.getReviewData.bind(this);
-    this.helpfulButtonClickHandler = this.helpfulButtonClickHandler.bind(this);
-    this.filterByRating = this.filterByRating.bind(this);
-    this.submitNewReview = this.submitNewReview.bind(this);
-    this.updateSortMethod = this.updateSortMethod.bind(this);
-    this.removeAllFilters = this.removeAllFilters.bind(this);
-  }
+  useEffect(() => getReviewData(state.currentProductID, state.sortMethod), [])
 
-  componentDidMount() {
-    this.getReviewData(this.state.currentProductID, this.state.sortMethod);
-  }
-
-  componentDidUpdate() {
-    if (this.props.currentProductID !== this.state.currentProductID) {
-      this.setState({ currentProductID: this.props.currentProductID });
-      this.getReviewData(this.props.currentProductID, this.state.sortMethod);
+  useEffect(() => {
+    if (props.currentProductID !== state.currentProductID) {
+      setState(prev => { return {
+        ...prev,
+        currentProductID: props.currentProductID
+      }})
+      getReviewData(props.currentProductID, state.sortMethod);
     }
+  })
+
+  function updateSortMethod(event) {
+    let sortType = event.target.value
+    setState(prev => { return {
+      ...prev,
+      sortMethod: sortType
+    }})
+    getReviewData(currentProductID, sortType);
   }
 
-  updateSortMethod(event) {
-    this.setState(
-      {
-        sortMethod: event.target.value,
-      },
-      () => {
-        this.getReviewData(this.state.currentProductID, this.state.sortMethod);
-      }
-    );
-  }
-
-  getReviewData(id, sort) {
+  function getReviewData(id, sort) {
     let request = { params: { sort: sort.toLowerCase() } };
     axios
       .get(`/reviews/${id}`, request)
       .then((results) => {
-        if (this.state.filteredReviews) {
-          this.setState({
-            filteredReviews: results.data.results.filter((review) =>
-              this.state.filterStarsSelected.includes(review.rating)
-            ),
-            product: results.data,
-          });
+        // console.log('results', results)
+        if (state.filteredReviews) {
+
+          setState(prev => { return {
+            ...prev,
+            filteredReviews: results.data.filter((review) =>
+            state.filterStarsSelected.includes(review.rating)),
+            product: results.data
+          }})
         } else {
-          this.setState({
-            product: results.data,
-          });
+          // console.log('here')
+
+          setState(prev => { return {
+            ...prev,
+            product: results.data
+          }})
         }
       })
       .then(
         axios
           .get(`/reviews/meta/${id}`)
           .then((results) => {
-            this.setState({
-              ratings: results.data,
-            });
+            // console.log('data2', results.data)
+            setState(prev => { return {
+              ...prev,
+              ratings: results.data
+            }})
           })
           .catch((err) => console.error(err))
       )
       .catch((err) => console.error(err));
   }
 
-  helpfulButtonClickHandler(review_id, product_id) {
+  function helpfulButtonClickHandler(review_id, product_id) {
     axios
       .put(`/reviews/${review_id}/helpful`)
-      .then(() => this.getReviewData(product_id, this.state.sortMethod))
+      .then(() => getReviewData(product_id, state.sortMethod))
       .catch((err) => console.error(err));
   }
 
-  filterByRating(rating) {
-    let filters = this.state.filterStarsSelected;
+  function filterByRating(rating) {
+    let filters = state.filterStarsSelected;
     if (filters.includes(rating)) {
       filters.splice(filters.indexOf(rating), 1);
     } else {
       filters.push(rating);
     }
     if (filters.length === 0) {
-      this.setState({
-        filteredReviews: null,
-      });
+      setState(prev => { return {
+        ...prev,
+        filteredReviews: null
+      }})
     } else {
-      this.setState(
-        {
-          filterStarsSelected: filters,
-        },
-        this.setState({
-          filteredReviews: this.state.product.results.filter((review) =>
-            this.state.filterStarsSelected.includes(review.rating)
-          ),
-        })
-      );
+      setState(prev => { return {
+        ...prev,
+        filteredReviews: state.results.data.filter((review) =>
+        state.filterStarsSelected.includes(review.rating)),
+        filterStarsSelected: state.filters
+      }})
     }
   }
 
-  removeAllFilters() {
-    this.setState({
+  function removeAllFilters() {
+    setState(prev => { return {
+      ...prev,
       filteredReviews: null,
-      filterStarsSelected: [],
-    });
+      filterStarsSelected: []
+    }})
   }
 
-  submitNewReview(form) {
+  function submitNewReview(form) {
     const data = form;
-    data["product_id"] = this.state.currentProductID;
+    data["product_id"] = state.currentProductID;
     axios
       .post("/reviews", data)
       .then((results) => {
-        this.getReviewData(this.state.currentProductID, this.state.sortMethod);
+        getReviewData(state.currentProductID, state.sortMethod);
       })
-      .catch((err) => console.err(err));
+      .catch((err) => console.error(err));
   }
 
-  render() {
     return (
       <div id="reviews-section-link">
         <h1 style={{ marginLeft: "4%", color: '#3A3B3C' }}> Ratings and Reviews </h1>
@@ -136,39 +129,38 @@ class RatingsAndReviews extends React.Component {
         <br />
         <div className="ratings-and-reviews-container">
           <div className="ratings-and-reviews-component-containers">
-            {this.state.product && this.state.ratings ? (
+            {state.product && state.ratings ? (
               <ReviewStats
-                productRating={this.state.productRating}
-                ratings={this.state.ratings}
-                filterByRating={this.filterByRating}
-                removeAllFilters={this.removeAllFilters}
-                filterStarsSelected={this.state.filterStarsSelected}
+                productRating={state.productRating}
+                ratings={state.ratings}
+                filterByRating={filterByRating}
+                removeAllFilters={removeAllFilters}
+                filterStarsSelected={state.filterStarsSelected}
               />
             ) : null}
           </div>
           <div>
-            {this.state.product && this.state.ratings ? (
+            {state.product && state.ratings ? (
               <ReviewList
                 product={
-                  this.state.filteredReviews
-                    ? this.state.filteredReviews
-                    : this.state.product.results
+                  state.filteredReviews
+                    ? state.filteredReviews
+                    : state.product
                 }
-                getReviewData={this.getReviewData}
-                sortMethod={this.state.sortMethod}
-                updateSortMethod={this.updateSortMethod}
-                ratings={this.state.ratings}
-                submitNewReview={this.submitNewReview}
-                product_id={this.state.currentProductID}
-                productRating={this.state.productRating}
-                helpfulButtonClickHandler={this.helpfulButtonClickHandler}
+                getReviewData={getReviewData}
+                sortMethod={state.sortMethod}
+                updateSortMethod={updateSortMethod}
+                ratings={state.ratings}
+                submitNewReview={submitNewReview}
+                product_id={state.currentProductID}
+                productRating={state.productRating}
+                helpfulButtonClickHandler={helpfulButtonClickHandler}
               />
             ) : null}
           </div>
         </div>
       </div>
     );
-  }
 }
 
 export default RatingsAndReviews;

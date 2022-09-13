@@ -2,6 +2,7 @@ import React from "react";
 import Rating from "./Rating.jsx";
 
 const StarRatings = (props) => {
+  // console.log(props)
   const { ratings, productRating, filterByRating } = props;
 
   let oneStarCount = ratings.ratings["1"];

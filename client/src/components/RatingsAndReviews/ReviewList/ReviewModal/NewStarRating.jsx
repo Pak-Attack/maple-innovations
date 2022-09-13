@@ -1,221 +1,225 @@
-import React from "react";
+import React, { useState } from "react";
 
-class NewStarRating extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      rating: 0,
-      starOne: false,
-      starTwo: false,
-      starThree: false,
-      starFour: false,
-      starFive: false,
-      clicked: false,
-      ratingDescription: null,
-    };
+const NewStarRating = (props) => {
+  const [state, setState] = useState({
+    rating: 0,
+    1: false,
+    2: false,
+    3: false,
+    4: false,
+    5: false,
+    clicked: false,
+    numClicked: null,
+    ratingDescription: null,
+  });
 
-    this.clearStars = this.clearStars.bind(this);
-    this.onStarOneMouseEnterChange = this.onStarOneMouseEnterChange.bind(this);
-    this.onStarTwoMouseEnterChange = this.onStarTwoMouseEnterChange.bind(this);
-    this.onStarThreeMouseEnterChange =
-      this.onStarThreeMouseEnterChange.bind(this);
-    this.onStarFourMouseEnterChange =
-      this.onStarFourMouseEnterChange.bind(this);
-    this.onStarFiveMouseEnterChange =
-      this.onStarFiveMouseEnterChange.bind(this);
-
-    this.handleStarOneClick = this.handleStarOneClick.bind(this);
-    this.handleStarTwoClick = this.handleStarTwoClick.bind(this);
-    this.handleStarThreeClick = this.handleStarThreeClick.bind(this);
-    this.handleStarFourClick = this.handleStarFourClick.bind(this);
-    this.handleStarFiveClick = this.handleStarFiveClick.bind(this);
-
-    this.clearStarsAfterClick = this.clearStarsAfterClick.bind(this);
-  }
-
-  clearStars() {
-    if (!this.state.clicked) {
-      this.setState({
-        starOne: false,
-        starTwo: false,
-        starThree: false,
-        starFour: false,
-        starFive: false,
+  function clearStars(num) {
+    if (!state.clicked) {
+      setState((prev) => {
+        return {
+          ...prev,
+          1: false,
+          2: false,
+          3: false,
+          4: false,
+          5: false,
+        };
       });
     }
   }
 
-  clearStarsAfterClick() {
-    this.setState({
-      starOne: false,
-      starTwo: false,
-      starThree: false,
-      starFour: false,
-      starFive: false,
+  function onStarOneMouseEnterChange() {
+    setState((prev) => {
+      return {
+        ...prev,
+        1: true,
+      };
     });
   }
 
-  onStarOneMouseEnterChange() {
-    this.setState({
-      starOne: true,
+  function handleStarOneClick() {
+    clearStars();
+    props.selectStarRating(1);
+    setState((prev) => {
+      return {
+        1: true,
+        clicked: true,
+        numClicked: 1,
+        ratingDescription: "Poor",
+      };
     });
   }
 
-  handleStarOneClick() {
-    this.clearStarsAfterClick();
-    this.props.selectStarRating(1);
-    this.setState({
-      starOne: true,
-      clicked: true,
-      ratingDescription: "Poor",
+  function onStarTwoMouseEnterChange() {
+    setState((prev) => {
+      return {
+        ...prev,
+        1: true,
+        2: true,
+      };
     });
   }
 
-  onStarTwoMouseEnterChange() {
-    this.setState({
-      starOne: true,
-      starTwo: true,
+  function handleStarTwoClick() {
+    clearStars(2);
+    props.selectStarRating(2);
+    setState((prev) => {
+      return {
+        ...prev,
+        1: true,
+        2: true,
+        clicked: true,
+        numClicked: 2,
+        ratingDescription: "Fair",
+      };
     });
   }
 
-  handleStarTwoClick() {
-    this.clearStarsAfterClick();
-    this.props.selectStarRating(2);
-    this.setState({
-      starOne: true,
-      starTwo: true,
-      clicked: true,
-      ratingDescription: "Fair",
+  function onStarThreeMouseEnterChange() {
+    setState((prev) => {
+      return {
+        ...prev,
+        1: true,
+        2: true,
+        3: true,
+      };
     });
   }
 
-  onStarThreeMouseEnterChange() {
-    this.setState({
-      starOne: true,
-      starTwo: true,
-      starThree: true,
+  function handleStarThreeClick() {
+    clearStars();
+    props.selectStarRating(3);
+    setState((prev) => {
+      return {
+        ...prev,
+        1: true,
+        2: true,
+        3: true,
+        clicked: true,
+        numClicked: 3,
+        ratingDescription: "Average",
+      };
     });
   }
 
-  handleStarThreeClick() {
-    this.clearStarsAfterClick();
-    this.props.selectStarRating(3);
-    this.setState({
-      starOne: true,
-      starTwo: true,
-      starThree: true,
-      clicked: true,
-      ratingDescription: "Average",
+  function onStarFourMouseEnterChange() {
+    setState((prev) => {
+      return {
+        ...prev,
+        1: true,
+        2: true,
+        3: true,
+        4: true,
+      };
     });
   }
 
-  onStarFourMouseEnterChange() {
-    this.setState({
-      starOne: true,
-      starTwo: true,
-      starThree: true,
-      starFour: true,
+  function handleStarFourClick() {
+    clearStars(4);
+    props.selectStarRating(4);
+    setState((prev) => {
+      return {
+        ...prev,
+        1: true,
+        2: true,
+        3: true,
+        4: true,
+        clicked: true,
+        numClicked: 4,
+        ratingDescription: "Good",
+      };
     });
   }
 
-  handleStarFourClick() {
-    this.clearStarsAfterClick();
-    this.props.selectStarRating(4);
-    this.setState({
-      starOne: true,
-      starTwo: true,
-      starThree: true,
-      starFour: true,
-      clicked: true,
-      ratingDescription: "Good",
+  function onStarFiveMouseEnterChange() {
+    setState((prev) => {
+      return {
+        ...prev,
+        1: true,
+        2: true,
+        3: true,
+        4: true,
+        5: true,
+      };
     });
   }
 
-  onStarFiveMouseEnterChange() {
-    this.setState({
-      starOne: true,
-      starTwo: true,
-      starThree: true,
-      starFour: true,
-      starFive: true,
+  function handleStarFiveClick() {
+    clearStars(5);
+    props.selectStarRating(5);
+    setState((prev) => {
+      return {
+        ...prev,
+        1: true,
+        2: true,
+        3: true,
+        4: true,
+        5: true,
+        clicked: true,
+        numClicked: true,
+        ratingDescription: "Great",
+      };
     });
   }
 
-  handleStarFiveClick() {
-    this.clearStarsAfterClick();
-    this.props.selectStarRating(5);
-    this.setState({
-      starOne: true,
-      starTwo: true,
-      starThree: true,
-      starFour: true,
-      starFive: true,
-      clicked: true,
-      ratingDescription: "Great",
-    });
-  }
-
-  render() {
-    return (
+  return (
+    <div
+      className="star-rating"
+      style={{
+        display: "flex",
+        flexDirection: "row",
+      }}
+    >
       <div
-        className="star-rating"
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          fontWeight: this.state.hovering ? "bold" : "normal",
-        }}
+        type="button"
+        onMouseLeave={() => clearStars(0)}
+        onMouseEnter={onStarOneMouseEnterChange}
+        onClick={handleStarOneClick}
       >
-        <div
-          type="button"
-          onMouseLeave={this.clearStars}
-          onMouseEnter={this.onStarOneMouseEnterChange}
-          onClick={this.handleStarOneClick.bind(this)}
-        >
-          {" "}
-          {this.state.starOne ? "★" : "☆"}
-        </div>
-        <div
-          type="button"
-          onMouseLeave={this.clearStars}
-          onMouseEnter={this.onStarTwoMouseEnterChange}
-          onClick={this.handleStarTwoClick.bind(this)}
-        >
-          {" "}
-          {this.state.starTwo ? "★" : "☆"}
-        </div>
-        <div
-          type="button"
-          onMouseLeave={this.clearStars}
-          onMouseEnter={this.onStarThreeMouseEnterChange}
-          onClick={this.handleStarThreeClick.bind(this)}
-        >
-          {" "}
-          {this.state.starThree ? "★" : "☆"}
-        </div>
-        <div
-          type="button"
-          onMouseLeave={this.clearStars}
-          onMouseEnter={this.onStarFourMouseEnterChange}
-          onClick={this.handleStarFourClick.bind(this)}
-        >
-          {" "}
-          {this.state.starFour ? "★" : "☆"}
-        </div>
-        <div
-          type="button"
-          onMouseLeave={this.clearStars}
-          onMouseEnter={this.onStarFiveMouseEnterChange}
-          onClick={this.handleStarFiveClick.bind(this)}
-        >
-          {" "}
-          {this.state.starFive ? "★" : "☆"}
-        </div>
-        <div style={{ marginLeft: "5px", marginTop: "2.5px" }}>
-          {this.state.ratingDescription}
-        </div>
+        {" "}
+        {state["1"] ? "★" : "☆"}
       </div>
-    );
-  }
-}
+      <div
+        type="button"
+        onMouseLeave={() => clearStars(0)}
+        onMouseEnter={onStarTwoMouseEnterChange}
+        onClick={handleStarTwoClick}
+      >
+        {" "}
+        {state["2"] ? "★" : "☆"}
+      </div>
+      <div
+        type="button"
+        onMouseLeave={() => clearStars(0)}
+        onMouseEnter={onStarThreeMouseEnterChange}
+        onClick={handleStarThreeClick}
+      >
+        {" "}
+        {state["3"] ? "★" : "☆"}
+      </div>
+      <div
+        type="button"
+        onMouseLeave={() => clearStars(0)}
+        onMouseEnter={onStarFourMouseEnterChange}
+        onClick={handleStarFourClick}
+      >
+        {" "}
+        {state["4"] ? "★" : "☆"}
+      </div>
+      <div
+        type="button"
+        onMouseLeave={() => clearStars(0)}
+        onMouseEnter={onStarFiveMouseEnterChange}
+        onClick={handleStarFiveClick}
+      >
+        {" "}
+        {state["5"] ? "★" : "☆"}
+      </div>
+      <div style={{ marginLeft: "5px", marginTop: "2.5px" }}>
+        {state.ratingDescription}
+      </div>
+    </div>
+  );
+};
 
 export default NewStarRating;
