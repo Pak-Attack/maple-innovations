@@ -1,79 +1,73 @@
 import React from "react";
 
-class Characteristics extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
+const Characteristics = (props) => {
 
-    this.onChangeSizeValue = this.onChangeSizeValue.bind(this);
-    this.onChangeWidthValue = this.onChangeWidthValue.bind(this);
-    this.onChangeComfortValue = this.onChangeComfortValue.bind(this);
-    this.onChangeQualityValue = this.onChangeQualityValue.bind(this);
-    this.onChangeLengthValue = this.onChangeLengthValue.bind(this);
-    this.onChangeFitValue = this.onChangeFitValue.bind(this);
-  }
-
-  onChangeSizeValue() {
+  function onChangeSizeValue() {
     let size = null;
-    event.target.value === "A size too small" ? (size = 1) : null;
-    event.target.value === "½ a size too small" ? (size = 2) : null;
-    event.target.value === "Perfect" ? (size = 3) : null;
-    event.target.value === "½ a size too big" ? (size = 4) : null;
-    event.target.value === "A size too wide" ? (size = 5) : null;
-    this.props.onChangeSize(size);
+    let value = event.target.value;
+    value === "A size too small" ? (size = 1) : null;
+    value === "½ a size too small" ? (size = 2) : null;
+    value === "Perfect" ? (size = 3) : null;
+    value === "½ a size too big" ? (size = 4) : null;
+    value === "A size too wide" ? (size = 5) : null;
+    props.onChangeSize(size);
   }
 
-  onChangeWidthValue() {
+  function onChangeWidthValue() {
     let width = null;
-    event.target.value === "Too narrow" ? (width = 1) : null;
-    event.target.value === "Slightly narrow" ? (width = 2) : null;
-    event.target.value === "Perfect" ? (width = 3) : null;
-    event.target.value === "Slightly wide" ? (width = 4) : null;
-    event.target.value === "Too wide" ? (width = 5) : null;
-    this.props.onChangeWidth(width);
+    let value = event.target.value;
+    value === "Too narrow" ? (width = 1) : null;
+    value === "Slightly narrow" ? (width = 2) : null;
+    value === "Perfect" ? (width = 3) : null;
+    value === "Slightly wide" ? (width = 4) : null;
+    value === "Too wide" ? (width = 5) : null;
+    props.onChangeWidth(width);
   }
 
-  onChangeComfortValue() {
+  function onChangeComfortValue() {
     let comfort = null;
-    event.target.value === "Uncomfortable" ? (comfort = 1) : null;
-    event.target.value === "Slightly uncomfortable" ? (comfort = 2) : null;
-    event.target.value === "Ok" ? (comfort = 3) : null;
-    event.target.value === "Comfortable" ? (comfort = 4) : null;
-    event.target.value === "Perfect" ? (comfort = 5) : null;
-    this.props.onChangeComfort(comfort);
+    let value = event.target.value;
+    value === "Uncomfortable" ? (comfort = 1) : null;
+    value === "Slightly uncomfortable" ? (comfort = 2) : null;
+    value === "Ok" ? (comfort = 3) : null;
+    value === "Comfortable" ? (comfort = 4) : null;
+    value === "Perfect" ? (comfort = 5) : null;
+    props.onChangeComfort(comfort);
   }
 
-  onChangeQualityValue() {
+  function onChangeQualityValue() {
     let quality = null;
-    event.target.value === "Poor" ? (quality = 1) : null;
-    event.target.value === "Below average" ? (quality = 2) : null;
-    event.target.value === "What I expected" ? (quality = 3) : null;
-    event.target.value === "Pretty great" ? (quality = 4) : null;
-    event.target.value === "Perfect" ? (quality = 5) : null;
-    this.props.onChangeQuality(quality);
+    let value = event.target.value;
+    value === "Poor" ? (quality = 1) : null;
+    value === "Below average" ? (quality = 2) : null;
+    value === "What I expected" ? (quality = 3) : null;
+    value === "Pretty great" ? (quality = 4) : null;
+    value === "Perfect" ? (quality = 5) : null;
+    props.onChangeQuality(quality);
   }
 
-  onChangeLengthValue() {
+  function onChangeLengthValue() {
     let length = null;
-    event.target.value === "Runs short" ? (length = 1) : null;
-    event.target.value === "Runs slightly short" ? (length = 2) : null;
-    event.target.value === "Perfect" ? (length = 3) : null;
-    event.target.value === "Runs slightly long" ? (length = 4) : null;
-    event.target.value === "Runs long" ? (length = 5) : null;
-    this.props.onChangeLength(length);
+    let value = event.target.value;
+    value === "Runs short" ? (length = 1) : null;
+    value === "Runs slightly short" ? (length = 2) : null;
+    value === "Perfect" ? (length = 3) : null;
+    value === "Runs slightly long" ? (length = 4) : null;
+    value === "Runs long" ? (length = 5) : null;
+    props.onChangeLength(length);
   }
 
-  onChangeFitValue() {
+  function onChangeFitValue() {
     let fit = null;
-    event.target.value === "Runs tight" ? (fit = 1) : null;
-    event.target.value === "Runs slightly tight" ? (fit = 2) : null;
-    event.target.value === "Perfect" ? (fit = 3) : null;
-    event.target.value === "Runs slightly long" ? (fit = 4) : null;
-    event.target.value === "Runs long" ? (fit = 5) : null;
-    this.props.onChangeFit(fit);
+    let value = event.target.value;
+    value === "Runs tight" ? (fit = 1) : null;
+    value === "Runs slightly tight" ? (fit = 2) : null;
+    value === "Perfect" ? (fit = 3) : null;
+    value === "Runs slightly long" ? (fit = 4) : null;
+    value === "Runs long" ? (fit = 5) : null;
+    props.onChangeFit(fit);
   }
 
-  render() {
     return (
       <div className="characteristics">
         <div>
@@ -92,7 +86,7 @@ class Characteristics extends React.Component {
               <input
                 type="radio"
                 value="A size too small"
-                onChange={this.onChangeSizeValue}
+                onChange={onChangeSizeValue}
                 name="size"
                 style={{ marginLeft: "45px" }}
               />
@@ -102,7 +96,7 @@ class Characteristics extends React.Component {
               <input
                 type="radio"
                 value="½ a size too small"
-                onChange={this.onChangeSizeValue}
+                onChange={onChangeSizeValue}
                 name="size"
                 style={{ marginLeft: "50px" }}
               />{" "}
@@ -113,7 +107,7 @@ class Characteristics extends React.Component {
               <input
                 type="radio"
                 value="Perfect"
-                onChange={this.onChangeSizeValue}
+                onChange={onChangeSizeValue}
                 name="size"
                 style={{ marginLeft: "5px" }}
               />
@@ -124,7 +118,7 @@ class Characteristics extends React.Component {
               <input
                 type="radio"
                 value="½ a size too big"
-                onChange={this.onChangeSizeValue}
+                onChange={onChangeSizeValue}
                 name="size"
                 style={{ marginLeft: "45px" }}
               />
@@ -134,7 +128,7 @@ class Characteristics extends React.Component {
               <input
                 type="radio"
                 value="A size too wide"
-                onChange={this.onChangeSizeValue}
+                onChange={onChangeSizeValue}
                 name="size"
                 style={{ marginLeft: "30px" }}
               />{" "}
@@ -161,7 +155,7 @@ class Characteristics extends React.Component {
               <input
                 type="radio"
                 value="Too narrow"
-                onChange={this.onChangeWidthValue}
+                onChange={onChangeWidthValue}
                 name="width"
                 style={{ marginLeft: "25px" }}
               />{" "}
@@ -171,7 +165,7 @@ class Characteristics extends React.Component {
               <input
                 type="radio"
                 value="Slightly narrow"
-                onChange={this.onChangeWidthValue}
+                onChange={onChangeWidthValue}
                 name="width"
                 style={{ marginLeft: "40px" }}
               />{" "}
@@ -181,7 +175,7 @@ class Characteristics extends React.Component {
               <input
                 type="radio"
                 value="Perfect"
-                onChange={this.onChangeWidthValue}
+                onChange={onChangeWidthValue}
                 name="width"
                 style={{ marginLeft: "15px" }}
               />{" "}
@@ -193,7 +187,7 @@ class Characteristics extends React.Component {
               <input
                 type="radio"
                 value="Slightly wide"
-                onChange={this.onChangeWidthValue}
+                onChange={onChangeWidthValue}
                 name="width"
                 style={{ marginLeft: "35px" }}
               />{" "}
@@ -205,7 +199,7 @@ class Characteristics extends React.Component {
               <input
                 type="radio"
                 value="Too wide"
-                onChange={this.onChangeWidthValue}
+                onChange={onChangeWidthValue}
                 name="width"
                 style={{ marginLeft: "20px" }}
               />{" "}
@@ -233,7 +227,7 @@ class Characteristics extends React.Component {
               <input
                 type="radio"
                 value="Uncomfortable"
-                onChange={this.onChangeComfortValue}
+                onChange={onChangeComfortValue}
                 name="comfort"
                 style={{ marginLeft: "35px" }}
               />{" "}
@@ -245,7 +239,7 @@ class Characteristics extends React.Component {
               <input
                 type="radio"
                 value="Slightly uncomfortable"
-                onChange={this.onChangeComfortValue}
+                onChange={onChangeComfortValue}
                 name="comfort"
                 style={{ marginLeft: "60px" }}
               />{" "}
@@ -256,7 +250,7 @@ class Characteristics extends React.Component {
               <input
                 type="radio"
                 value="Ok"
-                onChange={this.onChangeComfortValue}
+                onChange={onChangeComfortValue}
                 name="comfort"
                 style={{ marginLeft: "00px" }}
               />{" "}
@@ -267,7 +261,7 @@ class Characteristics extends React.Component {
               <input
                 type="radio"
                 value="Comfortable"
-                onChange={this.onChangeComfortValue}
+                onChange={onChangeComfortValue}
                 name="comfort"
                 style={{ marginLeft: "30px" }}
               />{" "}
@@ -278,7 +272,7 @@ class Characteristics extends React.Component {
               <input
                 type="radio"
                 value="Perfect"
-                onChange={this.onChangeComfortValue}
+                onChange={onChangeComfortValue}
                 name="comfort"
                 style={{ marginLeft: "15px" }}
               />{" "}
@@ -306,7 +300,7 @@ class Characteristics extends React.Component {
               <input
                 type="radio"
                 value="Poor"
-                onChange={this.onChangeQualityValue}
+                onChange={onChangeQualityValue}
                 name="quality"
                 style={{ marginLeft: "5px" }}
               />{" "}
@@ -317,7 +311,7 @@ class Characteristics extends React.Component {
               <input
                 type="radio"
                 value="Below average"
-                onChange={this.onChangeQualityValue}
+                onChange={onChangeQualityValue}
                 name="quality"
                 style={{ marginLeft: "40px" }}
               />{" "}
@@ -328,7 +322,7 @@ class Characteristics extends React.Component {
               <input
                 type="radio"
                 value="What I expected"
-                onChange={this.onChangeQualityValue}
+                onChange={onChangeQualityValue}
                 name="quality"
                 style={{ marginLeft: "45px" }}
               />{" "}
@@ -339,7 +333,7 @@ class Characteristics extends React.Component {
               <input
                 type="radio"
                 value="Pretty great"
-                onChange={this.onChangeQualityValue}
+                onChange={onChangeQualityValue}
                 name="Pretty great"
                 style={{ marginLeft: "30px" }}
               />{" "}
@@ -350,7 +344,7 @@ class Characteristics extends React.Component {
               <input
                 type="radio"
                 value="Perfect"
-                onChange={this.onChangeQualityValue}
+                onChange={onChangeQualityValue}
                 name="quality"
                 style={{ marginLeft: "15px" }}
               />{" "}
@@ -378,7 +372,7 @@ class Characteristics extends React.Component {
               <input
                 type="radio"
                 value="Runs short"
-                onChange={this.onChangeLengthValue}
+                onChange={onChangeLengthValue}
                 name="length"
                 style={{ marginLeft: "25px" }}
               />{" "}
@@ -389,7 +383,7 @@ class Characteristics extends React.Component {
               <input
                 type="radio"
                 value="Runs slightly short"
-                onChange={this.onChangeLengthValue}
+                onChange={onChangeLengthValue}
                 name="length"
                 style={{ marginLeft: "50px" }}
               />{" "}
@@ -400,7 +394,7 @@ class Characteristics extends React.Component {
               <input
                 type="radio"
                 value="Perfect"
-                onChange={this.onChangeLengthValue}
+                onChange={onChangeLengthValue}
                 name="length"
                 style={{ marginLeft: "15px" }}
               />{" "}
@@ -411,7 +405,7 @@ class Characteristics extends React.Component {
               <input
                 type="radio"
                 value="Runs slightly long"
-                onChange={this.onChangeLengthValue}
+                onChange={onChangeLengthValue}
                 name="length"
                 style={{ marginLeft: "50px" }}
               />{" "}
@@ -422,7 +416,7 @@ class Characteristics extends React.Component {
               <input
                 type="radio"
                 value="Runs long"
-                onChange={this.onChangeLengthValue}
+                onChange={onChangeLengthValue}
                 name="length"
                 style={{ marginLeft: "25px" }}
               />{" "}
@@ -450,7 +444,7 @@ class Characteristics extends React.Component {
               <input
                 type="radio"
                 value="Runs tight"
-                onChange={this.onChangeFitValue}
+                onChange={onChangeFitValue}
                 name="fit"
                 style={{ marginLeft: "25px" }}
               />{" "}
@@ -461,7 +455,7 @@ class Characteristics extends React.Component {
               <input
                 type="radio"
                 value="Runs slightly tight"
-                onChange={this.onChangeFitValue}
+                onChange={onChangeFitValue}
                 name="fit"
                 style={{ marginLeft: "50px" }}
               />{" "}
@@ -472,7 +466,7 @@ class Characteristics extends React.Component {
               <input
                 type="radio"
                 value="Perfect"
-                onChange={this.onChangeFitValue}
+                onChange={onChangeFitValue}
                 name="fit"
                 style={{ marginLeft: "14px" }}
               />{" "}
@@ -483,7 +477,7 @@ class Characteristics extends React.Component {
               <input
                 type="radio"
                 value="Runs slightly long"
-                onChange={this.onChangeFitValue}
+                onChange={onChangeFitValue}
                 name="fit"
                 style={{ marginLeft: "50px" }}
               />{" "}
@@ -494,7 +488,7 @@ class Characteristics extends React.Component {
               <input
                 type="radio"
                 value="Runs long"
-                onChange={this.onChangeFitValue}
+                onChange={onChangeFitValue}
                 name="fit"
                 style={{ marginLeft: "25px" }}
               />{" "}
@@ -507,7 +501,6 @@ class Characteristics extends React.Component {
         <br />
       </div>
     );
-  }
 }
 
 export default Characteristics;
